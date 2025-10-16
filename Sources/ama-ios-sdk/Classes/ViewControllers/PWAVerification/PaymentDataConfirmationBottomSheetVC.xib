@@ -10,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaymentDataConfirmationBottomSheetVC" customModule="ama_ios_sdk">
             <connections>
-                <outlet property="dimmedView" destination="Z28-EU-VZd" id="2F3-fn-HZT"/>
                 <outlet property="view" destination="gYg-4e-hwC" id="1Qd-nt-MD8"/>
             </connections>
         </placeholder>
@@ -18,20 +17,8 @@
         <view contentMode="scaleToFill" id="gYg-4e-hwC">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z28-EU-VZd">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </view>
-            </subviews>
             <viewLayoutGuide key="safeArea" id="TYb-jh-fKG"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <constraints>
-                <constraint firstItem="Z28-EU-VZd" firstAttribute="top" secondItem="gYg-4e-hwC" secondAttribute="top" id="OoI-5l-ooI"/>
-                <constraint firstAttribute="bottom" secondItem="Z28-EU-VZd" secondAttribute="bottom" id="sqm-t2-u7W"/>
-                <constraint firstItem="TYb-jh-fKG" firstAttribute="trailing" secondItem="Z28-EU-VZd" secondAttribute="trailing" id="wyq-M0-Luh"/>
-                <constraint firstItem="Z28-EU-VZd" firstAttribute="leading" secondItem="TYb-jh-fKG" secondAttribute="leading" id="zjx-Gv-Jdd"/>
-            </constraints>
             <point key="canvasLocation" x="153" y="65"/>
         </view>
     </objects>
