@@ -990,7 +990,7 @@ extension OrganizationDetailBottomSheetVC: OrganizationDelegate, OrganizationHea
     func goBackAction() {
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: Constants.reloadOrgList, object: nil)
-            self.pop()
+            self.dismiss(animated: true)
             NotificationCenter.default.removeObserver(self)
         }
     }

@@ -51,7 +51,8 @@ public class SelfAttestedOpenIDCredential {
         connectionName: String? = nil,
         connectionLocation: String? = nil,
         issuedDate: Date? = nil,
-        vct: String? = nil
+        vct: String? = nil,
+        logo: String? = nil
     ) async throws -> String {
         var missingFields: [String] = []
         var credentialId: String = ""
@@ -121,6 +122,7 @@ public class SelfAttestedOpenIDCredential {
             }
             connectionModel = connection
         }
+        connectionModel?.value?.orgDetails?.logoImageURL = logo
         var vpToken = ""
         await SelfAttestedToOpenID.shared.configDID()
         let ebsiConnectionModel = await SelfAttestedToOpenID.shared.getPassportIssuanceConnection()
