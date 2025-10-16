@@ -2686,12 +2686,10 @@ extension EBSIWallet {
                                                                 vc.bottomSheetView.credentialsDict = credentialsDict
                                                                 vc.bottomSheetView.redirectUri = self.uri
                                                                 vc.bottomSheetView.transactionDataBse64Data = self.transactionData
-                                                                if let navVC = UIApplicationUtils.shared.getTopVC() as? UINavigationController {
+                                                                let sheetVC = WalletHomeBottomSheetViewController(contentViewController: vc)
+                                                                if let topVC = UIApplicationUtils.shared.getTopVC() {
                                                                     UIApplicationUtils.hideLoader()
-                                                                    navVC.present(vc, animated: true)
-                                                                } else {
-                                                                    UIApplicationUtils.hideLoader()
-                                                                    UIApplicationUtils.shared.getTopVC()?.present(vc, animated: true)
+                                                                    topVC.present(sheetVC, animated: false, completion: nil)
                                                                 }
                                                             } else {
                                                                 let vc = ExchangeDataPreviewBottomSheetVC(nibName: "ExchangeDataPreviewBottomSheetVC", bundle: Bundle.module)
@@ -2728,12 +2726,10 @@ extension EBSIWallet {
                                                             vc.bottomSheetView.credentialsDict = credentialsDict
                                                             vc.bottomSheetView.redirectUri = self.uri
                                                             vc.bottomSheetView.transactionDataBse64Data = self.transactionData
-                                                            if let navVC = UIApplicationUtils.shared.getTopVC() as? UINavigationController {
+                                                            let sheetVC = WalletHomeBottomSheetViewController(contentViewController: vc)
+                                                            if let topVC = UIApplicationUtils.shared.getTopVC() {
                                                                 UIApplicationUtils.hideLoader()
-                                                                navVC.present(vc, animated: true)
-                                                            } else {
-                                                                UIApplicationUtils.hideLoader()
-                                                                UIApplicationUtils.shared.getTopVC()?.present(vc, animated: true)
+                                                                topVC.present(sheetVC, animated: false, completion: nil)
                                                             }
                                                         }
                                                     } else if transactionDataModel?.type != "payment_data" {

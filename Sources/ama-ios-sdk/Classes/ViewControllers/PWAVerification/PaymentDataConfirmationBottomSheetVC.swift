@@ -30,11 +30,6 @@ class PaymentDataConfirmationBottomSheetVC: UIViewController, PaymentDataConfirm
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBottomSheetView()
-        if AriesMobileAgent.shared.getViewMode() == .BottomSheet && !EBSIWallet.shared.isFromPushNotification{
-            dimmedView.backgroundColor = .clear
-        } else {
-            dimmedView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        }
     }
     
     private func setupBottomSheetView() {
