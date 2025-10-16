@@ -1,0 +1,352 @@
+"Data Wallet" = "Data Wallet";
+"Close" = "Close";
+"Turn on flash light" = "Turn on flash light";
+"Turn off flash light" = "Turn off flash light";
+"Position QR Code" = "Position QR Code";
+"Notification" = "Notificación";
+"Could not open your camera" = "Could not open your camera";
+"OK" = "OK";
+"Confirm" = "Confirm";
+"Could not read your image.Try another image" = "Could not read your image.Try another image";
+"Sorry, could not open scan content" = "Sorry, could not open scan content";
+"Could not detect camera" = "Could not detect camera";
+"Scan" = "Scan";
+"Create" = "Create";
+"Data" = "Data";
+"Connections" = "Conexiones";
+"No" = "No";
+"Yes" = "Yes";
+"Reject" = "Reject";
+"Accept" = "Accept";
+"Add data" = "Add data";
+"Choose the organisation from which to add data to your wallet" = "Choose the organisation from which to add data to your wallet";
+"Wallet" = "Wallet";
+"Preferences" = "Preferences";
+"No connections available" = "No hay conexiones disponibles";
+"No data available" = "Datos no disponibles";
+"Connection already existing" = "Conexión ya existente";
+"Loading Indy Library..." = "Cargando biblioteca Indy...";
+"Share Data" = "Share Data";
+"Add connection" = "Agregar conexión";
+"Search wallet..." = "Buscar billetera de datos...";
+"Search organisations..." = "Buscar organizaciones...";
+"Search" = "Buscar";
+"Configuring pool..." = "Configurando grupo...";
+"Finishing..." = "Refinamiento...";
+"Configuring wallet..." = "Configuring Data Wallet...";
+"Organisations" = "Organizativo";
+"Logo" = "logo";
+"Exchange" = "Intercambiar";
+"Choose organisation" = "Elige organización";
+"Data agreement" = "Acuerdo de datos";
+"Insufficient data requested" = "Datos solicitados insuficientes";
+"Requests" = "Peticiones";
+"Connection success" = "Connection success";
+"Overview" = "Descripción general";
+"Delete" = "Borrar";
+"Version : <Version>" = "Versión: <versión>";
+"Unexpected error. Please try again." = "Error inesperado. Inténtalo de nuevo.";
+
+"By choosing confirm you agree to share the requested data to" = "By choosing confirm you agree to share the requested data to";
+"Allow <org name> to connect with you" = "Allow <org name> to connect with you";
+
+"New certificate is added to wallet" = "New certificate is added to Data Wallet";
+"New exchange data request received" = "New exchange data request received";
+"Language" = "Language";
+"Ledger network" = "Ledger Network";
+"Settings" = "Settings";
+"Network" = "Network";
+"Powered by iGrant.io, Sweden" = "Powered by iGrant.io, Sweden";
+"Data wallet" = "Data Wallet";
+"Notifications" = "Notifications";
+"Certificate Detail" = "Certificate Detail";
+"Connect" = "Connect";
+"Allow" = "Permitir";
+"to connect with you" = "to connect with you";
+"Data" = "Data";
+"Swedish" = "Swedish";
+"Danish" = "Danish";
+"Norweigian" = "Norweigian";
+"Finnish" = "Finnish";
+"Cancel" = "Cancelar";
+"Data exchange" = "Data Exchange";
+"Your data certificate is available to be added to your wallet. Click accept to confirm." = "Your data certificate is available to be added to your Data Wallet. Click accept to confirm.";
+"Choose the organisation to be connected to add data to the wallet or to exchange data" = "Choose the organisation to be connected to add data to the wallet or to exchange data";
+"Choose and connect to the organisation to add data or exchange data" = "Choose and connect to the organisation to add data or exchange data";
+"Remove data card" = "Extraer la tarjeta de datos";
+"Data has been shared with <Organization> successfully" = "Data has been shared with <Organization> successfully";
+"Data has been shared successfully" = "Data has been shared successfully";
+"Read more" = "Read more";
+"Read less" = "Read less";
+"Do you want to cancel the exchange request?" = "Do you want to cancel the exchange request?";
+"LANGUAGE" = "LANGUAGE";
+"LEDGER NETWORK" = "LEDGER NETWORK";
+"Do you want to delete the certificate?" = "Do you want to delete the certificate?";
+"No new notification available" = "No hay nueva notificación disponible";
+"Confirmation" = "Confirmation";
+"Aries Interoperability Protocols" = "Aries Interoperability Protocols";
+"Terms And Conditions" = "Terms And Conditions";
+"Privacy Policy" = "Privacy Policy";
+"Supported Protocols" = "Supported Protocols";
+"about_app" = "About this app";
+"Received Data" = "Received Data";
+"Received offer credential" = "Received Offer Credential";
+"Received offer credential from organisation." = "Received offer credential from organisation.";
+"Received Exchange Request" = "Received Exchange Request";
+"Terms of service" = "Terms of Service";
+"New certificate offer received" = "New certificate offer received";
+
+"Data offer accepted successfully." = "Data offer accepted successfully.";
+"Do you want to remove the offer credential?" = "Do you want to remove the offer credential?";
+"Organisation removed successfully" = "Organisation removed successfully";
+"Do you want to remove the organisation?" = "Do you want to remove the organisation?";
+"No related organisation found. You may have removed the organisation" = "No related organisation found. You may have removed the organisation";
+"Remove Organisation" = "Eliminar Organización";
+"Taking longer than expected? Please try again" = "Taking longer than expected? Please try again";
+"Choose the organisation to add data to the data wallet. For adding new organisations, click + above" = "Choose the organisation to add data to the Data Wallet. For adding new organisations, click + above";
+
+"No data available. Click '+' next to Data Wallet to begin adding data" = "Datos no disponibles. Haga clic en '+' junto a Data Wallet para comenzar a agregar datos";
+
+"Click '+' next to Organisations to connect to an organisation to add data." = "Click '+' next to Organisations to connect to an organisation to add data.";
+
+"ID Cards" = "ID Cards";
+"First name" = "First Name";
+"Last name" = "Last Name";
+"Gender" = "Gender";
+"Country" = "Country";
+"Nationality" = "Nationality";
+"Personal Number" = "Personal Number";
+"Date of birth" = "Date of birth";
+"Passport number" = "Passport Number";
+"Issuing Country" = "Issuing Country";
+"Expiration date" = "Expiration Date";
+"Passport Detail" = "Passport Detail";
+"Received Certificate" = "Received Certificate";
+"Passport detail is now added to the data wallet. " = "Passport detail is now added to the Data Wallet. ";
+"passport" = "Passport";
+"Full Name" = "Full Name";
+"Passport of this user already existing." = "Passport of this user already existing.";
+"No data available. Click '+' next to ID Cards to begin adding an ID Card to your data wallet" = "No data available. Click '+' next to ID Cards to begin adding an ID Card to your Data Wallet";
+"Expiration date" = "Expiration date";
+"Reading data…" = "Reading data…";
+"Please fill details and place your phone on top of the passport. Following information is required to decode encrypted passport data." = "Please fill details and place your phone on top of the passport. Following information is required to decode encrypted passport data.";
+"Please provide details to read passport" = "Please provide details to read passport";
+"Failed to read passport" = "Failed to read passport";
+"Permission Required" = "Permission Required";
+"We need your permission to access camera in order to scan Id Card / Passport." = "We need your permission to access camera in order to scan Id Card / Passport.";
+"OK" = "OK";
+"Next" = "Next";
+"Start Reading" = "Start Reading";
+"Place the passport against your phone" = "Place the passport against your phone";
+"Click Next and adjust the position of the phone until it starts reading the data" = "Click Next and adjust the position of the phone until it starts reading the data";
+"Hold the position while the data is being read. " = "Hold the position while the data is being read. ";
+"Ready to scan" = "Ready to scan";
+"Cancel" = "Cancelar";
+"Issuing Country" = "Issuing Country";
+"Passport Detail" = "Passport Detail";
+"Started" = "Started";
+"Reading personal Info" = "Reading personal Info";
+"Reading Image" = "Reading Image";
+"Reading Signature" = "Reading Signature";
+"Scan Passport" = "Scan Passport";
+"NFC Reader" = "NFC Reader";
+"Hold your phone near an NFC enabled passport" = "Hold your phone near an NFC enabled passport";
+"Signature" = "Signature";
+"Processing" = "Processing";
+//20-Jul-2021
+"Click the organisation logo to view the available data cards." = "Click the organisation logo to view the available data cards. For adding new organisations, click + above";
+"Click the card to add to your Data Wallet" = "Click the card to add to your Data Wallet";
+"Card successfully added to your Data Wallet" = "Card successfully added to your Data Wallet";
+"Not able to save card" = "Not able to save card";
+"Error" = "Error";
+"Not able to get data from NFC" = "Not able to get data from NFC";
+"Your device doesn't support NFC feature to proceed" = "Your device doesn't support NFC feature to proceed";
+"Error: your device doesn't support NFC feature to proceed" = "Error: your device doesn't support NFC feature to proceed";
+"Add Card" = "Add Card";
+"India covid cert: Its ok that everything is in English in all languages" = "India covid cert: Its ok that everything is in English in all languages";
+"Covid Vaccination Certificate" = "Covid Vaccination Certificate";
+"Full Name" = "Full Name";
+"Age" = "Age";
+"ID Verified" = "ID Verified";
+"ID Number" = "ID Number";
+"Unique Health ID" = "Unique Health ID";
+"Beneficiary Reference ID" = "Beneficiary Reference ID";
+"Vaccine Name" = "Vaccine Name";
+"Date of Dose" = "Date of Dose";
+"Vaccinated By" = "Vaccinated By";
+"Vaccinated At" = "Vaccinated At";
+"Vaccination Dosage" = "Vaccination Dosage";
+"Beneficiary Details" = "Beneficiary Details";
+"Vaccination Details" = "Vaccination Details";
+"Ministry of Health and Family Welfare" = "Ministry of Health and Family Welfare";
+"Government of India" = "Government of India";
+"Vaccination Certificate is now added to the Data Wallet" = "Vaccination Certificate is now added to the Data Wallet";
+"Vaccination Certificate of this user already existing" = "Vaccination Certificate of this user already existing";
+"EU Digital Covid Certificate" = "EU Digital Covid Certificate";
+"European Union" = "European Union";
+"Full Name" = "Full Name";
+"Date Of Birth" = "Date Of Birth";
+"Full Name" = "Full Name";
+"Member State" = "Member State";
+"Vaccination Manufacturer" = "Vaccination Manufacturer";
+"Vaccination Date" = "Vaccination Date";
+"Unique Certificate Identifier" = "Unique Certificate Identifier";
+
+//8 Aug 2021
+"Security" = "Security";
+"Multiple data cards found. Choose the right card and data to exchange." = "Multiple data cards found. Choose the right card and data to exchange.";
+
+//Region selection
+"Regions" = "Regions";
+"Choose which regions to filter the card types available to you."= "Choose which regions to filter the card types available to you.";
+
+
+//SN Added
+"disease_targetted" = "Disease Targetted";
+"type_of_test" = "Type of Tests";
+"test_name" = "Test Name";
+"device_identifier" = "Test Device Identifier";
+"sample_collection_date" = "Sample Collection Date";
+"test_result" = "Test Result";
+"test_center" = "Test Center";
+"digital_test_certificate_heading" = "Digital Test Certificate";
+"digital_cerificate_exists" = "Digital certificate of this user already existing";
+"digital_EU_is_added" = "Digital Certificate is now added to the Data Wallet";
+"cant_save_EU_digital" = "Not able to save Digital EU card";
+"eu_List_Heading" = "EU Test Certificate";
+"eu" = "Europian Union";
+"test_certificate_details" = "Test Certificate Details";
+
+//Onboard keys SN Added
+
+"welcome_key" = "Welcome!";
+"welcome_des_bold" = "Connect, consent and share";
+"welcome_des" = "Connect, consent and share your personal data which is securely stored only on your device of choice.\n\nData Wallet, powered by iGrant.io, puts you in control of your personal data regarding what you share and with whom. Every data exchange transaction is associated with an auditable data agreement that ensures compliance with privacy and data protection regulations.";
+"choose_region" = "Choose your region";
+"welcome_one_time" = "This is a one time setting to let your Data Wallet show cards that are associated with your region.";
+"welcome_settings_des" = "The default settings are as shown below. You can change these anytime later.";
+"finish_key" = "Finish";
+"Backup and Storage" = "Backup and Storage";
+"My Shared Data" = "Mis datos compartidos";
+"Here, you  can view the history of all data agreement signed." = "Aquí puede ver el historial de todos los acuerdos de datos firmados.";
+
+"Valid until" = "Valid until";
+"Digital Vaccination Certificate" = "Digital Vaccination Certificate";
+"Certificate Valid Until" = "Certificate Valid Until";
+
+//Home tiles
+"All" = "All";
+"My Profile" = "My Profile";
+"ID Cards" = "ID Cards";
+"Health" = "Health";
+"Travel" = "Travel";
+"Receipts" = "Receipts";
+
+"Click '+' next to Connections to connect to an organisation to add data." = "Haga clic en '+' junto a Conexiones para conectarse a una organización y añadir datos.";
+
+"Lawful basis of processing" = "Lawful basis of processing";
+"Policy URL" = "Policy URL";
+"Jurisdiction" = "Jurisdiction";
+"Third party disclosure" = "Third party disclosure";
+"Industry scope" = "Industry scope";
+"Geographic restriction" = "Geographic restriction";
+"Is shared to 3pps?" = "Is shared to 3pps?";
+
+"Certificate is expired" = "Certificate is expired";
+
+
+"search_connections" = "Search Connections";
+"connection_all" = "All";
+"connection_organisations" = "Organisations";
+"connection_people" = "People";
+"connection_devices" = "Devices";
+"delete_item_message" = "¿Está seguro de que desea eliminar este elemento?";
+"agree_add_data_to_wallet" = "You requested the following data to be issued. By choosing accept you agree to add the data to your Data Wallet.";
+
+"Scan" = "escanear";
+
+"generic_card" = "Generic Card";
+"connect_and_add" = "Connect and add card";
+"ticket_no" = "Ticket Number";
+"registration" = "Registration";
+"parking_ticket" = "PARKING TICKET";
+"Retention period" = "Periodo de retención";
+"agree_to_add_data" = "By choosing accept you agree to add the data to your Data Wallet";
+
+"tell_friend" = "Invite a Friend";
+"rate_app" = "Rate the App";
+"about_key" = "About";
+
+"third_party_disclosure" = "Third party disclosure";
+"third_party_data_sharing" = "Third-party data sharing";
+
+"ledger_switch_trying_with_count"= "Trying <count> of <count>";
+"backup_and_restore_title"= "Backup and Restore";
+"backup_and_restore_backup"= "Backup";
+"backup_and_restore_restore"= "Restore";
+"backup_and_restore_restore_from_backup"= "Restore from backup";
+"backup_and_restore_nothing_to_restore"= "Nothing to restore";
+"backup_and_restore_google_drive"= "Google drive";
+"backup_and_restore_solid_pods"= "Solid pods";
+"backup_and_restore_data_pods_by_igrant"= "Data pods by iGrant.io";
+"backup_and_restore_select_backup"= "Select backup";
+"backup_and_restore_backup_desc"= "You can backup your Data Wallet in any of the following locations on a monthly basis.";
+"backup_and_restore_disable_backup"= "Disable backup";
+"backup_and_restore_enable_backup"= "Enable backup";
+"backup_and_restore_last_backup"= "Last backup";
+"backup_and_restore_backup_now"= "Backup now";
+"backup_and_restore_no_backup_found"= "No backup found";
+"backup_and_restore_configuration"= "Backup and restore configuration";
+"backup_and_restore_configuration_desc"= "Your account is stored into your primary Google account.";
+"backup_and_restore_select_google_account"= "Select google account";
+"backup_and_restore_storage_and_backup" = "Storage and backup";
+
+"certificate_data_agreement_policy" = "Data Agreement Policy";
+"data_do_you_want_to_cancel_the_exchange_request" = "Do you want to cancel the exchange request?";
+"general_no" = "No";
+"general_yes" = "Yes";
+"general_confirm" = "Confirm";
+"general_trusted_service_provider" = "Trusted Service Provider";
+"general_untrusted_service_provider" = "Untrusted Service Provider";
+"general_trusted_service_provider" = "Trusted Service Provider";
+"connection_overview" = "Overview";
+"data_remove_data_card" = "Remove Data Card";
+"welcome_my_shared_data" = "My Shared Data";
+"connection_third_party_data_sharing" = "Third-party data sharing";
+"data_remove_organisation" = "Remove Organisation";
+"data_received_offer_credentials" = "Received Offer Credential";
+"connection_insufficient_data_requested" = "Requested data is not found in your wallet.";
+"error_invalid_qr_code" = "Invalid QR Code";
+"welcome_issued_at" = "Issued: ";
+"pwa_paid_to" = "Paid To";
+"welcome_verified_at" = "Verified: ";
+"general_data_agreement" = "Data Agreement";
+"general_accept" = "Accept";
+"receipt_purchase_receipt_id" = "PURCHASE RECEIPT ID:";
+"receipt_receipt_issued_on" = "Receipt Issued on:";
+"receipt_item" = "Item";
+"receipt_qty" = "Qty";
+"receipt_tax_incl_amount" = "Tax Incl Amount";
+"receipt_total_Tax" = "Total Tax ";
+"receipt_total" = "Total: ";
+"issued_by" = "Issued by";
+"connect_new_certificate_is_added_to_your_data_wallet" = "New certificate is added to your Data Wallet";
+"pwa_payment_confirmed" = "PAYMENT CONFIRMED";
+"verification_successfull" = "Data has been shared successfully.";
+"credential_issuance_single_named" = "%1$@ %2$@ will be issued shortly.";
+"credential_issuance_single_generic" = "A credential will be issued shortly.";
+"credential_issuance_multiple_all_named_ios" = "%1$@ %2$@ will be issued shortly.";
+"credential_issuance_multiple_partial_named_ios" = "%1$@ %2$@ and %3$d other %4$@ will be issued shortly.";
+"credential_issuance_multiple_none_named_ios" = "%1$@ The credentials will be issued shortly.";
+"credential" = "credential";
+"credentials" = "credentials";
+
+//
+"connect_by_choosing_confirm_you_agree_to_the_requested_data_to_org_name" = "By choosing confirm you agree to share the requested data to ";
+"verification_by_clicking_confirm_you_agree_to_share_the_selected_data" = "By clicking confirm, you agree to share selected data with ";
+"verification_additional_data_requested_confirm_to_proceed" = "Additional data has been requested. Click confirm to proceed.";
+"verification_by_clicking_confirm_you_agree_to_share_the_below_data" = "By clicking confirm, you agree to share below data with ";
+"Allow <org name> to connect with you" = "Allow <org name> to connect with you";
+
+"pwa_payment_confirmed" = "PAYMENT CONFIRMED";
+"payment_being_made_to" = "PAYMENT BEING MADE TO";

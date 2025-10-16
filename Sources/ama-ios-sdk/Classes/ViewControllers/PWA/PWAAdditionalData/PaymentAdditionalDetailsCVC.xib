@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ceZ-80-81h" customClass="PaymentAdditionalDetailsCVC" customModule="ama_ios_sdk">
+            <rect key="frame" x="0.0" y="0.0" width="502" height="183"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="vG3-ZA-nJ2">
+                <rect key="frame" x="0.0" y="0.0" width="502" height="183"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="v3Q-1s-xWy">
+                        <rect key="frame" x="0.0" y="0.0" width="502" height="183"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tableView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="v3Q-1s-xWy" secondAttribute="trailing" id="1uL-4F-Ij1"/>
+                    <constraint firstItem="v3Q-1s-xWy" firstAttribute="top" secondItem="vG3-ZA-nJ2" secondAttribute="top" id="kxW-g4-xe0"/>
+                    <constraint firstItem="v3Q-1s-xWy" firstAttribute="leading" secondItem="vG3-ZA-nJ2" secondAttribute="leading" id="ob0-wd-X7p"/>
+                    <constraint firstAttribute="bottom" secondItem="v3Q-1s-xWy" secondAttribute="bottom" id="sim-ha-F4h"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="502" height="183"/>
+            <connections>
+                <outlet property="tableView" destination="v3Q-1s-xWy" id="KdX-Ab-9z4"/>
+            </connections>
+            <point key="canvasLocation" x="404.58015267175568" y="64.436619718309856"/>
+        </collectionViewCell>
+    </objects>
+</document>

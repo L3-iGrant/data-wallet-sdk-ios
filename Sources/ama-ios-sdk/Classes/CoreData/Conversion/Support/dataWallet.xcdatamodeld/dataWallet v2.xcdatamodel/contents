@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BlinksMetaData" representedClassName="BlinksMetaData" syncable="YES" codeGenerationType="class">
+        <attribute name="infraProviders" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="prefix" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="DataWalletMetaData" representedClassName="DataWalletMetaData" syncable="YES" codeGenerationType="class">
+        <attribute name="blinks" optional="YES" attributeType="String"/>
+        <attribute name="ledger_network" optional="YES" attributeType="String"/>
+        <attribute name="pkpass_boarding_pass" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="GenesisCoreData" representedClassName="GenesisCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="genesisString" optional="YES" attributeType="String"/>
+        <attribute name="genesisURL" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="registerDIDHTMLText" optional="YES" attributeType="String"/>
+        <attribute name="str" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="PKPassBoardingPassMetadata" representedClassName="PKPassBoardingPassMetadata" syncable="YES" codeGenerationType="class">
+        <attribute name="data" optional="YES" attributeType="Binary"/>
+    </entity>
+</model>

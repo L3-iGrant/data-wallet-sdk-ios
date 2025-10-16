@@ -1,0 +1,94 @@
+
+{
+  "@type": "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/issue-credential/1.0/offer-credential",
+  "@id": "212d6469-27d3-433d-bfdd-58d2f58da5b1",
+  "~thread": {},
+  "~data-agreement-context": {
+    "message_type": "protocol",
+    "message": {
+      "@type": "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/data-agreement-negotiation/1.0/offer",
+      "@id": "7ad85555-4451-4fc7-a167-eb4477f9f158",
+      "body": {
+        "@context": [
+          "https://raw.githubusercontent.com/decentralised-dataexchange/data-exchange-agreements/main/interface-specs/jsonld/contexts/dexa-context.jsonld",
+          "https://w3id.org/security/v2"
+        ],
+        "@id": "f2905f94-548f-40b3-9a12-160a1df3b880",
+        "@type": [
+          "DataAgreement"
+        ],
+        "version": "1.0.0",
+        "templateId": "8bcde6d8-38a6-4bb9-99ad-e6f9cafbda0a",
+        "templateVersion": "1.0.0",
+        "language": "en",
+        "dataControllerName": "Happy Shopping AB",
+        "dataControllerUrl": "https://www.happyshopping.com",
+        "dataPolicy": {
+          "policyUrl": "https://happyshoping.com/privacy-policy/",
+          "jurisdiction": "Sweden",
+          "industrySector": "Retail",
+          "dataRetentionPeriod": 30,
+          "geographicRestriction": "Europe",
+          "storageLocation": "Europe",
+          "thirdPartyDataSharing": true
+        },
+        "purpose": "Customer card.",
+        "purposeDescription": "To identify customers across companies.",
+        "lawfulBasis": "consent",
+        "methodOfUse": "data-source",
+        "personalData": [
+          {
+            "attributeId": "549a695a-2531-428e-9105-122a69c5ba65",
+            "attributeName": "Customer ID",
+            "attributeSensitive": true,
+            "attributeDescription": "Unique number assigned to a customer.",
+            "restrictions": []
+          },
+          {
+            "attributeId": "af4717b7-b7f4-4bd2-aa6a-11f5ccb8bad8",
+            "attributeName": "Customer name",
+            "attributeSensitive": true,
+            "attributeDescription": "Name of the customer",
+            "restrictions": []
+          }
+        ],
+        "dpia": {
+          "dpiaDate": "2021-05-08T08:41:59+0000",
+          "dpiaSummaryUrl": "https://org.com/dpia_results.html"
+        },
+        "dataSubjectDid": "did:sov:15GT3ea9rPBqqzacHnYpTp",
+        "proof": {
+          "id": "did:sov:5rn4sZPQP5cowvevATeV5f#1",
+          "type": "Ed25519Signature2018",
+          "created": "2022-09-16T07:52:53.172026+00:00",
+          "verificationMethod": "3eaXZQ45TFf3eHQWN9N3nU6XTYt33tLEHHaXb9o6Zyi2",
+          "proofPurpose": "authentication",
+          "proofValue": "eyJhbGciOiAiRWREU0EiLCAiYjY0IjogZmFsc2UsICJjcml0IjogWyJiNjQiXX0..GGOQjPUa95ayLoI1LA_p2kqjpS0Wat0-K_NrRj12cHHcGLqg0ED1REek4rLEO734xMYw2gY3dx_I47ghpz3FCA"
+        }
+      }
+    }
+  },
+  "credential_preview": {
+    "@type": "did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/issue-credential/1.0/credential-preview",
+    "attributes": [
+      {
+        "name": "Customer ID",
+        "value": " "
+      },
+      {
+        "name": "Customer name",
+        "value": " "
+      }
+    ]
+  },
+  "offers~attach": [
+    {
+      "@id": "libindy-cred-offer-0",
+      "mime-type": "application/json",
+      "data": {
+        "base64": "eyJzY2hlbWFfaWQiOiAiNXJuNHNaUFFQNWNvd3ZldkFUZVY1ZjoyOkN1c3RvbWVyIGNhcmQuOjEuMC4wIiwgImNyZWRfZGVmX2lkIjogIjVybjRzWlBRUDVjb3d2ZXZBVGVWNWY6MzpDTDozMTUwOmRlZmF1bHQiLCAia2V5X2NvcnJlY3RuZXNzX3Byb29mIjogeyJjIjogIjE0NTAxNjA0Mjk3MTc4NDk3MTA4NjgwMTc2MzEwNDQ4MzM5OTI3OTY3ODEyMDc2MTE1ODM0ODM4MzUxODAwNDQ1MjY2NjM5MTMzMDMwIiwgInh6X2NhcCI6ICIzODc0NTAwODEwNzA5OTM3MTU1Mjg0NzA0NDQ1NzY2ODg3Nzg4MDY0NzUzMTgzNTM0NTMzNzY1NDQ0MTQ4MDg3MzI0MjU2MDgzNzU5NjExNTM2OTI1Mzc2NzAyNjc0NDk3Mjk1MzY2NTQ5NjE1NTIyMTYyMTkyODExMDQ0MDA4NDAyNzU3Nzc4NzA5MjUwNjkzMTkwNTUwNTAyNzgzNzUwODE4MTI4MTMxMDQwMTYyNDk4MDAzMjUzNDYyNTcxMjYzMzcxNzQ2ODQzMzUwNDY2NjA4MjQyNjQwNDk3NTk5OTc5MzY5NjI2MDUyMDAwMjM1MjU2ODE2NzIyMzA0MzU2MTM0NzM0NDA5Nzk0MDAwMTI0NDEzNTE5NTI5OTg4MjAzMTY0NTI2NTY2NzM3NzU4Mzg2NjA1MzQwNzg3NTUzODcyOTg0NzQwODA4MTM5MzIwNDExMTk4NjA5Mjg2MTEwMTMwNzc2NzAwOTM0NDE2MzA4ODYzNTQzMjIwNDY4NDI5ODQwODMwMjAzMzA0ODA4OTc2ODc5MDM1NTI4Mjg2MDczNTUzMjE1NTM2ODUwNTY4ODMwMDUyODAzNjc0ODY1ODI5MjIyMzg4NTY3MjA1OTQ2NTI4NjQ2OTIyMTU0MzcwOTI1ODYxNjMzMjIxNjg1MzEwMzA0OTk1NDQzOTA4OTc4ODYyNjU1OTcxMTU3MDcwOTA1NTYyNDM5ODM2ODM3MDQ0MDgxNDMxMzg5Njc0NzU0MjM0MzQwOTgxNjUxMjI1NzIwOTkzMDUyMTMwMjkwNzA2MDg0ODM4MjU0NDA3NjQ1NjYzNzgyMjA4MTcwMTc2MDA2ODE4NjQ5NjAzMTcyNzAyNjc0NzE5ODY5OTkyNTY4MjExNDU4MTc5OTg4OTUyNDM1MjkyNjc1NjI0MTcxODY3MjQiLCAieHJfY2FwIjogW1siY3VzdG9tZXJuYW1lIiwgIjM0NDgyNjQ4NDQ2NTE4NzM4MzU3OTY3MzM0ODA3ODE1ODY5MjI1Mjk2NDM0Njk2OTc1NjEyMTQyMjU0NzgzMjI3MjMwNzU1NzQ4MjYxNTU2OTYyNjI5OTQzNzMzMjU3MTI4ODAyMjUyNzY1NjY5ODEzNzExMTY4ODcxNzA1MjY5NDUwMDMwNTA1MTI1ODI2NjUwODE1MzY1NDU2NDUyMDk2MjI5MDU3NDY5NDU4MTIwNTUxMjQ1NzQxMzA2Njg4NTc3NDUwOTI1NjY1MjY1MTc2NzA0MjQ0MDc4ODMwMjY4NDE3OTk4MTY3MDcwMzk5ODQ1MjEwNzA1NzM4NjI3NzQ1NzQ5NzMwNzgwMzQ3MTUxMDA5MzM4NjczNzU1OTQxMTk2NjYyMDc2OTM5NTcwNzM3ODAxMjI5NDU3MDk4ODgyNjcwMTAzNDI4NzU0OTQzMTYxMDA5OTc2NzMzODMwOTI5MjA2NzA4NzI3OTA0NzA1NDUxODEzMTg1MjUwNDg1MTE3NTEwNTI0MDQ1NDY1Mjk5Nzg5ODkyODU2MDk1NTU2ODcwOTE4MDkyMTQ4MTk2OTE4OTEyNzkwMTE1MDIwOTIzNDI3MzI4OTE4MTUzMTM2MTg3NDg0MTEwNTIxODY2MzQ0OTk5MDQxMjAxNjU1MTkxNzAzMDg3MzI4NTQzOTE4MzUwMDI4MDcxMjk4NDg0MDI2NjI4MzgxOTkwMzc2ODIyMDI3NjAxMzIzNDU4NDQ3NjUxOTg0OTIwMjU1NjE3OTgzOTIyMDIwNTI5Njk5MTQ2MDI0MjEyNzMxOTg4NTI1MzA1MTI1ODcwOTg5MzQ0OTQwMTc5MzM3ODMxMDE5NjA1NjIxMDMyMzM3NjA2NDUxMTU1MTQyNjQxMzYzNTc1NjI0ODgwNjg1ODQ0MzIzOTMwNDkwMCJdLCBbImN1c3RvbWVyaWQiLCAiMjk0MTY4MDcyMzY4MjM2MTIxOTQzMzUxMTgzMzQwMjk2NjQ5ODg0NjgwNjA3MDU5MDc2MzQ0NjcwOTIyNDYzOTc2OTkyMzI5NDU1NjM5MTY3OTcyMDU3MzgwMDI4NjA4MjAzOTE4NDk3NjA5NzcxMjQ2MTM4NzUwMDI1MDI1OTgyMzQxNjE2OTQwNjU4NjMxOTk0MDE4MTQ3ODMzNTE1Njk2NDY2MDI4MTY4NDU3OTE5NjM2NTMwMDYyODUxNDI5MDEyMDQ4NTE3NTYzMDAxNjIxMzEzMTIzMTI2MTEyMDk2NTkzMzAzNzU2NTEwMzY0OTY0NzEwOTg3MDExMjExMTAxMDY5NzkxOTQyMDI1MjE4OTI0NjM4NDAyMTQ0Mzg0ODQwNTIzMzYwOTg5MDYwNzIxNjU2Njk4Mjk4NjAwNTgzNDQ2MjA1OTU4NDM5MDM3NzIwMTk1NzgwMjY2MDgzNzk3NTI2MDg1MTU1MjQ1MDAyODgyNTY4MDU2MDMxNDc0ODE1MDY1MzQ3MzY4NTcxNjY5MzExMDE2OTY5MDYwMzcxMjQ4OTQwMDI1MzEzMzEwNzY1NjMyNjIzMTYxMjQ3MzA2NjA0ODA2MDE5Njc2NzAwNDA0NTA4MzQ0NTQ0Nzk3OTU2NTc2NDgwMjc5NjAwODQ0MTQyODg2MjUxMzc1MTAzMzg4MDQzNTE3NDE0NTYxMjkyNjkxNjA1MTEzODk2NzcyOTc3NjA4NDY0OTU2MzI5OTY5NTE5MjYwODk2NzIyODgwNzU0MzAwMjM4MjYyNTEyOTAwMTc0NjA4MDU1MTI4NjY1ODE1NzkyMTAyOTk5OTYyMTk3NDA0OTg0MzQyNTg4MDE1MjQwODU0OTc0MzIxNTYwNTM2NDQ0NDk1OTk3MzE3MTU2ODI0NjU5NzU4MDgzODgxIl0sIFsibWFzdGVyX3NlY3JldCIsICI1MTEzNDkxODk0NDk5MTU0Mzc4NDAyNDk0MzU3Njk1Mzg4Nzc2ODcyODgyNzYxMTkwNzg1ODU5MTI2NTgwMzQxOTcwMTQ2ODU1MTM1NDk0MTg4ODY1MTA4ODU0MjAyNTg1MDM3NTQ5NDk2Nzc3OTMwNDQzNjAwNzQ4NjM1MjIwMTkyNTc4NDczMzE1NzU0OTU5MjYwNTY0OTYzMTExMjE0MDU1NjA3NTgxNzc0MTk0NjE4MzMwNDM5MzE1ODY5OTE1NTgwODM1ODQ5NDkxNTk4NzgwMDc3MTQ4MjQ2NDkzNzY3MzAxNjMzMTM4MTY1NTMyODc2MjEyNTkyMzY3MjEyNDMyNDkyMDU2NTY0ODE0NTcyNDIwNzExMDk4NzM3OTM1MDQ5Nzg1MzEyMjc1NjIyNjcyNTcxNDQyMjQzODcxNTE5MzA2NDcyOTkzNDE2ODI2MjE0NjE1OTUwNTYyMDIxMjczODQzMDgzMTI2ODYxMzAxMzE1MzYyNjEyMzczOTE5NjM3NzIzMDgzNTA3NDYzNTcxOTIyMjA2ODI4MTc4OTM2MTk5NTExNjkwMDYzMTU1Nzc1MTE2OTE2NTYzMjE1OTIyMDU5NjkzNTM1NTAyMzkxMTI1MzMxMDI2ODIwNjIzODczMjU2NTkyOTAxMjM4MzQxNjc1NDMyNTQ1Mjg5MDgxMjY0ODIzMDEyMDkzNTMzODk5MDA5MDg1MjkyMDE3OTQ0MzE4ODQxMzUyMzg4NTg3NzE1ODY0OTQ5MTg4MDY1OTgyNzg2MjIyMzA4NTAxMDU3MzUyNzc0NDgwOTY3MTg2NTM3NDA0MjYwMDQxMzI5OTQ5MzE3MzcwMjYwNzIyMzMwODM2NTA2ODg0NTQxMDg2ODY1NzExMDQzNzA3MTA0MzA5Mzk0NzIwNzIxMjczNDQ2NyJdXX0sICJub25jZSI6ICIxMDU4OTM1MTM4ODY4NTA5NDYyODQ4MDIyIn0="
+      }
+    }
+  ],
+  "comment": "string"
+}

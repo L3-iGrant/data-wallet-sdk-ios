@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "american_express.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

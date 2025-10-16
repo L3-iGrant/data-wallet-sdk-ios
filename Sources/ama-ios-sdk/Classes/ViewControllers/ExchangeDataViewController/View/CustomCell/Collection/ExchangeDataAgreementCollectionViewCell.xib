@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ExchangeDataAgreementCollectionViewCell" customModule="ama_ios_sdk">
+            <rect key="frame" x="0.0" y="0.0" width="305" height="221"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="305" height="221"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Q01-hL-3QF">
+                        <rect key="frame" x="0.0" y="0.0" width="305" height="221"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="gTV-IL-0wX" id="jo5-Oe-dNJ"/>
+                            <outlet property="delegate" destination="gTV-IL-0wX" id="P7N-sp-Ntx"/>
+                        </connections>
+                    </tableView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Q01-hL-3QF" secondAttribute="trailing" id="3cr-RH-MFq"/>
+                <constraint firstItem="Q01-hL-3QF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="TEm-l9-gxj"/>
+                <constraint firstItem="Q01-hL-3QF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="TQo-yD-khI"/>
+                <constraint firstAttribute="bottom" secondItem="Q01-hL-3QF" secondAttribute="bottom" id="tgP-cZ-glm"/>
+            </constraints>
+            <size key="customSize" width="305" height="221"/>
+            <connections>
+                <outlet property="tableView" destination="Q01-hL-3QF" id="0pJ-PY-T59"/>
+            </connections>
+            <point key="canvasLocation" x="10.869565217391305" y="38.504464285714285"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

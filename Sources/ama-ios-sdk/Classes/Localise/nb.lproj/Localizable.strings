@@ -1,0 +1,322 @@
+"Data Wallet" = "Data Wallet";
+"Close" = "Lukk";
+"Turn on flash light" = "Tenn lommelykten";
+"Turn off flash light" = "Slukk lommelykten";
+"Position QR Code" = "Plasser QR-kode";
+"Notification" = "Melding";
+"Could not open your camera" = "Kan ikke åpne kamera";
+"OK" = "OK";
+"Confirm" = "Bekreft";
+"Could not read your image. Try another image" = "Kan ikke lese bildet. Forsøk et annet bilde.";
+"Sorry, could not open scan content" = "Kan ikke åpne scannet innhold.";
+"Could not detect camera" = "Kunne ikke åpne kamera.";
+"Scan" = "skanning";
+"Create" = "Opprett";
+"Data" = "Data";
+"Connections" = "Tilkoblinger";
+"No" = "Nei";
+"Yes" = "Ja";
+"Reject" = "Avbryt";
+"Accept" = "Aksepter";
+"Add data" = "Legg til data";
+"Wallet" = "Lommebok";
+"Preferences" = "Preferanser";
+"No connections available" = "Ingen tilkoblinger tilgjengelig";
+"No data available" = "Ingen data tilgjengelig";
+"Connection already existing" = "Tilkobling eksisterer allerede";
+"Loading Indy Library..." = "Laster inn Indy Library ...";
+"Add connection" = "Legg til tilkobling";
+"Search wallet..." = "Søk i datalommebok...";
+"Search organisations..." = "Søk etter organisasjoner...";
+"Configuring pool..." = "Konfigurerer bassenget ...";
+"Finishing..." = "Fullfører...";
+"Configuring wallet..." = "Konfigurerer Data Wallet";
+"Organisations" = "Organisatorisk";
+"Logo" = "logo";
+"Exchange" = "Utveksling";
+"Choose organisation" = "Velg organisasjon";
+"Data agreement" = "Dataavtale";
+"Insufficient data requested" = "Utilstrekkelig data forespurt";
+"Requests" = "Forespørsler";
+"Connection success" = "Tilknytet";
+"Overview" = "Oversikt";
+"Delete" = "Slett";
+"Version : <Version>" = "Versjon : <versjon>";
+"Unexpected error. Please try again." = "Uventet feil. Vær så snill, prøv på nytt.";
+"By choosing confirm you agree to share the requested data to" = "Ved å velge 'dele' aksepterer du å dele de etterspurte dataene med ";
+"Allow <org name> to connect with you" = "Tillat [org] å koble med deg";
+"delete_item_message" = "Er du sikker på at du vil slette?";
+"New certificate is added to wallet" = "Nytt sertifikat er lagt til i Data Wallet";
+"New exchange data request received" = "Ny forespørsel om deling av data mottatt";
+"Settings" = "Innstillinger";
+"Network" = "Nettverk";
+"Powered by iGrant.io, Sweden" = "Powered by iGrant.io, Sweden";
+"Data wallet" = "Digital lommebok";
+"Notifications" = "Melding";
+"Certificate Detail" = "Sertifikatdetaljer";
+"Connect" = "Koble";
+"Allow" = "Tillate";
+"to connect with you" = "å koble med deg";
+"Data" = "Data";
+"Swedish" = "Svensk";
+"Danish" = "Dansk";
+"Norweigian" = "Norsk";
+"Finnish" = "Finsk";
+"Cancel" = "Avbryt";
+"Data exchange" = "Datautveksling";
+"Your data certificate is available to be added to your wallet. Click accept to confirm." = "Ditt datasertifikat kan nå legges til din Data Wallet. Klikk aksepter for å godkjenne.";
+"Choose the organisation to add data to the data wallet. For adding new organisations, click + above" = "Velg organisasjon for å legge til data i din Data Wallet. Klikk på + over for å legge til nye organisasjoner.";
+"Choose and connect to the organisation to add data or exchange data" = "Velg og koble til organisasjonen for å legge til eller dele data.";
+"Remove data card" = "Fjern data";
+"Data has been shared with <Organization> successfully" = "Data er delt med [org]";
+"Data has been shared successfully" = "Data er delt";
+"Read more" = "Les mer";
+"Read less" = "Les mindre";
+"Do you want to cancel the exchange request?" = "Vil du avbryte delingsførespørselen?";
+"LANGUAGE" = "SPRÅK";
+"Language" = "Språk";
+
+"LEDGER NETWORK" = "LEDGER NETTVERK";
+"Do you want to delete the certificate?" = "Vil du slette sertifikatet?";
+"Confirmation" = "Bekreftelse";
+"No new notification available" = "Ingen ny varsling tilgjengelig";
+"No connections available" = "Ingen tilkoblinger tilgjengelig";
+"Search..." = "Søk...";
+"Successfully added data to the wallet." = "Data lagt til lommeboken";
+"Data request from <Organisation name>" = "Dataforespørsel fra [org]";
+"Supported Protocols" = "Protokoller som støttes";
+"Aries Interoperability Protocols" = "Aries Interoperabilitetsprotokoller";
+"Terms And Conditions" = "Vilkår";
+"Privacy Policy" = "Personvernregler";
+"about_app" = "Om denne app";
+"About this app" = "Om denne app";
+"Received data" = "Mottatte data";
+"Received offer credential" = "Kvittering på mottate data";
+"Received offer credential from organisation." = "Kvittering på mottate data fran organisasjon";
+"Received exchange request" = "Delingsforespecial av data motatet";
+"Terms of service" = "Vilkår for bruk";
+"Data offer accepted successfully." = "[need to understand context]";
+"Do you want to remove the offer credential?" = "[need to understand context]";
+"Organisation removed successfully" = "Organisasjon fjernet";
+"Do you want to remove the organisation?" = "Vil du fjerne organisasjonen?";
+"No related organisation found. You may have removed the organisation" = "Ingen organisasjon funnet. Du kan ha fjernet organisasjonen.";
+"Remove Organisation" = "Fjern organisasjon";
+"Taking longer than expected? Please try again" = "Tar det lengre enn forventet? Vennligst prøv igjen";
+"Invalid Ledger. You can choose proper ledger from settings" = "Ugyldig ledger. Du kan velge ledger under innstillinger.";
+"Search" = "Søk";
+"Scan the QR code" = "Skan QR-koden";
+"Share Data" = "Del data";
+"Your Data wallet app is outdatad. Please update." = "Din datalommebok er foreldet. Vennligst oppdater.";
+"Update" = "Oppdater";
+
+"No data available. Click '+' next to Data Wallet to begin adding data" = "Ingen data tilgjengelig. Klikk '+' ved siden av Data Wallet for å begynne å legge til data";
+
+"Click '+' next to Organisations to connect to an organisation to add data." = "Klikk '+' ved siden av Organisasjoner for å koble til data fra en organisasjon.";
+
+////NEW
+"ID Cards" = "ID-Kort";
+"First name" = "Fornavn";
+"Last name" = "Etternavn";
+"Gender" = "Kjønn";
+"Country" = "Land";
+"Nationality" = "Nasjonalitet";
+"Personal Number" = "Personnummer ";
+"Date of birth" = "Fødselsdato";
+"Passport number" = "Passnummer";
+"Issuing Country" = "Utstedelsesland";
+"Expiration date" = "Gyldig til dato";
+"Passport Detail" = "Passinformasjon";
+"Received Certificate" = "Mottatt sertifikat";
+"Passport detail is now added to the data wallet. " = "Passinformasjonen er nå lagt til i din Data Wallet";
+"passport" = "Pass";
+"Full Name" = "Fullt navn";
+"Passport of this user already existing." = "Pass for denne brukeren finnes allerede";
+"No data available. Click '+' next to ID Cards to begin adding an ID Card to your data wallet" = "Ingen informasjon tilgjengelig. Klikk '+' ved siden av ID-kort for a legge til et ID-kort i din Data Wallet";
+"Expiration date" = "Gyldig til dato";
+"Reading data…" = "Leser data...";
+"Please fill details and place your phone on top of the passport. Following information is required to decode encrypted passport data." = "Vennligst fyll inn informasjon og plasser telefonen oppå passet. Følgende informasjon kreves for å dekode kryptert passinformasjon";
+"Please provide details to read passport" = "Vennligst oppgi informasjon for å lese passet";
+"Failed to read passport" = "Kunne ikke lese passet";
+"Permission Required" = "Tillatelse kreves";
+"We need your permission to access camera in order to scan Id Card / Passport." = "Vi trenger din tillatelse til å bruke kamerate for å skanne ID-kort / pass";
+"OK" = "OK";
+"Next" = "Neste";
+"Start Reading" = "Start avlesning";
+"Place the passport against your phone" = "Plasser passet mot telefonen";
+"Click Next and adjust the position of the phone until it starts reading the data" = "Klikk Neste og juster telefonens posisjon til den starter innlesing.";
+"Hold the position while the data is being read. " = "Hold posisjonen til innlesing av data er bekreftet avsluttet.";
+"Ready to scan" = "Klar for scanning";
+"Cancel" = "Stopp";
+"Issuing Country" = "Utstedelsesland";
+"Passport Detail" = "Passinformasjon";
+"Started" = "Startet";
+"Reading personal Info" = "Leser personlig info";
+"Reading Image" = "Leser bilde";
+"Reading Signature" = "Leser signatur";
+"Scan Passport" = "Skan pass";
+"NFC Reader" = "NFC-leser";
+"Hold your phone near an NFC enabled passport" = "Hold telefonen inntil et pass med NFC-brikke";
+"Signature" = "Signatur";
+"Processing" = "Prosesserer";
+//20-Jul-2021
+"Click the organisation logo to view the available data cards." = "Klikk på organisasjonslogoen for å se tilgjengelige datakort.Klikk på + over for å legge til nye organisasjoner.";
+"Click the card to add to your Data Wallet" = "Klikk på kortet for å legge til i Data Wallet";
+"Card successfully added to your Data Wallet" = "Kortet ble lagt til i Data Wallet";
+"Not able to save card" = "Kan ikke lagre kortet";
+"Error" = "Feil";
+"Not able to get data from NFC" = "Kan ikke få data fra NFC";
+"Your device doesn't support NFC feature to proceed" = "Enheten din støtter ikke NFC-funksjonen for å fortsette";
+"Error: your device doesn't support NFC feature to proceed" = "Feil: Enheten din støtter ikke NFC-funksjonen for å fortsette";
+"Add Card" = "Legg til kort";
+"India covid cert: Its ok that everything is in English in all languages" = "";
+"Covid Vaccination Certificate" = "Covid Vaccination Certificate";
+"Full Name" = "Full Name";
+"Age" = "Age";
+"ID Verified" = "ID Verified";
+"ID Number" = "ID Number";
+"Unique Health ID" = "Unique Health ID";
+"Beneficiary Reference ID" = "Beneficiary Reference ID";
+"Vaccine Name" = "Vaccine Name";
+"Date of Dose" = "Date of Dose";
+"Vaccinated By" = "Vaccinated By";
+"Vaccinated At" = "Vaccinated At";
+"Vaccination Dosage" = "Vaccination Dosage";
+"Beneficiary Details" = "Beneficiary Details";
+"Vaccination Details" = "Vaccination Details";
+"Ministry of Health and Family Welfare" = "Ministry of Health and Family Welfare";
+"Government of India" = "Government of India";
+"Vaccination Certificate is now added to the Data Wallet" = "Vaksinasjonssertifikat er nå lagt til Data Wallet";
+"Vaccination Certificate of this user already existing" = "Vaksinasjonssertifikat for denne brukeren som allerede eksisterer";
+"EU Digital Covid Certificate" = "EU Digital Covid Certificate";
+"European Union" = "European Union";
+"Full Name" = "";
+"Date Of Birth" = "Fødselsdato";
+"Full Name" = "Fullt navn";
+"Member State" = "Medlemsland";
+"Vaccination Manufacturer" = "Vaksineprodusent";
+"Vaccination Date" = "Vaksinasjonsdato";
+"Unique Certificate Identifier" = "Unik sertifikatidentifikator";
+
+//8 Aug 2021
+"Security" = "Sikkerhet";
+"Data Wallet locked" = "Data Wallet låst";
+"Please authenticate to continue" = "Vennligst bekreft for å fortsette";
+"To access the secure data." = "For å få tilgang til de sikre dataene.";
+
+//Aadhar
+"Aadhar of this user already exist in Data Wallet" = "Aadhar of this user already exist in Data Wallet";
+"Aadhar is now added to the Data Wallet" = "Aadhar is now added to the Data Wallet";
+
+//Region selection
+"Regions" = "Regioner";
+"Choose which regions to filter the card types available to you."= "Velg hvilke regioner du vil filtrere korttypene som er tilgjengelige for deg.";
+
+"Multiple data cards found. Choose the right card and data to exchange." = "Flere sertifikater ble funnet. Velg riktig sertifikat og data for utveksling.";
+
+//SN Added
+"disease_targetted" = "Sykdom målrettet";
+"type_of_test" = "Type tester";
+"test_name" = "Testnavn";
+"device_identifier" = "Test enhetsidentifikator";
+"sample_collection_date" = "Eksempel på innsamlingsdato";
+"test_result" = "Prøve resultater";
+"test_center" = "Testsenter";
+"digital_test_certificate_heading" = "Digital testbevis";
+"digital_cerificate_exists" = "Digitalt sertifikat for denne brukeren eksisterer allerede";
+"digital_EU_is_added" = "Digitalt sertifikat er nå lagt til i databasen";
+"cant_save_EU_digital" = "Kan ikke lagre digitalt EU -kort";
+"eu_List_Heading" = "EU testbevis";
+"eu" = "Europeisk union";
+"test_certificate_details" = "Test bekreftelsesdetaljer";
+
+//Onboard keys SN Added
+
+"welcome_key" = "Velkommen!";
+"welcome_des_bold" = "Koble til, godkjenn og del";
+"welcome_des" = "Koble til, godkjenn og del dine personlige data. Disse lagres sikkert på din valgte enhet.\n\nData Wallet, levert av iGrant.io, gir deg kontroll over hvilke  personlioge data du deler og hvem du deler dem med. Hver delingstransaksjon er koblet til en dataavtale som er lett tilgjengelig og som sikrer at personvernet ivaretas.";
+"choose_region" = "Velg region";
+"welcome_one_time" = "Dette er en engangsinnstilling for å vise kortene som er koblet til din region.";
+"welcome_settings_des" = "Standardinnsillingene er angitt nedenfor. Du kan endre disse når som helst.";
+"finish_key" = "Avslutt";
+"Backup and Storage" = "Backup og Lagring";
+"My Shared Data" = "Mine delte data";
+"Here, you  can view the history of all data agreement signed." = "Her kan du se historien til alle dataavtaler som er signert.";
+
+"Click '+' next to Connections to connect to an organisation to add data." = "Klikk '+' ved siden av Organisasjoner for å koble til data fra en organisasjon.";
+
+"Lawful basis of processing" = "Rettmesig grunnlag for prosessering";
+"Policy URL" = "URL for instruks";
+"Jurisdiction" = "Jurisdiksjon";
+"Third party disclosure" = "Delt med tredjepart";
+"Industry scope" = "Bransjebegrensning";
+"Geographic restriction" = "Geografisk begrensning";
+"Is shared to 3pps?" = "Er delt med tredjepart?";
+
+
+"search_connections" = "Søk";
+"connection_all" = "Alle";
+"connection_organisations" = "Organisasjoner";
+"connection_people" = "Personer";
+"connection_devices" = "Enheter";
+"agree_add_data_to_wallet" = "Du har bedt om at følgende data skal forberedes til deling. Ved å velge Bekreft godkjenner du at daaene legges til i din Data Wallet.";
+
+"tell_friend" = "Inviter en Venn";
+"rate_app" = "Vurder Appen";
+"about_key" = "Om";
+
+"third_party_disclosure" = "Third party disclosure";
+"third_party_data_sharing" = "Third-party data sharing";
+
+"certificate_data_agreement_policy" = "Data Agreement Policy";
+"data_do_you_want_to_cancel_the_exchange_request" = "Do you want to cancel the exchange request?";
+"general_no" = "No";
+"general_yes" = "Yes";
+"general_confirm" = "Confirm";
+"general_trusted_service_provider" = "Trusted Service Provider";
+"general_untrusted_service_provider" = "Untrusted Service Provider";
+"general_trusted_service_provider" = "Trusted Service Provider";
+"connection_overview" = "Overview";
+"data_remove_data_card" = "Remove Data Card";
+"welcome_my_shared_data" = "My Shared Data";
+"connection_third_party_data_sharing" = "Third-party data sharing";
+"data_remove_organisation" = "Remove Organisation";
+"data_received_offer_credentials" = "Received Offer Credential";
+"connection_insufficient_data_requested" = "Requested data is not found in your wallet.";
+"error_invalid_qr_code" = "Invalid QR Code";
+"welcome_issued_at" = "Utstedt: ";
+"pwa_paid_to" = "Paid To";
+"welcome_verified_at" = "Verifisert: ";
+"general_data_agreement" = "Dataavtale";
+"general_accept" = "Aksepter";
+"receipt_additional_details" = "Additional Details";
+"receipt_purchase_receipt_id" = "PURCHASE RECEIPT ID:";
+"receipt_receipt_issued_on" = "Receipt Issued on:";
+"receipt_item" = "Item";
+"receipt_qty" = "Qty";
+"receipt_tax_incl_amount" = "Tax Incl Amount";
+"receipt_total_Tax" = "Total Tax ";
+"receipt_total" = "Total: ";
+"issued_by" = "Issued by";
+"connect_new_certificate_is_added_to_your_data_wallet" = "Nytt sertifikat er lagt til i Data Wallet";
+"connect_are_you_sure_you_want_to_delete_this_item" = "Er du sikker på at du vil slette?";
+"pwa_payment_confirmed" = "PAYMENT CONFIRMED";
+"verification_successfull" = "Data has been shared successfully.";
+"credential_issuance_single_named" = "%1$@ %2$@ will be issued shortly.";
+"credential_issuance_single_generic" = "A credential will be issued shortly.";
+"credential_issuance_multiple_all_named_ios" = "%1$@ %2$@ will be issued shortly.";
+"credential_issuance_multiple_partial_named_ios" = "%1$@ %2$@ and %3$d other %4$@ will be issued shortly.";
+"credential_issuance_multiple_none_named_ios" = "%1$@ The credentials will be issued shortly.";
+"credential" = "credential";
+"credentials" = "credentials";
+
+//
+"connect_by_choosing_confirm_you_agree_to_the_requested_data_to_org_name" = "Ved å velge bekreft aksepterer du å dele de etterspurte dataene med";
+"verification_by_clicking_confirm_you_agree_to_share_the_selected_data" = "By clicking confirm, you agree to share selected data with ";
+"verification_by_clicking_confirm_you_agree_to_share_the_below_data" = "By clicking confirm, you agree to share below data with ";
+"verification_additional_data_requested_confirm_to_proceed" = "Additional data has been requested. Click confirm to proceed.";
+"pwa_payment_confirmed" = "PAYMENT CONFIRMED";
+"payment_being_made_to" = "PAYMENT BEING MADE TO";
+
+
+
+

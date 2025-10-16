@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3Gy-lv-l6d" customClass="ReceiptTotalTableViewCell" customModule="ama_ios_sdk">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Gy-lv-l6d" id="fOK-sR-DWv">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6SF-Pd-agY">
+                        <rect key="frame" x="15" y="0.0" width="363" height="44"/>
+                        <subviews>
+                            <stackView contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3NQ-Zq-KOD">
+                                <rect key="frame" x="20" y="15" width="343" height="14"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6h1-6Z-C0o">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="6"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdD-bP-rOv">
+                                                <rect key="frame" x="0.0" y="0.0" width="35.333333333333336" height="6"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJP-AN-Hyr" customClass="ReceiptBlurView" customModule="ama_ios_sdk">
+                                                <rect key="frame" x="35.333333333333343" y="0.0" width="307.66666666666663" height="6"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FzN-kI-Ffx">
+                                        <rect key="frame" x="0.0" y="14" width="343" height="0.0"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3V-wU-uke">
+                                                <rect key="frame" x="0.0" y="0.0" width="42.333333333333336" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Vs-39-6Qf" customClass="ReceiptBlurView" customModule="ama_ios_sdk">
+                                                <rect key="frame" x="42.333333333333343" y="0.0" width="300.66666666666663" height="0.0"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="3NQ-Zq-KOD" secondAttribute="trailing" id="2Pb-2d-vnL"/>
+                            <constraint firstItem="3NQ-Zq-KOD" firstAttribute="leading" secondItem="6SF-Pd-agY" secondAttribute="leading" constant="20" id="DWM-Ad-ofJ"/>
+                            <constraint firstItem="3NQ-Zq-KOD" firstAttribute="centerY" secondItem="6SF-Pd-agY" secondAttribute="centerY" id="WU0-Iq-Uxp"/>
+                            <constraint firstItem="3NQ-Zq-KOD" firstAttribute="top" secondItem="6SF-Pd-agY" secondAttribute="top" constant="15" id="mi8-8v-pFe"/>
+                            <constraint firstAttribute="bottom" secondItem="3NQ-Zq-KOD" secondAttribute="bottom" constant="15" id="mjT-Lj-D6f"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="6SF-Pd-agY" firstAttribute="top" secondItem="fOK-sR-DWv" secondAttribute="top" id="1Er-RW-QiA"/>
+                    <constraint firstItem="6SF-Pd-agY" firstAttribute="leading" secondItem="fOK-sR-DWv" secondAttribute="leading" constant="15" id="La6-TL-5gi"/>
+                    <constraint firstAttribute="bottom" secondItem="6SF-Pd-agY" secondAttribute="bottom" id="cnO-14-RqE"/>
+                    <constraint firstAttribute="trailing" secondItem="6SF-Pd-agY" secondAttribute="trailing" constant="15" id="far-6D-apa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="amountLabel" destination="b3V-wU-uke" id="fBk-NS-tOQ"/>
+                <outlet property="blurredTaxView" destination="9Vs-39-6Qf" id="GvA-3q-q4k"/>
+                <outlet property="blurredTotalTextView" destination="lJP-AN-Hyr" id="aPe-fc-qAh"/>
+                <outlet property="contentStackView" destination="3NQ-Zq-KOD" id="fgl-GM-Dvm"/>
+                <outlet property="parentView" destination="6SF-Pd-agY" id="dle-Pw-ec6"/>
+                <outlet property="titleLabel" destination="VdD-bP-rOv" id="Fie-86-VnD"/>
+            </connections>
+            <point key="canvasLocation" x="1" y="79"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

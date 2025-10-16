@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="294" id="v3P-jc-1IN" customClass="ExchangeDataPreviewMultipleInputDescriptorTVC" customModule="ama_ios_sdk">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="294"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v3P-jc-1IN" id="jL4-WM-GjQ">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="294"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mxe-z8-C0u">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="252.66666666666666"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" constant="150" id="TW8-6C-T1l"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZxG-ym-dh0">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJx-s3-FBH">
+                        <rect key="frame" x="62" y="252.66666666666666" width="269" height="41.333333333333343"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="t3e-P2-4oH">
+                                <rect key="frame" x="0.0" y="0.0" width="269" height="41.333333333333336"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the right card and data to exchange." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfX-Ne-CEr">
+                                        <rect key="frame" x="0.0" y="0.0" width="269" height="15.666666666666666"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="JfE-fq-dqf">
+                                        <rect key="frame" x="0.0" y="15.666666666666659" width="269" height="25.666666666666671"/>
+                                        <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </pageControl>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="t3e-P2-4oH" secondAttribute="trailing" id="8V2-8W-rNt"/>
+                            <constraint firstItem="t3e-P2-4oH" firstAttribute="top" secondItem="FJx-s3-FBH" secondAttribute="top" id="9oT-v6-8hp"/>
+                            <constraint firstItem="t3e-P2-4oH" firstAttribute="centerX" secondItem="FJx-s3-FBH" secondAttribute="centerX" id="GsD-sV-shI"/>
+                            <constraint firstItem="t3e-P2-4oH" firstAttribute="leading" secondItem="FJx-s3-FBH" secondAttribute="leading" id="VTG-gx-Eme"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="dKO-mg-bo3"/>
+                            <constraint firstAttribute="bottom" secondItem="t3e-P2-4oH" secondAttribute="bottom" id="ulL-Gd-o4k"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="FJx-s3-FBH" secondAttribute="bottom" id="Cbh-I6-TY0"/>
+                    <constraint firstItem="FJx-s3-FBH" firstAttribute="top" secondItem="mxe-z8-C0u" secondAttribute="bottom" id="Gm9-e0-wSy"/>
+                    <constraint firstItem="FJx-s3-FBH" firstAttribute="centerX" secondItem="jL4-WM-GjQ" secondAttribute="centerX" id="HJ2-26-bHY"/>
+                    <constraint firstItem="mxe-z8-C0u" firstAttribute="leading" secondItem="jL4-WM-GjQ" secondAttribute="leading" id="igZ-xA-sq4"/>
+                    <constraint firstItem="mxe-z8-C0u" firstAttribute="top" secondItem="jL4-WM-GjQ" secondAttribute="top" id="ocH-Ub-xJX"/>
+                    <constraint firstAttribute="trailing" secondItem="mxe-z8-C0u" secondAttribute="trailing" id="rFZ-sq-2FD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="collectionView" destination="mxe-z8-C0u" id="fQ6-pQ-5KH"/>
+                <outlet property="collectionViewHeightConstraint" destination="TW8-6C-T1l" id="eze-Ki-Db9"/>
+                <outlet property="multipleCardsStackViewHeight" destination="dKO-mg-bo3" id="Nl6-DI-suY"/>
+                <outlet property="multipleCardsView" destination="FJx-s3-FBH" id="YRE-1u-13h"/>
+                <outlet property="pageControll" destination="JfE-fq-dqf" id="tTV-wp-lLR"/>
+            </connections>
+            <point key="canvasLocation" x="20.610687022900763" y="142.95774647887325"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,114 @@
+{
+  "prefs": [
+    {
+      "instance_id": "083122c0-5a8f-4c84-8f1c-f860e66d345f",
+      "instance_permission_state": "allow",
+      "sector": "healthcare",
+      "dus": []
+    },
+    {
+      "instance_id": "3f112290-9e6a-435a-a77d-c70bee09c703",
+      "instance_permission_state": "allow",
+      "sector": "healthcare",
+      "dus": []
+    },
+    {
+      "instance_id": "76770747-d0de-46fe-a34a-2194f18ee62c",
+      "instance_permission_state": "disallow",
+      "sector": "healthcare",
+      "dus": []
+    },
+    {
+      "instance_id": "f1d22b54-5860-4e86-b331-ba4e92e78feb",
+      "instance_permission_state": "disallow",
+      "sector": "healthcare",
+      "dus": [
+        {
+          "dda_instance_permission_state": "allow",
+          "controller_details": {
+            "organisation_did": "did:sov:Qguf6A6NZqCeAueEzk3Ynn",
+            "organisation_name": "Travel AB",
+            "cover_image_url": "https://demo-api.igrant.io/v1/organizations/6021570746bc7f00014ed661/image/628f4adc693e9c000102bbe0/web",
+            "logo_image_url": "https://demo-api.igrant.io/v1/organizations/6021570746bc7f00014ed661/image/628f4aae693e9c000102bbdf/web",
+            "location": "London, GB",
+            "organisation_type": "Retail",
+            "description": "For queries about how we are managing your data please contact the Data Protection Officer, dpo@retail.com",
+            "policy_url": "https://retail.se/policy.html",
+            "eula_url": ""
+          },
+          "dda_instance_id": "d993a8b6-7f20-436e-bc7b-639ffd504cd2"
+        }
+      ]
+    },
+    {
+      "instance_id": "f1d22b54-5860-4e86-b331-ba4e92e78feb",
+      "instance_permission_state": "disallow",
+      "sector": "retail",
+      "dus": [
+        {
+          "dda_instance_permission_state": "allow",
+          "controller_details": {
+            "organisation_did": "did:sov:Qguf6A6NZqCeAueEzk3Ynn",
+            "organisation_name": "ABC Bank",
+            "cover_image_url": "https://demo-api.igrant.io/v1/organizations/6021570746bc7f00014ed661/image/628f4adc693e9c000102bbe0/web",
+            "logo_image_url": "https://demo-api.igrant.io/v1/organizations/6021570746bc7f00014ed661/image/628f4aae693e9c000102bbdf/web",
+            "location": "London, GB",
+            "organisation_type": "Retail",
+            "description": "For queries about how we are managing your data please contact the Data Protection Officer, dpo@retail.com",
+            "policy_url": "https://retail.se/policy.html",
+            "eula_url": ""
+          },
+          "dda_instance_id": "d993a8b6-7f20-436e-bc7b-639ffd504cd2"
+        }
+      ]
+    },
+    {
+      "instance_id": "f1d22b54-5860-4e86-b331-ba4e92e78feb",
+      "instance_permission_state": "disallow",
+      "sector": "retail",
+      "dus": [
+        {
+          "dda_instance_permission_state": "allow",
+          "controller_details": {
+            "organisation_did": "did:sov:Qguf6A6NZqCeAueEzk3Ynn",
+            "organisation_name": "Retail AB",
+            "cover_image_url": "https://demo-api.igrant.io/v1/organizations/6021570746bc7f00014ed661/image/628f4adc693e9c000102bbe0/web",
+            "logo_image_url": "https://demo-api.igrant.io/v1/organizations/6021570746bc7f00014ed661/image/628f4aae693e9c000102bbdf/web",
+            "location": "London, GB",
+            "organisation_type": "Retail",
+            "description": "For queries about how we are managing your data please contact the Data Protection Officer, dpo@retail.com",
+            "policy_url": "https://retail.se/policy.html",
+            "eula_url": ""
+          },
+          "dda_instance_id": "d993a8b6-7f20-436e-bc7b-639ffd504cd2"
+        }
+      ]
+    },
+    {
+      "instance_id": "f1d22b54-5860-4e86-b331-ba4e92e78feb",
+      "instance_permission_state": "disallow",
+      "sector": "healthcare",
+      "dus": [
+        {
+          "dda_instance_permission_state": "allow",
+          "controller_details": {
+            "organisation_did": "did:sov:Qguf6A6NZqCeAueEzk3Ynn",
+            "organisation_name": "Health AB",
+            "cover_image_url": "https://demo-api.igrant.io/v1/organizations/6021570746bc7f00014ed661/image/628f4adc693e9c000102bbe0/web",
+            "logo_image_url": "https://demo-api.igrant.io/v1/organizations/6021570746bc7f00014ed661/image/628f4aae693e9c000102bbdf/web",
+            "location": "London, GB",
+            "organisation_type": "Retail",
+            "description": "For queries about how we are managing your data please contact the Data Protection Officer, dpo@retail.com",
+            "policy_url": "https://retail.se/policy.html",
+            "eula_url": ""
+          },
+          "dda_instance_id": "d993a8b6-7f20-436e-bc7b-639ffd504cd2"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    "retail",
+    "healthcare"
+  ]
+}

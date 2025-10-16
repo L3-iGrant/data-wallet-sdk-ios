@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CertificateWithDataTableViewCell" customModule="dataWallet" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CertificateWithDataTableViewCell" rowHeight="181" id="jLp-Gm-WlS" customClass="CertificateWithDataTableViewCell" customModule="ama_ios_sdk">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="181"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jLp-Gm-WlS" id="B29-8A-RJ2">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="181"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="nri-3B-f4A">
+                        <rect key="frame" x="15" y="15" width="384" height="140"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="f9g-rb-CGH">
+                                <rect key="frame" x="0.0" y="0.0" width="384" height="23"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Remove data card" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYb-1o-R0T">
+                                        <rect key="frame" x="0.0" y="0.0" width="137.5" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8lc-oF-zux">
+                                        <rect key="frame" x="147.5" y="0.0" width="236.5" height="23"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIi-iy-Fsc">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="23"/>
+                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="plus.circle" catalog="system" symbolScale="medium"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="XIi-iy-Fsc" firstAttribute="top" secondItem="8lc-oF-zux" secondAttribute="top" id="HgK-nf-7yu"/>
+                                            <constraint firstAttribute="bottom" secondItem="XIi-iy-Fsc" secondAttribute="bottom" id="k06-bp-L33"/>
+                                            <constraint firstItem="XIi-iy-Fsc" firstAttribute="leading" secondItem="8lc-oF-zux" secondAttribute="leading" id="zi8-bt-jAt"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="tkv-6W-1k2"/>
+                                </constraints>
+                            </stackView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ivg-gi-Lxi">
+                                <rect key="frame" x="0.0" y="38" width="384" height="102"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="mQ2-84-TgO" customClass="AGTableView" customModule="dataWallet" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="102"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="102" id="KHb-bh-fUu"/>
+                                        </constraints>
+                                        <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="mQ2-84-TgO" firstAttribute="top" secondItem="Ivg-gi-Lxi" secondAttribute="top" id="FTD-Bc-aCE"/>
+                                    <constraint firstItem="mQ2-84-TgO" firstAttribute="leading" secondItem="Ivg-gi-Lxi" secondAttribute="leading" id="dmE-sm-gdi"/>
+                                    <constraint firstAttribute="bottom" secondItem="mQ2-84-TgO" secondAttribute="bottom" id="uiA-gC-oee"/>
+                                    <constraint firstAttribute="trailing" secondItem="mQ2-84-TgO" secondAttribute="trailing" id="x8t-0z-OLL"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nri-3B-f4A" secondAttribute="bottom" constant="11" id="8mD-rp-TQx"/>
+                    <constraint firstItem="nri-3B-f4A" firstAttribute="top" secondItem="B29-8A-RJ2" secondAttribute="top" constant="15" id="c1t-sX-wbB"/>
+                    <constraint firstAttribute="trailing" secondItem="nri-3B-f4A" secondAttribute="trailing" constant="15" id="ck7-Ja-Tj5"/>
+                    <constraint firstItem="nri-3B-f4A" firstAttribute="leading" secondItem="B29-8A-RJ2" secondAttribute="leading" constant="15" id="sEq-Ej-3xh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="addButton" destination="XIi-iy-Fsc" id="Psb-zF-wRy"/>
+                <outlet property="baseView" destination="Ivg-gi-Lxi" id="XFZ-jx-y5V"/>
+                <outlet property="certAttributeTableView" destination="mQ2-84-TgO" id="Dh3-Og-f5G"/>
+                <outlet property="certName" destination="lYb-1o-R0T" id="JzB-cm-LWG"/>
+                <outlet property="headerStackView" destination="f9g-rb-CGH" id="U2n-7D-SwV"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="69.977678571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="plus.circle" catalog="system" width="128" height="123"/>
+        <systemColor name="systemGrayColor">
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

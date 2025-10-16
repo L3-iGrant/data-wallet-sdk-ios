@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsHeader" customModule="ama_ios_sdk">
+            <connections>
+                <outlet property="infoButton" destination="v44-FS-jjD" id="d8B-zl-A9f"/>
+                <outlet property="lbl" destination="Uw5-57-EQI" id="sSO-6t-PMg"/>
+                <outlet property="leftConstrain" destination="dmk-pX-g2n" id="RFn-t1-CLS"/>
+                <outlet property="toggle" destination="avb-jW-kVE" id="DSv-36-Lmb"/>
+                <outlet property="topContrain" destination="zYg-wG-gK8" id="plX-j1-rod"/>
+                <outlet property="view" destination="iN0-l3-epB" id="lOZ-ag-BcU"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="437" height="201"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEDGER NETWORK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uw5-57-EQI">
+                    <rect key="frame" x="10" y="0.0" width="136.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <color key="textColor" systemColor="systemGrayColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xEt-AC-nvO">
+                    <rect key="frame" x="419" y="9" width="0.0" height="0.0"/>
+                    <subviews>
+                        <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v44-FS-jjD">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="31"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="QBz-Og-g5R"/>
+                                <constraint firstAttribute="height" constant="31" id="q0k-NC-Y7W"/>
+                            </constraints>
+                            <color key="tintColor" systemColor="labelColor"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal">
+                                <imageReference key="image" image="info.circle" catalog="system" symbolScale="large"/>
+                            </state>
+                        </button>
+                        <switch hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="avb-jW-kVE">
+                            <rect key="frame" x="0.0" y="0.0" width="2" height="31"/>
+                            <connections>
+                                <action selector="toggleAction:" destination="-1" eventType="valueChanged" id="nxa-wF-BJ7"/>
+                            </connections>
+                        </switch>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="xEt-AC-nvO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Uw5-57-EQI" secondAttribute="trailing" priority="250" constant="5" id="2aw-pW-eat"/>
+                <constraint firstItem="Uw5-57-EQI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="dmk-pX-g2n"/>
+                <constraint firstAttribute="trailing" secondItem="xEt-AC-nvO" secondAttribute="trailing" constant="18" id="ixM-t0-Cm8"/>
+                <constraint firstItem="xEt-AC-nvO" firstAttribute="centerY" secondItem="Uw5-57-EQI" secondAttribute="centerY" id="utr-HD-P9F"/>
+                <constraint firstItem="Uw5-57-EQI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zYg-wG-gK8"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="148.55072463768118" y="-165.73660714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="info.circle" catalog="system" width="128" height="123"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
