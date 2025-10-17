@@ -18,6 +18,7 @@ enum AddWalletType: String {
     case offerCredential
     case presentationRequest
     case walletCert
+    case self_attested_old = "self_attested_old"
     case inbox = "inbox"
     case inbox_EBSIOffer
     case dataHistory = "data_history"
@@ -182,7 +183,7 @@ final class WalletRecord {
                 value = presentationExchangeModel?.dictionary ?? [String:Any]()
                 tagJson = ["thread_id": presentationExchangeModel?.threadID]
                 recordType = AriesAgentFunctions.presentationExchange
-            case .walletCert:
+            case .walletCert, .self_attested_old:
                 value = walletCert?.dictionary ?? [String:Any]()
                 tagJson = [
                     "connection_id": walletCert?.connectionInfo?.value?.requestID ?? "",

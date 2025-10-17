@@ -15,43 +15,53 @@ public class IndyCredentialsToSelfAttestedOpenIDCredentials {
     public init() {}
     
     public func migrate() {
+        let walletHandler = WalletViewModel.openedWalletHandler ?? 0
         // 1. Check if migration already done
-//        Task {
-            if !MigrationCheck().isMigrationRequired(migrationType: MigrationTypes.indyCredentialsToSelfAttestedOpenIdCredential) {
-                print(" Migration from Indy credentials to self-attested OpenID credentials has already been performed.")
-                return
-            }
-            
-            // 2. Fetch Indy credentials
-            //var indyCredentials: Search_CustomWalletRecordCertModel? = nil
-            fetchIndyCredentials2 { data in
-                Task {
-                    let indyCredentials = data
-                    
-                    if indyCredentials == nil {
-                        print(" Indy credentials are empty.")
-                        return
+        if !MigrationCheck().isMigrationRequired(migrationType: MigrationTypes.indyCredentialsToSelfAttestedOpenIdCredential) {
+            print(" Migration from Indy credentials to self-attested OpenID credentials has already been performed.")
+            return
+        }
+        fetchIndyCredentials { data in
+            Task {
+                let indyCredentials = data
+                for item in data?.records ?? [] {
+                    if item.value?.attributes != nil {
+                        do {
+                            let (_, _) = try await WalletRecord.shared.add(
+                                connectionRecordId: "",
+                                walletCert: item.value,
+                                walletHandler: walletHandler,
+                                type: .self_attested_old
+                            )
+                        } catch {
+                            print("\(error.localizedDescription)")
+                        }
                     }
-                    
-                    // 3. Transform them
-                    guard let transformedCredentials = await self.transformToSelfAttestedOpenIDCredentials(indyCredentials),
-                          transformedCredentials.records?.isEmpty == false else {
-                        print(" Self-attested OpenID transformed credentials are empty.")
-                        return
-                    }
-                    
-                    // 4. Store transformed
-                    self.storeSelfAttestedOpenIDCredentials(transformedCredentials)
-                    
-                    // 5. Delete Indy credentials
-                    self.deleteIndyCredentials(indyCredentials)
                 }
+                if indyCredentials == nil {
+                    print(" Indy credentials are empty.")
+                    return
+                }
+                
+                // 3. Transform them
+                guard let transformedCredentials = await self.transformToSelfAttestedOpenIDCredentials(indyCredentials),
+                      transformedCredentials.records?.isEmpty == false else {
+                    print(" Self-attested OpenID transformed credentials are empty.")
+                    return
+                }
+                
+                // 4. Store transformed
+                await self.storeSelfAttestedOpenIDCredentials(transformedCredentials)
+                
+                // 5. Delete Indy credentials
+                self.deleteIndyCredentials(indyCredentials)
             }
-//        }
+        }
+        //        }
         
     }
     
-    public func fetchIndyCredentials2(completion: @escaping (Search_CustomWalletRecordCertModel?) -> Void) {
+    public func fetchIndyCredentials(completion: @escaping (Search_CustomWalletRecordCertModel?) -> Void) {
         let walletHandler = WalletViewModel.openedWalletHandler ?? 0
         
         AriesAgentFunctions.shared.openWalletSearch_type(
@@ -70,12 +80,15 @@ public class IndyCredentialsToSelfAttestedOpenIDCredentials {
                     withDictionary: responseDict as NSDictionary? ?? NSDictionary()
                 ) as? Search_CustomWalletRecordCertModel
                 var output: [SearchItems_CustomWalletRecordCertModel]? = []
-                //var indyCredentials: Search_CustomWalletRecordCertModel.init()
                 for data in certSearchModel?.records ?? [] {
-                    guard data.value?.certInfo != nil else { continue }
-                    output?.append(data)
+                    if data.value?.certInfo != nil {
+                        output?.append(data)
+                    } else if data.value?.attributes != nil {
+                        output?.append(data)
+                    } else {
+                        continue
+                    }
                 }
-
                 let indyCredentials = Search_CustomWalletRecordCertModel(totalCount: output?.count, records: output)
                 completion(indyCredentials)
             }
@@ -117,161 +130,132 @@ public class IndyCredentialsToSelfAttestedOpenIDCredentials {
     private func transformToSelfAttestedOpenIDCredentials(_ indyCredentials: Search_CustomWalletRecordCertModel?) async -> Search_CustomWalletRecordCertModel? {
         let walletHandler = WalletViewModel.openedWalletHandler ?? 0
         var transformedWalletModelsRecords: [SearchItems_CustomWalletRecordCertModel]? = []
-//        Task {
-            for indyCredential in indyCredentials?.records ?? [] {
-                var connectionModel: CloudAgentConnectionWalletModel? = nil
-                //var newConnection:  CloudAgentConnectionWalletModel? = nil
-                connectionModel = indyCredential.value?.connectionInfo
-               
-//                await fetchOrCreateConnectionBasedOnIndyConnection(connectionModel) { id in
-//                    Task {
-//                            newConnection = await self.fetchConnection(id: id)
-                        
-                        let privateKey = SelfAttestedToOpenID().getPrivateKeyOfOpenIDPassport()
-                        //let selfAttestedBindingConnection = await SelfAttestedToOpenID().createDIDforPassportIssuance(privateKey: privateKey)
-                        let credentialSubject = self.fetchCredentialSubject(indyCredential.value?.certInfo?.value?.credentialProposalDict?.credentialProposal?.attributes ?? [] )
-                       
-                        let customWalletModel = CustomWalletRecordCertModel()
-                        customWalletModel.type = "self_attested"
-                        let schemeSeperated = indyCredential.value?.schemaID?.split(separator: ":")
-                        let text = "\(schemeSeperated?[2] ?? "")".uppercased()
-                        customWalletModel.subType = text
-                        customWalletModel.searchableText = text
-                        customWalletModel.headerFields = DWHeaderFields(title: text, subTitle: "", desc: "")
-                        var vpToken = ""
-                       // await SelfAttestedToOpenID.shared.configDID()
-                        //let ebsiConnectionModel = await SelfAttestedToOpenID.shared.getPassportIssuanceConnection()
-                        let DID = connectionModel?.value?.myDid ?? ""
-                        let header =
-                        ([
-                            "alg": "ES256",
-                            "kid": "\(DID)#\(DID.replacingOccurrences(of: "did:key:", with: ""))",
-                            "typ": "dc+sd-jwt"
-                        ]).toString() ?? ""
-                        let sdData = SelfAttestedToOpenID.shared.credentialSubjectToDisclosureArray(credentialSubject: credentialSubject)
-                        let currentTime = Int(Date().timeIntervalSince1970)
-                        let uuid = UUID().uuidString
-                        let startDate = Date()
-                        var dateAfterAYear = Date(timeInterval: 365*86400, since: startDate)
-                        let df = DateFormatter()
-                        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-                        df.timeZone = TimeZone(abbreviation: "UTC")
-                        let dateAfterAYearStr = df.string(from: dateAfterAYear)
-                        dateAfterAYear = df.date(from: dateAfterAYearStr) ?? Date()
-                        let startDateStr = df.string(from: startDate)
-                        // Generate JWT payload
-                        let payload =
-                        ([
-                            "exp": currentTime + 1314000,
-                            "iat": currentTime,
-                            "iss": DID,
-                            "jti": "urn:did:\(uuid)",
-                            "nbf": currentTime,
-                            "sub": DID,
-                            "_sd": sdData.sdList,
-                            "vct": "" 
-                        ] as [String : Any]).toString() ?? ""
-                        
-                        let headerData = Data(header.utf8)
-                        let payloadData = Data(payload.utf8)
-                        let unsignedToken = "\(headerData.base64URLEncodedString()).\(payloadData.base64URLEncodedString())"
-                        let signatureData = try? privateKey.signature(for: unsignedToken.data(using: .utf8)!)
-                        let signature = signatureData?.rawRepresentation ?? Data()
-                        vpToken = "\(unsignedToken).\(signature.base64URLEncodedString())"
-                        
-                        for data in sdData.disclosureList {
-                            vpToken.append("~\(data)")
-                        }
-                        
-                        let attributes = SelfAttestedOpenIDCredential().convertToOutputFormat(data : credentialSubject)
-                        customWalletModel.referent = nil
-                        customWalletModel.schemaID = nil
-                        customWalletModel.certInfo = nil
-                        customWalletModel.connectionInfo = connectionModel
-                        customWalletModel.type = CertType.EBSI.rawValue
-                        customWalletModel.format = ""
-                        
-                        //customWalletModel.vct = vct
-                        customWalletModel.EBSI_v2 = EBSI_V2_WalletModel.init(id: "", attributes: attributes, issuer: "", credentialJWT: vpToken)
-                        
-                        
-                        
-                        let itemData = SearchItems_CustomWalletRecordCertModel()
-                        itemData.value = customWalletModel
-                        transformedWalletModelsRecords?.append(itemData)
-//                        }
-//                }
-
+        //        Task {
+        for indyCredential in indyCredentials?.records ?? [] {
+            var connectionModel: CloudAgentConnectionWalletModel? = nil
+            connectionModel = indyCredential.value?.connectionInfo
+            
+            let privateKey = SelfAttestedToOpenID().getPrivateKeyOfOpenIDPassport()
+            var credentialSubject: [String: Any] = [:]
+            var text: String = ""
+            if indyCredential.value?.attributes != nil {
+                credentialSubject = self.fetchCredentialSubject(indyCredential.value?.attributes ?? [] )
+                text = indyCredential.value?.searchableText ?? ""
+            } else {
+                credentialSubject = self.fetchCredentialSubject(indyCredential.value?.certInfo?.value?.credentialProposalDict?.credentialProposal?.attributes ?? [] )
+                let schemeSeperated = indyCredential.value?.schemaID?.split(separator: ":")
+                text = "\(schemeSeperated?[2] ?? "")".uppercased()
             }
+            
+            let customWalletModel = CustomWalletRecordCertModel()
+            customWalletModel.type = "self_attested"
+            customWalletModel.subType = text
+            customWalletModel.searchableText = text
+            customWalletModel.headerFields = DWHeaderFields(title: text, subTitle: "", desc: "")
+            var vpToken = ""
+            let DID = connectionModel?.value?.myDid ?? ""
+            let header =
+            ([
+                "alg": "ES256",
+                "kid": "\(DID)#\(DID.replacingOccurrences(of: "did:key:", with: ""))",
+                "typ": "dc+sd-jwt"
+            ]).toString() ?? ""
+            let sdData = SelfAttestedToOpenID.shared.credentialSubjectToDisclosureArray(credentialSubject: credentialSubject)
+            let currentTime = Int(Date().timeIntervalSince1970)
+            let uuid = UUID().uuidString
+            let startDate = Date()
+            var dateAfterAYear = Date(timeInterval: 365*86400, since: startDate)
+            let df = DateFormatter()
+            df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+            df.timeZone = TimeZone(abbreviation: "UTC")
+            let dateAfterAYearStr = df.string(from: dateAfterAYear)
+            dateAfterAYear = df.date(from: dateAfterAYearStr) ?? Date()
+            let startDateStr = df.string(from: startDate)
+            // Generate JWT payload
+            let keyHandler = SecureEnclaveHandler(keyID: EBSIWallet.shared.keyHandlerKeyID)
+            var jwk : [String:Any]? = nil
+            if let pubKey = keyHandler.generateSecureKey()?.publicKey {
+                jwk = keyHandler.getJWK(publicKey: pubKey) ?? [:]
+            }
+            var payloadDict =
+            [
+                "exp": currentTime + 1314000,
+                "iat": currentTime,
+                "iss": DID,
+                "jti": "urn:did:\(uuid)",
+                "nbf": currentTime,
+                "sub": DID,
+                "_sd": sdData.sdList,
+                "vct": ""
+            ] as [String : Any]
+            
+            if let jwk = jwk{
+                payloadDict["cnf"] = ["jwk": jwk]
+            }
+             
+            let payload = payloadDict.toString() ?? ""
+            
+            let headerData = Data(header.utf8)
+            let payloadData = Data(payload.utf8)
+            let unsignedToken = "\(headerData.base64URLEncodedString()).\(payloadData.base64URLEncodedString())"
+            let signatureData = try? privateKey.signature(for: unsignedToken.data(using: .utf8)!)
+            let signature = signatureData?.rawRepresentation ?? Data()
+            vpToken = "\(unsignedToken).\(signature.base64URLEncodedString())"
+            
+            for data in sdData.disclosureList {
+                vpToken.append("~\(data)")
+            }
+            
+            let attributes = SelfAttestedOpenIDCredential().convertToOutputFormat(data : credentialSubject)
+            customWalletModel.referent = nil
+            customWalletModel.schemaID = nil
+            customWalletModel.certInfo = nil
+            customWalletModel.connectionInfo = connectionModel
+            customWalletModel.type = CertType.EBSI.rawValue
+            customWalletModel.format = ""
+            
+            //customWalletModel.vct = vct
+            customWalletModel.EBSI_v2 = EBSI_V2_WalletModel.init(id: "", attributes: attributes, issuer: "", credentialJWT: vpToken)
+            
+            
+            
+            let itemData = SearchItems_CustomWalletRecordCertModel()
+            itemData.value = customWalletModel
+            transformedWalletModelsRecords?.append(itemData)
+            //                        }
+            //                }
+            
+        }
         return Search_CustomWalletRecordCertModel(totalCount: transformedWalletModelsRecords?.count, records: transformedWalletModelsRecords)
     }
     
-    // MARK: - Step 3: Create or fetch connection
-    private func fetchOrCreateConnectionBasedOnIndyConnection(_ connection: CloudAgentConnectionWalletModel?, completion: @escaping (String) -> ()) async {
-        do {
-            var orgDetail = OrganisationInfoModel.init()
-          
-            let display = Display(mName: connection?.value?.orgDetails?.name, mLocation: connection?.value?.orgDetails?.location, mLocale: "", mDescription: connection?.value?.orgDetails?.organisationInfoModelDescription, mCover: DisplayCover(mUrl: connection?.value?.orgDetails?.coverImageURL, mAltText: connection?.value?.orgDetails?.name), mLogo: DisplayCover(mUrl: connection?.value?.orgDetails?.logoImageURL, mAltText: connection?.value?.orgDetails?.name), mBackgroundColor: nil, mTextColor: nil)
-            let imageURL =  display.cover?.url ?? ""
-            orgDetail.orgId = connection?.value?.orgDetails?.orgId
-            orgDetail.logoImageURL = display.logo?.url ?? display.logo?.uri
-            orgDetail.coverImageURL = display.cover?.url
-            orgDetail.location = display.location
-            orgDetail.organisationInfoModelDescription = display.description
-            orgDetail.name = display.name
-            
-            await deleteExistingIndyConnectionUsingConnectionName(connectionModel: connection)
-            let privateKey = EBSIWallet.shared.handlePrivateKey()
-            let did = await EBSIWallet.shared.createDIDKeyIdentifierForDynamicOrg(privateKey: privateKey) ?? ""
-            let (_, connID) = try await WalletRecord.shared.add(invitationKey: "", label: display.name ?? "", serviceEndPoint: "", connectionRecordId: "",imageURL: imageURL, walletHandler: WalletViewModel.openedWalletHandler ?? IndyHandle(),type: .connection, orgID: orgDetail.orgId)
-            completion(connID)
-        } catch {
-            
+    func fetchCredentialSubject(_ attributes: OrderedDictionary<String,DWAttributesModel>?) -> [String: Any] {
+        var result: [String: Any] = [:]
+        
+        for attr in attributes ?? [] {
+            let name = attr.key
+            let value = attr.value.value
+            result[name] = value
         }
-            
+        return result
     }
     
-    //check if connection migration needed
-    func deleteExistingConnectionUsingConnectionName(walletHandler: IndyHandle, connectionName: String?, orgId: String?, completion: @escaping (Bool) -> Void) {
-        AriesAgentFunctions.shared.openWalletSearch_type(walletHandler: walletHandler, type: AriesAgentFunctions.cloudAgentConnection, searchType: .searchWithOrgId,searchValue: orgId ?? "") { (success, searchHandler, error) in
-            AriesAgentFunctions.shared.fetchWalletSearchNextRecords(walletHandler: walletHandler, searchWalletHandler: searchHandler) { (success, response, error) in
-                if let messageModel = UIApplicationUtils.shared.convertToDictionary(text: response){
-                    guard let messageModel = UIApplicationUtils.shared.convertToDictionary(text: response) else { return }
-                    
-                    let connectionModels = Connections.decode(withDictionary: messageModel as [String : Any]) as? Connections
-                    let filteredRecord = connectionModels?.records.filter({ $0.value.orgID == connectionName })
-                    AriesAgentFunctions.shared.deleteWalletRecord(walletHandler: walletHandler, type: AriesAgentFunctions.cloudAgentConnection, id: filteredRecord?.first?.value.requestID ?? "") { (deleteSuccess, error) in
-                        if deleteSuccess {
-                            completion(true)
-                        } else {
-                            completion(false)
-                        }
-                    }
-                }else {
-                    completion(false)
-                }
-            }
-        }
-    }
-//    
-//    // MARK: - Step 4: Store transformed credentials
-    private func storeSelfAttestedOpenIDCredentials(_ credentials: Search_CustomWalletRecordCertModel?) {
+    // MARK: - Step 4: Store transformed credentials
+    private func storeSelfAttestedOpenIDCredentials(_ credentials: Search_CustomWalletRecordCertModel?) async {
         do {
-            Task {
-                let walletHandler = WalletViewModel.openedWalletHandler ?? 0
-                for credential in credentials?.records ?? [] {
-                    
-                    let (success, certRecordId) = try await WalletRecord.shared.add(connectionRecordId: "", walletCert: credential.value, walletHandler: walletHandler, type: .walletCert)
-                    
-                }
-                MigrationCheck().setMigrationCompleted(migrationType: MigrationTypes.indyCredentialsToSelfAttestedOpenIdCredential)
+            let walletHandler = WalletViewModel.openedWalletHandler ?? 0
+            for credential in credentials?.records ?? [] {
+                
+                let (success, certRecordId) = try await WalletRecord.shared.add(connectionRecordId: "", walletCert: credential.value, walletHandler: walletHandler, type: .walletCert)
+                
             }
+            MigrationCheck().setMigrationCompleted(migrationType: MigrationTypes.indyCredentialsToSelfAttestedOpenIdCredential)
         }  catch {
             print("Exception storeSelfAttestedOpenIDCredentials: \(error.localizedDescription)")
         }
     }
-//
-//    // MARK: - Step 5: Delete old Indy credentials
+    //
+    //    // MARK: - Step 5: Delete old Indy credentials
     private func deleteIndyCredentials(_ credentials: Search_CustomWalletRecordCertModel?) {
         credentials?.records?.forEach { credential in
             let walletHandler = WalletViewModel.openedWalletHandler ?? 0
@@ -282,8 +266,8 @@ public class IndyCredentialsToSelfAttestedOpenIDCredentials {
             }
         }
     }
-//
-//    // MARK: - Helpers
+    
+    // MARK: - Helpers
     func fetchCredentialSubject(_ attributes: [SearchCertificateAttribute]) -> [String: Any] {
         var result: [String: Any] = [:]
         
@@ -510,54 +494,3 @@ public class IndyCredentialsToSelfAttestedOpenIDCredentials {
     }
 
 }
-
-//public class IndyCredentialsToSelfAttestedOpenIDCredentials {
-//    
-//    func migrate() {
-//        // 1. Check if migration has already been performed
-//        if !MigrationCheck().isMigrationRequired(migrationType: MigrationTypes.indyCredentialsToSelfAttestedOpenIdCredential) {
-//            print("Migration from Indy credentials to self-attested OpenID credentials has already been performed.")
-//            return
-//        }
-//        
-//        // 2. Fetch Indy credentials from the wallet
-//        let indyCredentials = fetchIndyCredentials()
-//        if indyCredentials.isEmpty {
-//            print("Indy credentials are empty.")
-//            return
-//        }
-//        
-//        // 3. Transform into self-attested OpenID credentials
-//        guard let transformedCredentials = transformToSelfAttestedOpenIDCredentials(indyCredentials),
-//              !transformedCredentials.isEmpty else {
-//            print("Self-attested OpenID transformed credentials are empty.")
-//            return
-//        }
-//        
-//        // 4. Store transformed credentials
-//        storeSelfAttestedOpenIDCredentials(transformedCredentials)
-//        
-//        // 5. Delete old Indy credentials
-//        deleteIndyCredentials(indyCredentials)
-//    }
-//    
-//    // MARK: - Stub methods (you need to implement them)
-//    private func fetchIndyCredentials() -> [String] {
-//        // TODO: Replace with actual fetch logic
-//        return []
-//    }
-//    
-//    private func transformToSelfAttestedOpenIDCredentials(_ indyCredentials: [String]) -> [String]? {
-//        // TODO: Replace with actual transformation logic
-//        return nil
-//    }
-//    
-//    private func storeSelfAttestedOpenIDCredentials(_ credentials: [String]) {
-//        // TODO: Replace with actual storage logic
-//    }
-//    
-//    private func deleteIndyCredentials(_ indyCredentials: [String]) {
-//        // TODO: Replace with actual deletion logic
-//    }
-//    
-//}

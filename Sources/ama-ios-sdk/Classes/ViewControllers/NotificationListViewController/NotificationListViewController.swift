@@ -156,8 +156,22 @@ extension NotificationListViewController : UITableViewDelegate, UITableViewDataS
                 controller.viewModel?.inboxModel = inboxData
                 controller.inboxCertState = inboxData?.tags?.state
                
-                self.navigationController?.pushViewController(controller, animated: true)
-            }
+                if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
+                    let vc = CertificatePreviewBottomSheet(nibName: "CertificatePreviewBottomSheet", bundle: UIApplicationUtils.shared.getResourcesBundle())
+                    if let model = offer, let receiptModel = ReceiptCredentialModel.isReceiptCredentialModel(certModel: model){
+                        //Show Receipt UI
+                        vc.mode = .Receipt(model: receiptModel)
+                    }
+                    vc.viewModel = CertificatePreviewViewModel.init(walletHandle: viewModel?.walletHandle, reqId: inboxData?.value?.connectionModel?.id ?? "", certDetail: offer, inboxId: inboxData?.id,connectionModel: inboxData?.value?.connectionModel, dataAgreement: inboxData?.value?.dataAgreement)
+                    vc.viewModel?.inboxModel = inboxData
+                    vc.inboxCertState = inboxData?.tags?.state
+                    let sheetVC = WalletHomeBottomSheetViewController(contentViewController: vc)
+                    if let topVC = UIApplicationUtils.shared.getTopVC() {
+                        topVC.present(sheetVC, animated: true, completion: nil)
+                    }
+                } else {
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }           }
         } else if type == InboxType.certRequest.rawValue{
             let req = inboxData?.value?.presentationRequest
             if let controller = UIStoryboard(name:"ama-ios-sdk", bundle:UIApplicationUtils.shared.getResourcesBundle()).instantiateViewController( withIdentifier: "ExchangeDataPreviewViewController") as? ExchangeDataPreviewViewController {

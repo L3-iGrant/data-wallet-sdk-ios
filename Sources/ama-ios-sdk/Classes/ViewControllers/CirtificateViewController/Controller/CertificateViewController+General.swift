@@ -125,6 +125,8 @@ extension CertificateViewController {
                 }
             }
             return EBSIWallet.shared.getEBSI_V2_attributes(section: section, certModel: viewModel.general?.certModel).count
+        } else if let attributes = viewModel.general?.certModel?.value?.attributes {
+            return viewModel.general?.certModel?.value?.attributes?.count ?? 0
         }
         return viewModel.general?.certDetail?.value?.credentialProposalDict?.credentialProposal?.attributes?.count ?? 0
     }
@@ -160,6 +162,11 @@ extension CertificateViewController {
                     }
                 }
                 attrArray = EBSIWallet.shared.getEBSI_V2_attributes(section: indexPath.section, certModel: viewModel.general?.certModel)
+            } else if let attr = viewModel.general?.certModel?.value?.attributes {
+                let grouped = attr.orderedValues
+                grouped.forEach { e in
+                    attrArray.append(IDCardAttributes(name: e.label, value: e.value))
+                }
             } else {
                 attrArray = viewModel.general?.certDetail?.value?.credentialProposalDict?.credentialProposal?.attributes?.map({ (item) -> IDCardAttributes in
                     return IDCardAttributes.init(type: CertAttributesTypes.string, name: item.name, value: item.value)
