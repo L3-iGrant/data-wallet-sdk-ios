@@ -62,8 +62,8 @@ public struct AriesMobileAgent {
     //        navigateTo(controller?.viewControllers.first ?? UIViewController())
     //    }
     
-    @MainActor public func configureWallet(delegate: AriesMobileAgentDelegate, viewMode: ViewMode, completion:  @escaping (Bool?) -> Void){
-        //UserDefaults.standard.set(isAriesRequired, forKey: "isAriesRequired")
+    @MainActor public func configureWallet(delegate: AriesMobileAgentDelegate, isAriesEnabled: Bool = false, viewMode: ViewMode, completion:  @escaping (Bool?) -> Void){
+        UserDefaults.standard.set(isAriesEnabled, forKey: "isAriesRequired")
         if checkIfWalletIsConfigured() {
             debugPrint("Wallet already configured")
             completion(true)
@@ -441,10 +441,6 @@ public struct AriesMobileAgent {
             let controller = BackUpViewController()
             navigateTo(controller)
         }
-    }
-    
-    public func configureAries(isAriesRequired: Bool){
-        UserDefaults.standard.set(isAriesRequired, forKey: "isAriesRequired")
     }
     
     public func initiateRestore(completion: @escaping (Bool) -> Void) {
