@@ -159,7 +159,14 @@ extension WalletHomeViewController: WalletHomeViewControllerDelegate, WalletHome
                 if let selfAttestedCert = cert.value?.attributes {
                     let vc = CertificateViewController(pageType: .general(isScan: false))
                     vc.viewModel.general = GeneralStateViewModel.init(walletHandle: viewModel.walletHandle, reqId: cert.value?.certInfo?.id, certDetail: cert.value?.certInfo, inboxId: nil, certModel: cert)
-                    self.push(vc: vc)
+                    if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
+                        let sheetVC = WalletHomeBottomSheetViewController(contentViewController: vc)
+                        if let topVC = UIApplicationUtils.shared.getTopVC() {
+                            present(sheetVC, animated: true, completion: nil)
+                        }
+                    } else {
+                        self.push(vc: vc)
+                    }
                 }
             }
         } else {

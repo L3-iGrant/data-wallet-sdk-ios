@@ -724,7 +724,7 @@ extension CertificatePreviewBottomSheet: CertificatePreviewDelegate {
     func popVC() {
         DispatchQueue.main.async {
             if  !self.isFromSDK {
-                if self.viewMode == .BottomSheet {
+                if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
                     self.dismiss(animated: true)
                 } else {
                     self.navigationController?.popViewController(animated: true)
