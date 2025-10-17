@@ -50,7 +50,7 @@ class OrganisationListViewModel {
             AriesAgentFunctions.shared.fetchWalletSearchNextRecords(walletHandler: walletHandler, searchWalletHandler: searchHandle,count: 100) {[weak self] (success, response, error) in
                 let resultsDict = UIApplicationUtils.shared.convertToDictionary(text: response)
                 let resultModel = CloudAgentSearchConnectionModel.decode(withDictionary: resultsDict as NSDictionary? ?? NSDictionary()) as? CloudAgentSearchConnectionModel
-                if let records = resultModel?.records {
+                if let records = resultModel?.records?.filter({ $0.value?.orgDetails?.name != "JWT"}) {
                     self?.connections = records
                     self?.updateSearchedItems()
                     completion(true)
