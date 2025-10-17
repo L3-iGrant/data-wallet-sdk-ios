@@ -63,7 +63,7 @@ extension EBSIWallet {
     }
     
     func processQRCodeForVerification() {
-        handleLoaderVisibility()
+        UIApplicationUtils.showLoader()
         do {
             //TODO: update the display with client menta data details
             var clientDataString = clientMetaData.replacingOccurrences(of: "+", with: " ")
