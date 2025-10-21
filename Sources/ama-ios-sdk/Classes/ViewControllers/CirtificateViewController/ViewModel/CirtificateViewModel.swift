@@ -17,7 +17,6 @@ final class CirtificateViewModel: NSObject {
     var addedDate = ""
     let passport = PassportStateViewModel()
     var aadhar: AadharStateViewModel?
-    var covid: CovidCertificateStateViewModel?
     var pkPass: PKPassStateViewModel?
     var general: GeneralStateViewModel?
     var receipt: ReceiptStateViewModel?

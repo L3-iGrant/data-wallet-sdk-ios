@@ -73,24 +73,6 @@ extension WalletHomeViewController: WalletHomeViewControllerDelegate, WalletHome
         let cert = viewModel.searchCert[card]
         if cert.value?.type == CertType.isSelfAttested(type: cert.value?.type) || cert.value?.type == CertType.idCards.rawValue {
             switch cert.value?.subType {
-            case SelfAttestedCertTypes.covidCert_EU.rawValue:
-                let vc = CertificateViewController(pageType: .covid(isScan: false))
-                if let model = cert.value?.covidCert_EU {
-                    vc.viewModel.covid = CovidCertificateStateViewModel(model: model)
-                }
-                vc.viewModel.covid?.recordId = cert.id ?? ""
-                self.push(vc: vc)
-            case SelfAttestedCertTypes.covidCert_IN.rawValue,SelfAttestedCertTypes.covidCert_PHL.rawValue:
-                let vc = CertificateViewController(pageType: .covid(isScan: false))
-                if let model = cert.value?.covidCert_IND {
-                    vc.viewModel.covid = CovidCertificateStateViewModel(model: model)
-                }
-                if let model = cert.value?.covidCert_PHL {
-                    vc.viewModel.covid = CovidCertificateStateViewModel(model: model)
-                }
-                vc.viewModel.covid?.recordId = cert.id ?? ""
-                self.push(vc: vc)
-                
             case SelfAttestedCertTypes.aadhar.rawValue:
                 let vc = CertificateViewController(pageType: .aadhar(isScan: false))
                 if let model = cert.value?.aadhar {
@@ -104,15 +86,6 @@ extension WalletHomeViewController: WalletHomeViewControllerDelegate, WalletHome
                 let vc = CertificateViewController(pageType: .passport(isScan: false))
                 vc.viewModel.passport.passportModel = cert.value?.passport
                 vc.viewModel.passport.recordId = cert.id ?? ""
-                self.push(vc: vc)
-                
-            case SelfAttestedCertTypes.digitalTestCertificateEU.rawValue:
-                
-                let vc = CertificateViewController(pageType: .covid(isScan: false))
-                if let model = cert.value?.covidCert_EU {
-                    vc.viewModel.covid = CovidCertificateStateViewModel(model: model, certificateType: .digitalTestCertificate)
-                }
-                vc.viewModel.covid?.recordId = cert.id ?? ""
                 self.push(vc: vc)
                 
             case SelfAttestedCertTypes.pkPass.rawValue:
@@ -184,7 +157,6 @@ extension WalletHomeViewController: WalletHomeViewControllerDelegate, WalletHome
             if cert.value?.subType == "PAYMENT WALLET ATTESTATION" && cert.value?.fundingSource != nil {
                 let vc = CertificateViewController(pageType: .pwa(isScan: false))
                 vc.viewModel.pwaCert = PWACertViewModel.init(walletHandle: viewModel.walletHandle, reqId: cert.value?.certInfo?.id, certDetail: cert.value?.certInfo, inboxId: nil, certModel: cert)
-                vc.viewModel.covid?.recordId = cert.id ?? ""
                 vc.viewMode = viewMode
                 if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
                     let sheetVC = WalletHomeBottomSheetViewController(contentViewController: vc)
@@ -269,7 +241,6 @@ extension WalletHomeViewController: WalletHomeViewControllerDelegate, WalletHome
                 let vc = CertificateViewController(pageType: .general(isScan: false))
                 vc.viewMode = viewMode
                 vc.viewModel.general = GeneralStateViewModel.init(walletHandle: viewModel.walletHandle, reqId: cert.value?.certInfo?.id, certDetail: cert.value?.certInfo, inboxId: nil, certModel: cert)
-                vc.viewModel.covid?.recordId = cert.id ?? ""
                 if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
                     let sheetVC = WalletHomeBottomSheetViewController(contentViewController: vc)
                     //sheetVC.modalPresentationStyle = .overCurrentContext

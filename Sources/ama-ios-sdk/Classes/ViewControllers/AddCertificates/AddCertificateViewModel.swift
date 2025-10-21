@@ -30,11 +30,6 @@ class AddCertificateViewModel {
                                               subImage: nil,
                                               type: .other,
                                               region: nil),
-        AddCertificateItemModel(title: "Covid Vaccination Certificate", subTitle: "India", mainImage:  "coronavirus".getImage(), subImage:  "india-flag".getImage() , type: .IN_covid_vaccine, region: ["india"]),
-        AddCertificateItemModel(title: "Covid Vaccination Certificate", subTitle: "Philippines", mainImage: "coronavirus".getImage(), subImage: "philippines".getImage() , type: .PH_covid_vaccine, region: ["philippines"]),
-        AddCertificateItemModel(title: "Digital Covid Certificate", subTitle: "European Economic Area", mainImage: "coronavirus".getImage(), subImage: "eu-flag".getImage() ,type: .EU_covid_vaccine, region: ["europe"]),
-        AddCertificateItemModel(title: "Digital Covid Certificate", subTitle: "United Kingdom", mainImage:  "coronavirus".getImage(), subImage:  "united-kingdom-flag".getImage(), type: .UK_covid_vaccine, region: [ "united_kingdom"]),
-        AddCertificateItemModel(title: "Digital Covid Certificate", subTitle: "Malaysia", mainImage:  "coronavirus".getImage(), subImage: "malaysia".getImage(), type: .MY_covid_vaccine, region: ["malaysia"]),
         AddCertificateItemModel(title: "Aadhar", subTitle: "India", mainImage:   "Aadhaar_Logo.svg".getImage(), subImage:  "india-flag".getImage(), type: .Aadhar, region: [ "india"]),
         AddCertificateItemModel(title: "Passport of the European Union", subTitle: "European Economic Area", mainImage: "passportIcon".getImage(), subImage: "eu-flag".getImage(), type: .EU_Passport, region: ["europe"]),
         AddCertificateItemModel(title: "Singapore passport", subTitle: "Singapore", mainImage:  "passportIcon".getImage(), subImage: "singapore".getImage(), type: .EU_Passport, region: ["singapore"]),
@@ -142,11 +137,6 @@ struct AddCertificateItemModel: Hashable {
 }
 
 enum AddIDCardTypes: Int, CaseIterable {
-    case IN_covid_vaccine = 0
-    case EU_covid_vaccine
-    case UK_covid_vaccine
-    case MY_covid_vaccine
-    case PH_covid_vaccine
     case Aadhar
     case EU_Passport
     case other

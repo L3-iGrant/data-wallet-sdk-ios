@@ -85,29 +85,6 @@ class CardTileView: CardView {
             UIApplicationUtils.shared.setRemoteImageOn((certLogo)!, url: certificates?.value?.connectionInfo?.value?.imageURL ?? "")
         case CertType.isSelfAttested(type: certificates?.value?.type), CertType.idCards.rawValue:
             switch certificates?.value?.subType {
-            case SelfAttestedCertTypes.covidCert_EU.rawValue:
-                certName.text = "Covid Vaccination Certificate".localizedForSDK().uppercased()
-                certLogo.image =  "coronavirus".getImage()
-                orgName.text = certificates?.value?.covidCert_EU?.fullName?.value?.uppercased().trim
-                locationName.text = "European Union".localizedForSDK()
-                switch (certificates?.value?.covidCert_EU?.country?.value) {
-                case "UK","GB":
-                    locationName.text = "United Kingdom".localizedForSDK()
-                case "MY":
-                    locationName.text = "Malaysia".localizedForSDK()
-                default :
-                    locationName.text = "European Union".localizedForSDK()
-                }
-            case SelfAttestedCertTypes.covidCert_IN.rawValue:
-                certName.text = "Covid Vaccination Certificate".localizedForSDK().uppercased()
-                orgName.text = certificates?.value?.covidCert_IND?.fullName?.value?.uppercased().trim
-                locationName.text = "India".localizedForSDK()
-                certLogo.image =  "coronavirus".getImage()
-            case SelfAttestedCertTypes.covidCert_PHL.rawValue:
-                certName.text = "Covid Vaccination Certificate".localizedForSDK().uppercased()
-                orgName.text = certificates?.value?.covidCert_PHL?.fullName?.value?.uppercased().trim
-                locationName.text = "Philippines".localizedForSDK()
-                certLogo.image =  "coronavirus".getImage()
             case SelfAttestedCertTypes.aadhar.rawValue:
                 certName.text = "Aadhar".localizedForSDK().uppercased()
                 certLogo.image =  "Aadhaar_Logo.svg".getImage()
@@ -123,11 +100,6 @@ class CardTileView: CardView {
                 let org = (certificates?.value?.passport?.firstName?.value ?? "") + " " + (certificates?.value?.passport?.surName?.value  ?? "")
                 orgName.text = org.trim
                 locationName.text = certificates?.value?.passport?.issuingCountry?.value ?? ""
-            case SelfAttestedCertTypes.digitalTestCertificateEU.rawValue:
-                certName.text = "eu_List_Heading".localizedForSDK().uppercased()
-                certLogo.image =  "coronavirus".getImage()
-                orgName.text = certificates?.value?.covidCert_EU?.name?.value?.uppercased().trim
-                locationName.text = certificates?.value?.covidCert_EU?.state?.value ?? ""
             case SelfAttestedCertTypes.pkPass.rawValue:
                 certName.text = (certificates?.value?.pkPass?.type ?? "").uppercased()
                 certLogo.image = PKPassUtils.shared.getImageofTransit(transit: certificates?.value?.pkPass?.transitType).withTintColor(.darkGray).withAlignmentRectInsets(UIEdgeInsets(top: -5, left: -5, bottom: -5,right: -5))

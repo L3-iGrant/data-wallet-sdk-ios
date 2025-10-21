@@ -237,7 +237,7 @@ final class WalletViewModel: NSObject {
         case .health:
             return certificates.filter { cert in
                 if cert.value?.type == CertType.isSelfAttested(type: cert.value?.type) || cert.value?.type == CertType.idCards.rawValue {
-                    return cert.value?.subType == SelfAttestedCertTypes.covidCert_EU.rawValue || cert.value?.subType == SelfAttestedCertTypes.covidCert_IN.rawValue || cert.value?.subType == SelfAttestedCertTypes.covidCert_PHL.rawValue || cert.value?.subType == SelfAttestedCertTypes.digitalTestCertificateEU.rawValue
+                    return false
                 } else {
                     return false
                 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import ZIPFoundation
 
 class PKPassUtils {
     static let shared = PKPassUtils()

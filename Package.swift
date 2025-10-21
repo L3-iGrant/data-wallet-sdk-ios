@@ -17,12 +17,8 @@ let package = Package(
         .package(url: "https://github.com/SVProgressHUD/SVProgressHUD.git", .upToNextMajor(from: "2.3.1")),
         .package(url: "https://github.com/Moya/Moya.git", .upToNextMajor(from: "15.0.0")),
         .package(url: "https://github.com/web3swift-team/web3swift.git", .upToNextMajor(from: "3.0.0")),
-        //.package(url: "https://github.com/keefertaylor/Base58Swift.git", from: "2.1.0"),
-        //.package(url: "https://github.com/airsidemobile/JOSESwift.git", from: "3.0.0"),
         .package(url: "https://github.com/evgenyneu/keychain-swift.git", from: "24.0.0"),
-        //.package(url: "https://github.com/kylef/JSONSchema.swift", from: "0.6.0"),
         .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "8.0.0")),
-        .package(url: "https://github.com/L3-iGrant/covid19-global-sdk-iOS", .upToNextMajor(from: "2024.9.1")),
         .package(url: "https://github.com/guoyingtao/Mantis", from: "2.26.0"),
         .package(url: "https://github.com/SwiftKickMobile/SwiftMessages", from: "10.0.1"),
         .package(url: "https://github.com/ashleymills/Reachability.swift", from: "5.2.4"),
@@ -37,7 +33,15 @@ let package = Package(
         .package(url: "https://github.com/decentralised-dataexchange/libzmq", from: "2025.8.2"),
         .package(url: "https://github.com/airbnb/lottie-spm.git", from: "4.5.1"),
         .package(url: "https://github.com/decentralised-dataexchange/eudi-wallet-oid4vc-ios", .upToNextMajor(from: "2025.9.3")),
-        .package(url: "https://github.com/apple/swift-certificates.git", .upToNextMajor(from: "1.12.0"))
+        .package(url: "https://github.com/apple/swift-certificates.git", .upToNextMajor(from: "1.12.0")),
+        .package(url: "https://github.com/AFNetworking/AFNetworking.git", .upToNextMajor(from: "4.0.0")),
+        .package(url: "https://github.com/ehn-dcc-development/base45-swift.git", from: "1.0.1"),
+        .package(url: "https://github.com/niscy-eudiw/SwiftCBOR.git", from: "0.5.7"),
+        .package(url: "https://github.com/1024jp/GzipSwift", from: "6.0.0"),
+        .package(url: "https://github.com/CocoaLumberjack/CocoaLumberjack.git", .upToNextMajor(from: "3.8.0")),
+        .package(url: "https://github.com/filom/ASN1Decoder.git", from: "1.10.0"),
+        .package(url: "https://github.com/weichsel/ZIPFoundation.git", .upToNextMajor(from: "0.9.0")),
+        .package(url: "https://github.com/L3-iGrant/qr-code-scanner-ios", .upToNextMajor(from: "2024.9.1"))
     ],
     targets: [
         .target(
@@ -60,7 +64,6 @@ let package = Package(
                 "Moya",
                 "web3swift",
                 "Kingfisher",
-                "covid19-global-sdk-iOS",
                 "Mantis",
                 "SwiftMessages",
                 "WXNavigationBar",
@@ -77,7 +80,14 @@ let package = Package(
                 .product(name: "Localize_Swift", package: "Localize-Swift"),
                 .product(name: "Loady", package: "loady"),
                 .product(name: "Lottie", package: "lottie-spm"),
-                .product(name: "X509", package: "swift-certificates")
+                .product(name: "X509", package: "swift-certificates"),
+                "SwiftCBOR",
+                .product(name: "CocoaLumberjackSwift", package: "CocoaLumberjack"),
+                "ASN1Decoder",
+                "base45-swift",
+                "ZIPFoundation",
+                .product(name: "Gzip", package: "GzipSwift"),
+                .product(name: "qr_code_scanner_ios", package: "qr-code-scanner-ios")
             ]
         )
     ]

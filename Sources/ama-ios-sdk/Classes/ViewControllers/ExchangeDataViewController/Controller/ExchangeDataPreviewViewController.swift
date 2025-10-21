@@ -258,20 +258,6 @@ final class ExchangeDataPreviewViewController: AriesBaseViewController, Navigati
             if let cert = cert{
                 if cert.value?.type == CertType.isSelfAttested(type: cert.value?.type) || cert.value?.type == CertType.idCards.rawValue{
                     switch cert.value?.subType {
-                    case SelfAttestedCertTypes.covidCert_EU.rawValue:
-                        let vc = CertificateViewController(pageType: .covid(isScan: false))
-                        if let model = cert.value?.covidCert_EU {
-                            vc.viewModel.covid = CovidCertificateStateViewModel(model: model)
-                        }
-                        vc.viewModel.covid?.recordId = cert.id ?? ""
-                        self.push(vc: vc)
-                    case SelfAttestedCertTypes.covidCert_IN.rawValue:
-                        let vc = CertificateViewController(pageType: .covid(isScan: false))
-                        if let model = cert.value?.covidCert_IND {
-                            vc.viewModel.covid = CovidCertificateStateViewModel(model: model)
-                        }
-                        vc.viewModel.covid?.recordId = cert.id ?? ""
-                        self.push(vc: vc)
                     case SelfAttestedCertTypes.aadhar.rawValue:
                         let vc = CertificateViewController(pageType: .aadhar(isScan: false))
                         if let model = cert.value?.aadhar {
@@ -303,8 +289,7 @@ final class ExchangeDataPreviewViewController: AriesBaseViewController, Navigati
                     }
                     let vc = CertificateViewController(pageType: .general(isScan: false))
                     vc.viewModel.general = GeneralStateViewModel.init(walletHandle: self.viewModel?.walletHandle, reqId: cert.value?.certInfo?.id, certDetail: cert.value?.certInfo, inboxId: nil, certModel: cert)
-                                vc.viewModel.covid?.recordId = cert.id ?? ""
-                                self.push(vc: vc)
+                    self.push(vc: vc)
                 }
             }
         })

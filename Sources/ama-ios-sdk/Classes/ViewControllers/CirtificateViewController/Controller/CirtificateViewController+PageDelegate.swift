@@ -37,9 +37,6 @@ extension CertificateViewController: CirtificateDelegate, ShareDataFlotingDelega
     func updateUI() {
         self.tableView.reloadInMain()
         switch pageType {
-        case .covid:
-            scanHeader.btnImage = self.viewModel.covid?.QRCodeImage
-            scanHeader.setTitles(type: self.viewModel.covid?.type, issuer: viewModel.covid?.certificateIssuer ?? "")
         case .pkPass:
             updatePKPassHeader()
         default:
@@ -56,8 +53,6 @@ extension CertificateViewController: CirtificateDelegate, ShareDataFlotingDelega
     func scanAction() {
         if let vc = ShowQRCodeViewController().initialize() as? ShowQRCodeViewController {
             switch pageType {
-            case .covid:
-                vc.QRCodeImage = self.viewModel.covid?.QRCodeImage
             case .aadhar:
                 vc.QRCodeImage = self.viewModel.aadhar?.QRCodeImage
             default:
@@ -77,8 +72,6 @@ extension CertificateViewController {
             }
         case .aadhar:
             self.viewModel.aadhar?.saveAadharCertToWallet()
-        case .covid:
-            self.viewModel.covid?.saveCovidCertificate()
         case .pkPass:
             self.viewModel.pkPass?.savePKPassToWallet()
         case .general:

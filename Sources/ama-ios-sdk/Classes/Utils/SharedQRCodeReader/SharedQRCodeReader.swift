@@ -7,7 +7,6 @@
 
 import Foundation
 import qr_code_scanner_ios
-import covid19_global_sdk_iOS
 import Mantis
 import UIKit
 
@@ -46,8 +45,6 @@ class SharedQRCodeReader {
             if let QRString = self.qrScanner.getQRCodeDataFromImage(image: orientationFixImage){
                 if QRString == "PK\u{03}\u{04}\n" {
                     processQRRawDataFromImage(orientationFixImage)
-                } else {
-                    getCovidDataFromCode(QRString: QRString)
                 }
                 
             } else {
@@ -98,45 +95,6 @@ class SharedQRCodeReader {
         }
     }
     
-    
-    private func getCovidDataFromCode(QRString: String){
-        Covid19GlobalSDK.shared.getResultFromImage(code: QRString) { EUCert, INDCert, QRImage in
-            
-            DispatchQueue.main.async {
-                let topVC = UIApplicationUtils.shared.getTopVC() as? UINavigationController
-                if let model = EUCert, model.greenpass != nil{
-                    if model.greenpass?.tests != nil {
-                        
-                        let vc = CertificateViewController(pageType: .covid(isScan: true))
-                        vc.viewModel.covid = CovidCertificateStateViewModel(model: model, certificateType: .digitalTestCertificate)
-                        vc.viewModel.covid?.QRCodeImage = QRImage
-                        topVC?.pushViewController(vc, animated: true)
-                        
-                    } else {
-                        if model.error == ValidationError.CWT_EXPIRED {
-                            UIApplicationUtils.showErrorSnackbar(message: "Certificate is expired".localizedForSDK())
-                            return
-                        }
-                        
-                        let vc = CertificateViewController(pageType: .covid(isScan: true))
-                        vc.viewModel.covid = CovidCertificateStateViewModel(model: model)
-                        vc.viewModel.covid?.QRCodeImage = QRImage
-                        topVC?.pushViewController(vc, animated: true)
-                    }
-                } else if let model = INDCert {
-                    
-                    let vc = CertificateViewController(pageType: .covid(isScan: true))
-                    vc.viewModel.covid = CovidCertificateStateViewModel(model: model)
-                    vc.viewModel.covid?.QRCodeImage = QRImage
-                    topVC?.pushViewController(vc, animated: true)
-                    
-                } else {
-                    AadharQRUtils.shared.populateAadharQRDetails(code: QRString)
-                }
-            }
-        }
-    }
-    
     private func fixImageOrientation(_ image: UIImage)->UIImage {
         UIGraphicsBeginImageContext(image.size)
         image.draw(at: .zero)
@@ -153,31 +111,6 @@ extension SharedQRCodeReader: QRScannerViewDelegate {
     
     func qrScannerView(_ qrScannerView: QRScannerView, didSuccess binary: [UInt8]) {
         debugPrint("binary -- \(binary)")
-        Covid19GlobalSDK.shared.getResultFromImage(rawData: Data(binary)) { EUCert, INDCert, QRImage in
-            DispatchQueue.main.async {
-                let topVC = UIApplicationUtils.shared.getTopVC() as? UINavigationController
-                if let model = EUCert {
-                    if model.greenpass == nil {
-                        UIApplicationUtils.showErrorSnackbar(message: "Invalid QR code")
-                        topVC?.popViewController(animated: false)
-                        return
-                    }
-                    
-                    let vc = CertificateViewController(pageType: .covid(isScan: true))
-                    vc.viewModel.covid = CovidCertificateStateViewModel(model: model)
-                    vc.viewModel.covid?.QRCodeImage = QRImage
-                    topVC?.pushViewController(vc, animated: true)
-                    
-                } else if let model = INDCert {
-                    
-                    let vc = CertificateViewController(pageType: .covid(isScan: true))
-                    vc.viewModel.covid = CovidCertificateStateViewModel(model: model)
-                    vc.viewModel.covid?.QRCodeImage = QRImage
-                    topVC?.pushViewController(vc, animated: true)
-                    
-                }
-            }
-        }
     }
     
     func qrScannerView(_ qrScannerView: QRScannerView, didSuccess code: String) {

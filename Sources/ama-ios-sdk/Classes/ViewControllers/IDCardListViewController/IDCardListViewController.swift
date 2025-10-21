@@ -184,34 +184,6 @@ extension IDCardListViewController: UITableViewDataSource, UITableViewDelegate {
                 return cell ?? UITableViewCell()
             case CertType.isSelfAttested(type: cert.value?.type), CertType.idCards.rawValue:
                 switch cert.value?.subType {
-                case SelfAttestedCertTypes.covidCert_EU.rawValue:
-                    let cell:WalletCredentialTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "WalletCredentialTableViewCell") as? WalletCredentialTableViewCell
-                    cell?.certName.text = "Covid Vaccination Certificate".localizedForSDK().uppercased()
-                    cell?.certLogo.layer.cornerRadius = 30
-                    cell?.certLogo.image =  "coronavirus".getImage()
-                    cell?.orgName.text = cert.value?.covidCert_EU?.fullName?.value?.uppercased()
-                    cell?.locationName.text = "European Union".localizedForSDK()
-                    cell?.selectionStyle = .none
-                    if indexPath.row == (tableView.numberOfRows(inSection: indexPath.section) - 1) {
-                        cell?.separatorInset = UIEdgeInsets(top: 0, left: cell?.bounds.size.width ?? 0, bottom: 0, right: 0)
-                    }else{
-                        cell?.separatorInset = UIEdgeInsets.zero
-                    }
-                    return cell ?? UITableViewCell()
-                case SelfAttestedCertTypes.covidCert_IN.rawValue:
-                    let cell:WalletCredentialTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "WalletCredentialTableViewCell") as? WalletCredentialTableViewCell
-                    cell?.certName.text = "Covid Vaccination Certificate".localizedForSDK().uppercased()
-                    cell?.certLogo.layer.cornerRadius = 30
-                    cell?.certLogo.image =  "coronavirus".getImage()
-                    cell?.orgName.text = cert.value?.covidCert_IND?.fullName?.value?.uppercased()
-                    cell?.locationName.text = "India".localizedForSDK()
-                    cell?.selectionStyle = .none
-                    if indexPath.row == (tableView.numberOfRows(inSection: indexPath.section) - 1) {
-                        cell?.separatorInset = UIEdgeInsets(top: 0, left: cell?.bounds.size.width ?? 0, bottom: 0, right: 0)
-                    }else{
-                        cell?.separatorInset = UIEdgeInsets.zero
-                    }
-                    return cell ?? UITableViewCell()
                 case SelfAttestedCertTypes.passport.rawValue:
                     let cell:WalletCredentialTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "WalletCredentialTableViewCell") as? WalletCredentialTableViewCell
                     let cert = viewModel.searchCert[indexPath.row]
@@ -297,25 +269,6 @@ extension IDCardListViewController: UITableViewDataSource, UITableViewDelegate {
             let cert = viewModel.searchCert[indexPath.row]
             if cert.value?.type == CertType.isSelfAttested(type: cert.value?.type) || cert.value?.type == CertType.idCards.rawValue {
                 switch cert.value?.subType {
-                case SelfAttestedCertTypes.covidCert_EU.rawValue:
-                    
-                    let vc = CertificateViewController(pageType: .covid(isScan: false))
-                    if let model = cert.value?.covidCert_EU {
-                        vc.viewModel.covid = CovidCertificateStateViewModel(model: model)
-                    }
-                    vc.viewModel.covid?.recordId = cert.id ?? ""
-                    self.push(vc: vc)
-                    
-                case SelfAttestedCertTypes.covidCert_IN.rawValue:
-                    
-                    let vc = CertificateViewController(pageType: .covid(isScan: false))
-                    if let model = cert.value?.covidCert_IND {
-                        vc.viewModel.covid = CovidCertificateStateViewModel(model: model)
-                    }
-                    vc.viewModel.covid?.recordId = cert.id ?? ""
-                    self.push(vc: vc)
-                    
-                    
                 case SelfAttestedCertTypes.passport.rawValue:
                     
                     let vc = CertificateViewController(pageType: .passport(isScan: false))
@@ -338,7 +291,6 @@ extension IDCardListViewController: UITableViewDataSource, UITableViewDelegate {
             } else {
                 let vc = CertificateViewController(pageType: .general(isScan: false))
                 vc.viewModel.general = GeneralStateViewModel.init(walletHandle: viewModel.walletHandle, reqId: cert.value?.certInfo?.id, certDetail: cert.value?.certInfo, inboxId: nil, certModel: cert)
-                vc.viewModel.covid?.recordId = cert.id ?? ""
                 self.push(vc: vc)
             }
         }
@@ -475,18 +427,6 @@ extension IDCardListViewController: HFCardCollectionViewLayoutDelegate,UICollect
             
         case CertType.isSelfAttested(type: cert.value?.type), CertType.idCards.rawValue:
             switch cert.value?.subType {
-            case SelfAttestedCertTypes.covidCert_EU.rawValue:
-                cell?.certName.text = "Covid Vaccination Certificate".localizedForSDK().uppercased()
-                cell?.certLogo.layer.cornerRadius = 30
-                cell?.certLogo.image =  "coronavirus".getImage()
-                cell?.orgName.text = cert.value?.covidCert_EU?.fullName?.value?.uppercased()
-                cell?.locationName.text = "European Union".localizedForSDK()
-            case SelfAttestedCertTypes.covidCert_IN.rawValue:
-                cell?.certName.text = "Covid Vaccination Certificate".localizedForSDK().uppercased()
-                cell?.certLogo.layer.cornerRadius = 30
-                cell?.certLogo.image =  "coronavirus".getImage()
-                cell?.orgName.text = cert.value?.covidCert_IND?.fullName?.value?.uppercased()
-                cell?.locationName.text = "India".localizedForSDK()
             case SelfAttestedCertTypes.aadhar.rawValue:
                 cell?.certName.text = "Aadhar".localizedForSDK().uppercased()
                 cell?.certLogo.layer.cornerRadius = 30
@@ -519,24 +459,6 @@ extension IDCardListViewController: HFCardCollectionViewLayoutDelegate,UICollect
         let cert = viewModel.searchCert[indexPath.row + 1]
         if cert.value?.type == CertType.isSelfAttested(type: cert.value?.type) || cert.value?.type == CertType.idCards.rawValue{
             switch cert.value?.subType {
-            case SelfAttestedCertTypes.covidCert_EU.rawValue:
-                
-                let vc = CertificateViewController(pageType: .covid(isScan: false))
-                if let model = cert.value?.covidCert_EU {
-                    vc.viewModel.covid = CovidCertificateStateViewModel(model: model)
-                }
-                vc.viewModel.covid?.recordId = cert.id ?? ""
-                self.push(vc: vc)
-                
-            case SelfAttestedCertTypes.covidCert_IN.rawValue:
-                
-                let vc = CertificateViewController(pageType: .covid(isScan: false))
-                if let model = cert.value?.covidCert_IND {
-                    vc.viewModel.covid = CovidCertificateStateViewModel(model: model)
-                }
-                vc.viewModel.covid?.recordId = cert.id ?? ""
-                self.push(vc: vc)
-                
             case SelfAttestedCertTypes.aadhar.rawValue:
                 
                 let vc = CertificateViewController(pageType: .aadhar(isScan: false))
@@ -550,7 +472,6 @@ extension IDCardListViewController: HFCardCollectionViewLayoutDelegate,UICollect
                
                 let vc = CertificateViewController(pageType: .passport(isScan: false))
                 vc.viewModel.passport.passportModel = cert.value?.passport
-                vc.viewModel.covid?.recordId = cert.id ?? ""
                 self.push(vc: vc)
                 
             default:

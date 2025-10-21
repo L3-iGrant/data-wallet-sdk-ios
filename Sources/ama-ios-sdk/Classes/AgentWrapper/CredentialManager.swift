@@ -28,9 +28,6 @@ class CredentialManager {
                         if let passportData = record.value?.passport{
                             expiry = passportData.dateOfExpiry?.value ?? ""
                         }
-                        if let covidData = record.value?.covidCert_EU {
-                            expiry = covidData.validUntil?.value ?? ""
-                        }
                     } else if let expiryDate = record.value?.validityDate {
                         expiry = expiryDate
                     }
