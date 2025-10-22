@@ -157,12 +157,8 @@ enum EBSI_CredentialSearchText: String {
 enum SelfAttestedCertTypes: String {
     case passport = "passport"
     case idCard = "idCard"
-    case covidCert_IN = "covidCert_IN"
-    case covidCert_PHL = "covidCert_PHL"
-    case covidCert_EU = "covidCert_EU"
     case aadhar = "aadhar"
     case pkPass = "PKPass"
-    case digitalTestCertificateEU = "EU TEST CERTIFICATE"
     case generic = "parking_ticket"
     case profile = "profile"
     case PhotoIDWithAge = "photo_with_age_badge"

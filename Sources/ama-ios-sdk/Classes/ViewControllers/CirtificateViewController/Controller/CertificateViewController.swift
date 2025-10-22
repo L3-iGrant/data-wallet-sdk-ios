@@ -59,7 +59,6 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
     enum PageType {
         case passport(isScan: Bool = false)
         case aadhar(isScan: Bool = false)
-        case covid(isScan: Bool = false)
         case pkPass(isScan: Bool = false)
         case general(isScan: Bool = false)
         case issueReceipt(mode: CredentialMode)
@@ -108,7 +107,7 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
         switch pageType {
         case .passport(let isScan):
             renderUIForPassport(isScan: isScan)
-        case .aadhar(let isScan), .covid(let isScan):
+        case .aadhar(let isScan):
             renderUIForAadharCovid(isScan: isScan)
         case .pkPass(let isScan):
             renderUIForPKPass(isScan: isScan)
@@ -158,23 +157,6 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
             scanHeader.titleLbl.text = "cards_unique_identification_authority_of_india".localized()
             scanHeader.subLbl.text = "certificate_government_of_india".localized()
             scanHeader.btnImage = self.viewModel.aadhar?.QRCodeImage
-        case .covid:
-            self.viewModel.covid?.pageDelegate = self
-            scanHeader.btnImage = self.viewModel.covid?.QRCodeImage
-            switch self.viewModel.covid?.certificateType {
-            case .digitalTestCertificate:
-                self.title = "certificate_digital_test_certificate".localized().localizedUppercase
-                scanHeader.titleLbl.text = "certificate_digital_test_certificate".localized()
-                scanHeader.subLbl.text = viewModel.covid?.certificateIssuer ?? ""
-            default:
-                scanHeader.setTitles(type: self.viewModel.covid?.type, issuer: viewModel.covid?.certificateIssuer ?? "")
-                switch self.viewModel.covid?.type {
-                case .Europe:
-                    self.title = "cards_digital_vaccination_certificate".localized().localizedUppercase
-                default:
-                    self.title = "certificate_covid_vaccination_certificate".localized()
-                }
-            }
         case .pkPass:
             self.viewModel.pkPass?.pageDelegate = self
             self.viewModel.pkPass?.getIDCardAttributesArray()
@@ -188,10 +170,12 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
         case .general:
             self.viewModel.general?.pageDelegate = self
             if let generalModel = self.viewModel.general {
-               // connectionHeaderView.delegate = self
-                self.bottomSheetHeaderView.bottomSheetDelegate = self
-                self.bottomSheetHeaderView.setData(model: generalModel)
-                //self.connectionHeaderView.setData(model: generalModel)
+                if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
+                    self.bottomSheetHeaderView.bottomSheetDelegate = self
+                    self.bottomSheetHeaderView.setData(model: generalModel)
+                } else {
+                    self.connectionHeaderView.setData(model: generalModel)
+                }
             }
         case .issueReceipt:
             self.viewModel.receipt?.pageDelegate = self
@@ -209,7 +193,6 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
         case .pwa(isScan: let isScan):
             self.viewModel.pwaCert?.pageDelegate = self
             if let pwaModel = self.viewModel.pwaCert {
-                //connectionHeaderView.delegate = self
                 if viewMode == .BottomSheet {
                     self.bottomSheetHeaderView.bottomSheetDelegate = self
                     self.bottomSheetHeaderView.setData(model: pwaModel)
@@ -372,20 +355,31 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
     
     private func renderUIForGeneralCert(isScan: Bool) {
         if isScan {
-            //Fixme
-            view.tupleViews(views: bottomSheetHeaderView, tableView, nextButton)
-           // connectionHeaderView.setCoverImageHeight()
-            //connectionHeaderView.delegate = self
-            bottomSheetHeaderView.addAnchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
-            tableView.addAnchor(top: bottomSheetHeaderView.bottomAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
-            nextButton.addAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 25, width: 190, height: 60, centerX: view.centerXAnchor)
-            nextButton.delegate = self
-            nextButton.title(lbl: "read_next".localized())
+            if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
+                view.tupleViews(views: bottomSheetHeaderView, tableView, nextButton)
+                bottomSheetHeaderView.addAnchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
+                tableView.addAnchor(top: bottomSheetHeaderView.bottomAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
+                nextButton.addAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 25, width: 190, height: 60, centerX: view.centerXAnchor)
+                nextButton.delegate = self
+                nextButton.title(lbl: "read_next".localized())
+            } else {
+                view.tupleViews(views: connectionHeaderView, tableView, nextButton)
+                connectionHeaderView.addAnchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
+                tableView.addAnchor(top: connectionHeaderView.bottomAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
+                nextButton.addAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 25, width: 190, height: 60, centerX: view.centerXAnchor)
+                nextButton.delegate = self
+                nextButton.title(lbl: "read_next".localized())
+            }
         } else {
-            view.tupleViews(views: bottomSheetHeaderView, tableView)
-            //connectionHeaderView.setCoverImageHeight()
-            bottomSheetHeaderView.addAnchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
-            tableView.addAnchor(top: bottomSheetHeaderView.bottomAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
+            if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
+                view.tupleViews(views: bottomSheetHeaderView, tableView)
+                bottomSheetHeaderView.addAnchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
+                tableView.addAnchor(top: bottomSheetHeaderView.bottomAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
+            } else {
+                view.tupleViews(views: connectionHeaderView, tableView)
+                connectionHeaderView.addAnchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
+                tableView.addAnchor(top: connectionHeaderView.bottomAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
+            }
         }
         if viewModel.general?.isEBSI() ?? false {
             
@@ -672,8 +666,6 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
             self.viewModel.passport.deleteIDCardFromWallet(walletRecordId: self.viewModel.passport.recordId ?? "")
         case .aadhar:
             self.viewModel.aadhar?.deleteIDCardFromWallet(walletRecordId: self.viewModel.aadhar?.recordId ?? "")
-        case .covid:
-            self.viewModel.covid?.deleteIDCardFromWallet(walletRecordId: self.viewModel.covid?.recordId ?? "")
         case .pkPass:
             self.viewModel.pkPass?.deleteIDCardFromWallet(walletRecordId: self.viewModel.pkPass?.recordId ?? "")
         case .general:

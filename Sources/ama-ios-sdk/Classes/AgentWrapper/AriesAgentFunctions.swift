@@ -76,12 +76,8 @@ enum WalletSearch {
     case searchWithMyVerKey
     case getAllInboxOfferReceived
     case passport
-    case covidCert_IN
-    case covidCert_EU
-    case covidCert_PHL
     case aadhar
     case idCards
-    case testCert_EU
     case PKPass
     case EBSI
     case history_instanceID
@@ -668,21 +664,6 @@ class AriesAgentFunctions {
                 "type" : CertType.selfAttestedRecords.rawValue,
                 "sub_type" : SelfAttestedCertTypes.passport.rawValue
             ]
-        case .covidCert_IN:
-            queryDic = [
-                "type" : CertType.selfAttestedRecords.rawValue,
-                "sub_type" : SelfAttestedCertTypes.covidCert_IN.rawValue
-            ]
-        case .covidCert_EU:
-            queryDic = [
-                "type" : CertType.selfAttestedRecords.rawValue,
-                "sub_type" : SelfAttestedCertTypes.covidCert_EU.rawValue
-            ]
-        case .covidCert_PHL:
-            queryDic = [
-                "type" : CertType.selfAttestedRecords.rawValue,
-                "sub_type" : SelfAttestedCertTypes.covidCert_PHL.rawValue
-            ]
         case .aadhar:
             queryDic = [
                 "type" : CertType.idCards.rawValue,
@@ -692,15 +673,6 @@ class AriesAgentFunctions {
             queryDic = [
                 "type" : CertType.idCards.rawValue,
             ]
-        case .testCert_EU:
-            queryDic = [
-                "type" : CertType.selfAttestedRecords.rawValue,
-                "sub_type" : SelfAttestedCertTypes.digitalTestCertificateEU.rawValue
-            ]
-            //            case .dataSharedHistory:
-            //                queryDic = [
-            //                    "type" : AriesAgentFunctions.history
-            //                ]
         case .PKPass:
             queryDic = [
                 "type" : CertType.selfAttestedRecords.rawValue,

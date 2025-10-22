@@ -15,8 +15,6 @@ extension CertificateViewController: UITableViewDelegate, UITableViewDataSource 
             return passportTableView(tableView, cellForRowAt: indexPath)
         case .aadhar:
             return aadharTableView(tableView, cellForRowAt: indexPath)
-        case .covid:
-            return covidTableView(tableView, cellForRowAt: indexPath)
         case .pkPass:
             return pKPassTableView(tableView, cellForRowAt: indexPath)
         case .general:
@@ -38,8 +36,6 @@ extension CertificateViewController: UITableViewDelegate, UITableViewDataSource 
             return passportNumberOfRowsInSection(section: section)
         case .aadhar:
             return aadharNumberOfRowsInSection(section: section)
-        case .covid:
-            return covidNumberOfRowsInSection(section: section)
         case .pkPass:
             return pKPassNumberOfRowsInSection(section: section)
         case .general:
@@ -61,8 +57,6 @@ extension CertificateViewController: UITableViewDelegate, UITableViewDataSource 
             return passportNumberOfSections()
         case .aadhar:
             return aadharNumberOfSections()
-        case .covid:
-            return covidNumberOfSections()
         case .pkPass(let isScan):
             return pKPassNumberOfSections(isScan: isScan)
         case .general(let isScan):
@@ -84,8 +78,6 @@ extension CertificateViewController: UITableViewDelegate, UITableViewDataSource 
             return passportViewForHeaderInSection(section: section)
         case .aadhar:
             return aadharViewForHeaderInSection(section: section)
-        case .covid:
-            return covidViewForHeaderInSection(section: section)
         case .pkPass:
             return pKPassViewForHeaderInSection(section: section)
         case .general:
@@ -107,8 +99,6 @@ extension CertificateViewController: UITableViewDelegate, UITableViewDataSource 
             return passportHeightForHeaderInSection(section: section)
         case .aadhar:
             return aadharHeightForHeaderInSection(section: section)
-        case .covid:
-            return covidHeightForHeaderInSection(section: section)
         case .pkPass:
             return pKPassHeightForHeaderInSection(section: section)
         case .general:
@@ -138,8 +128,6 @@ extension CertificateViewController: UITableViewDelegate, UITableViewDataSource 
             return passportHeightForFooterInSection(isScan: isScan, section: section)
         case .aadhar(isScan: let isScan):
             return aadharHeightForFooterInSection(isScan: isScan, section: section)
-        case .covid(isScan: let isScan):
-            return covidHeightForFooterInSection(isScan: isScan, section: section)
         case .pkPass(isScan: let isScan):
             return pKPassHeightForFooterInSection(isScan: isScan, section: section)
         case .general(isScan: let isScan):
@@ -162,8 +150,6 @@ extension CertificateViewController: UITableViewDelegate, UITableViewDataSource 
             return passportViewForFooterInSection(isScan: isScan, section: section)
         case .aadhar(let isScan):
             return aadharViewForFooterInSection(isScan: isScan, section: section)
-        case .covid(isScan: let isScan):
-            return covidViewForFooterInSection(isScan: isScan, section: section)
         case .pkPass(isScan: let isScan):
             return pKPassViewForFooterInSection(isScan: isScan, section: section)
         case .general(isScan: let isScan):

@@ -294,62 +294,6 @@ final class ExchangeDataPreviewViewModel {
                                                 strongSelf.certAttributes.append(searchedAttr)
                                             }
                                         }
-                                        //MARK: EU - COVID
-                                        else if let dict = doc.value?.covidCert_EU?.dictionary{
-
-                                            if var idCardValue =  IDCardAttributes.decode(withDictionary: (dict[attrs[item]?.name ?? ""] ?? NSDictionary()) as? NSDictionary ?? NSDictionary()) as? IDCardAttributes, let _ = idCardValue.value{
-
-                                                strongSelf.selfAttestedAttributes[item] = idCardValue.value ?? ""
-                                                var attributes = ProofExchangeAttributes()
-                                                attributes.name = attrs[item]?.name
-                                                attributes.value = idCardValue.value ?? ""
-                                                attributes.credDefId = nil
-                                                attributes.referent = nil
-                                                strongSelf.attributelist.append(attributes)
-                                                idCardValue.name = attrs[item]?.name ?? ""
-                                                if idCardValue.value == nil {
-                                                    strongSelf.isInsufficientData = true
-                                                }
-                                                var searchedAttr = SearchedAttribute()
-                                                searchedAttr.value = idCardValue
-                                                searchedAttr.exchangeAttributes = attributes
-                                                searchedAttr.id = doc.id ?? ""
-                                                searchedAttr.certselfAttestedSubType = .covidCert_EU
-                                                searchedAttr.selfAttestedCertModel = doc.value
-                                                searchedAttr.attrName = attrs[item]?.name
-                                                searchedAttr.presentationRequestParamName = item
-                                                strongSelf.certAttributes.append(searchedAttr)
-
-                                            }
-                                        }
-                                        //MARK: IND - COVID
-                                        else if let dict = doc.value?.covidCert_IND?.dictionary{
-                                            //                                                    if let value = (dict[attrs[item]?.name ?? ""]{
-                                            if var idCardValue =  IDCardAttributes.decode(withDictionary: (dict[attrs[item]?.name ?? ""] ?? NSDictionary()) as? NSDictionary ?? NSDictionary()) as? IDCardAttributes, let _ = idCardValue.value{
-
-                                                strongSelf.selfAttestedAttributes[item] = idCardValue.value ?? ""
-                                                var attributes = ProofExchangeAttributes()
-                                                attributes.name = attrs[item]?.name
-                                                attributes.value = idCardValue.value ?? ""
-                                                attributes.credDefId = nil
-                                                attributes.referent = nil
-                                                strongSelf.attributelist.append(attributes)
-                                                idCardValue.name = attrs[item]?.name ?? ""
-                                                if idCardValue.value == nil {
-                                                    strongSelf.isInsufficientData = true
-                                                }
-                                                var searchedAttr = SearchedAttribute()
-                                                searchedAttr.value = idCardValue
-                                                searchedAttr.exchangeAttributes = attributes
-                                                searchedAttr.id = doc.id ?? ""
-                                                searchedAttr.certselfAttestedSubType = .covidCert_IN
-                                                searchedAttr.selfAttestedCertModel = doc.value
-                                                searchedAttr.attrName = attrs[item]?.name
-                                                searchedAttr.presentationRequestParamName = item
-                                                strongSelf.certAttributes.append(searchedAttr)
-
-                                            }
-                                        }
                                         //MARK: AADHAR
                                         else if let dict = doc.value?.aadhar?.dictionary{
                                             if var idCardValue =  IDCardAttributes.decode(withDictionary: (dict[attrs[item]?.name ?? ""] ?? NSDictionary()) as? NSDictionary ?? NSDictionary()) as? IDCardAttributes, let _ = idCardValue.value{
@@ -370,34 +314,6 @@ final class ExchangeDataPreviewViewModel {
                                                 searchedAttr.exchangeAttributes = attributes
                                                 searchedAttr.id = doc.id ?? ""
                                                 searchedAttr.certselfAttestedSubType = .aadhar
-                                                searchedAttr.selfAttestedCertModel = doc.value
-                                                searchedAttr.attrName = attrs[item]?.name
-                                                searchedAttr.presentationRequestParamName = item
-                                                strongSelf.certAttributes.append(searchedAttr)
-
-                                            }
-                                        }
-                                        //MARK: PHL - COVID
-                                        else if let dict = doc.value?.covidCert_PHL?.dictionary{
-                                            //                                                    if let value = (dict[attrs[item]?.name ?? ""]{
-                                            if var idCardValue =  IDCardAttributes.decode(withDictionary: (dict[attrs[item]?.name ?? ""] ?? NSDictionary()) as? NSDictionary ?? NSDictionary()) as? IDCardAttributes, let _ = idCardValue.value{
-
-                                                strongSelf.selfAttestedAttributes[item] = idCardValue.value ?? ""
-                                                var attributes = ProofExchangeAttributes()
-                                                attributes.name = attrs[item]?.name
-                                                attributes.value = idCardValue.value ?? ""
-                                                attributes.credDefId = nil
-                                                attributes.referent = nil
-                                                strongSelf.attributelist.append(attributes)
-                                                idCardValue.name = attrs[item]?.name ?? ""
-                                                if idCardValue.value == nil {
-                                                    strongSelf.isInsufficientData = true
-                                                }
-                                                var searchedAttr = SearchedAttribute()
-                                                searchedAttr.value = idCardValue
-                                                searchedAttr.exchangeAttributes = attributes
-                                                searchedAttr.id = doc.id ?? ""
-                                                searchedAttr.certselfAttestedSubType = .covidCert_PHL
                                                 searchedAttr.selfAttestedCertModel = doc.value
                                                 searchedAttr.attrName = attrs[item]?.name
                                                 searchedAttr.presentationRequestParamName = item

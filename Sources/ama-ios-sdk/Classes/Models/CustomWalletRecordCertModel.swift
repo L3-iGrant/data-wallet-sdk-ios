@@ -18,9 +18,6 @@ import eudiWalletOidcIos
     var connectionInfo: CloudAgentConnectionWalletModel?
     var type: String?
     var passport: IDCardModel?
-    var covidCert_IND: CovidIndiaCertificateWalletModel?
-    var covidCert_PHL: CovidPHLCertificateWalletModel?
-    var covidCert_EU: CovidEUCertificateWalletModel?
     var aadhar: AadharModel?
     var subType: String?
     var pkPass: PKPassWalletModel?
@@ -89,9 +86,6 @@ import eudiWalletOidcIos
         case certInfo
         case type
         case passport
-        case covidCert_IND
-        case covidCert_EU
-        case covidCert_PHL
         case aadhar
         case subType = "sub_type"
         case searchableText = "searchable_text"
@@ -131,9 +125,6 @@ import eudiWalletOidcIos
              self.certInfo = try? container.decodeIfPresent(SearchCertificateRecord.self, forKey: .certInfo)
              self.type = try? container.decodeIfPresent(String.self, forKey: .type)
              self.passport = try? container.decodeIfPresent(IDCardModel.self, forKey: .passport)
-             self.covidCert_IND = try? container.decodeIfPresent(CovidIndiaCertificateWalletModel.self, forKey: .covidCert_IND)
-             self.covidCert_EU = try? container.decodeIfPresent(CovidEUCertificateWalletModel.self, forKey: .covidCert_EU)
-             self.covidCert_PHL = try? container.decodeIfPresent(CovidPHLCertificateWalletModel.self, forKey: .covidCert_PHL)
              self.aadhar = try? container.decodeIfPresent(AadharModel.self, forKey: .aadhar)
              self.subType = try? container.decodeIfPresent(String.self, forKey: .subType)
              self.searchableText = try? container.decodeIfPresent(String.self, forKey: .searchableText)

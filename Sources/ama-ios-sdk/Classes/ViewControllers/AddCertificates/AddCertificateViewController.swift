@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import covid19_global_sdk_iOS
 import qr_code_scanner_ios
 //import mrz_nfc_reader_ios
 import Localize_Swift
@@ -169,43 +168,6 @@ extension AddCertificateViewController : UITableViewDelegate, UITableViewDataSou
 
         if (indexPath.section == 0) {
             switch viewModel.searchedCardTypes?[indexPath.row].type {
-            case .IN_covid_vaccine,.EU_covid_vaccine,.UK_covid_vaccine,.MY_covid_vaccine,.PH_covid_vaccine:
-                Covid19GlobalSDK.shared.scanAndGetResult(vc: self) { EUCert, INDCert, QRCode in
-                    if let model = EUCert {
-                        if model.greenpass == nil {
-                            UIApplicationUtils.showErrorSnackbar(message: "Invalid QR code")
-                            self.navigationController?.popViewController(animated: true)
-                            return
-                        }
-
-                        if model.greenpass?.tests != nil {
-
-                            let vc = CertificateViewController(pageType: .covid(isScan: true))
-                            vc.viewModel.covid = CovidCertificateStateViewModel(model: model, certificateType: .digitalTestCertificate)
-                            vc.viewModel.covid?.QRCodeImage = QRCode
-                            self.pop()
-                            self.push(vc: vc)
-
-                        } else {
-
-                            let vc = CertificateViewController(pageType: .covid(isScan: true))
-                            vc.viewModel.covid = CovidCertificateStateViewModel(model: model)
-                            vc.viewModel.covid?.QRCodeImage = QRCode
-                            self.pop()
-                            self.push(vc: vc)
-
-                        }
-                    } else if let model = INDCert {
-                        let vc = CertificateViewController(pageType: .covid(isScan: true))
-                        vc.viewModel.covid = CovidCertificateStateViewModel(model: model)
-                        vc.viewModel.covid?.QRCodeImage = QRCode
-                        self.pop()
-                        self.push(vc: vc)
-                    } else {
-                        UIApplicationUtils.showErrorSnackbar(message: "Invalid QR code")
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                }
             case .Aadhar:
                 if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
                     DispatchQueue.main.async {
@@ -237,21 +199,6 @@ extension AddCertificateViewController : UITableViewDelegate, UITableViewDataSou
                             return
                         }
                     })
-                }
-            case .euTestCertificate:
-                Covid19GlobalSDK.shared.scanAndGetResult(vc: self) { EUCert, INDCert, QRCode in
-                    if let model = EUCert {
-                        if model.greenpass == nil {
-                            UIApplicationUtils.showErrorSnackbar(message: "Invalid QR code")
-                            self.navigationController?.popViewController(animated: true)
-                            return
-                        }
-                        let vc = CertificateViewController(pageType: .covid(isScan: true))
-                        vc.viewModel.covid = CovidCertificateStateViewModel(model: model)
-                        vc.viewModel.covid?.QRCodeImage = QRCode
-                        self.pop()
-                        self.push(vc: vc)
-                    }
                 }
             case .other,.EBSI_verifiableID,.EBSI_studentID,.EBSI_diploma:
                 self.showQRCode()
