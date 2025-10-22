@@ -186,7 +186,7 @@ public class IndyCredentialsToSelfAttestedOpenIDCredentials {
                 "nbf": currentTime,
                 "sub": DID,
                 "_sd": sdData.sdList,
-                "vct": ""
+                "vct": indyCredential.value?.searchableText ?? ""
             ] as [String : Any]
             
             if let jwk = jwk{
