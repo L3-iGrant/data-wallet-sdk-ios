@@ -15,6 +15,7 @@ final class WalletHomeBottomSheetViewController: UIViewController {
     private let containerHeight: CGFloat = UIScreen.main.bounds.height * 0.85
     private let dimmedAlpha: CGFloat = 0.5
     var clearAlpha: Bool = false
+    var onDismiss: (() -> Void)?
     
     private var bottomConstraint: NSLayoutConstraint!
     
@@ -46,6 +47,11 @@ final class WalletHomeBottomSheetViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showBottomSheet()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        onDismiss?()
     }
     
     // MARK: - Setup
