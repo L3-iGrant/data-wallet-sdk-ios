@@ -58,14 +58,14 @@ final class PhotoIDIssuerDetailsCell: UITableViewCell {
             if isValidOrganization {
                 trustedStackView.isHidden = false
                 locationLabel.isHidden = true
-                verifiedImage.image = UIImage(named: "gpp_good")
+                verifiedImage.image = "gpp_good".getImage()
                 verifiedImage.tintColor = UIColor(hex: "1EAA61")
                 trustedLabel.textColor = UIColor(hex: "1EAA61")
                 trustedLabel.text = "general_trusted_service_provider".localizedForSDK()
             } else {
                 trustedStackView.isHidden = false
                 locationLabel.isHidden = true
-                verifiedImage.image = UIImage(named: "gpp_bad")
+                verifiedImage.image = "gpp_bad".getImage()
                 verifiedImage.tintColor = .red
                 trustedLabel.textColor = .red
                 trustedLabel.text = "Untrusted Service Provider"
