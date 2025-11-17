@@ -166,12 +166,16 @@ extension NotificationListViewController : UITableViewDelegate, UITableViewDataS
                     vc.viewModel?.inboxModel = inboxData
                     vc.inboxCertState = inboxData?.tags?.state
                     let sheetVC = WalletHomeBottomSheetViewController(contentViewController: vc)
+                    sheetVC.onDismiss = { [weak self] in
+                        self?.fetchAllnotifications()
+                    }
                     if let topVC = UIApplicationUtils.shared.getTopVC() {
                         topVC.present(sheetVC, animated: true, completion: nil)
                     }
                 } else {
                     self.navigationController?.pushViewController(controller, animated: true)
-                }           }
+                }
+            }
         } else if type == InboxType.certRequest.rawValue{
             let req = inboxData?.value?.presentationRequest
             if let controller = UIStoryboard(name:"ama-ios-sdk", bundle:UIApplicationUtils.shared.getResourcesBundle()).instantiateViewController( withIdentifier: "ExchangeDataPreviewViewController") as? ExchangeDataPreviewViewController {
@@ -189,7 +193,9 @@ extension NotificationListViewController : UITableViewDelegate, UITableViewDataS
                         vc.viewModel = PWAPreviewViewModel.init(walletHandle: WalletViewModel.openedWalletHandler, reqId: "", certDetail: nil, inboxId: inboxData?.id, certModel: searchModel, connectionModel: inboxData?.value?.connectionModel, dataAgreement: nil, fundingSource: inboxData?.value?.walletRecordCertModel?.fundingSource)
                         vc.viewModel?.inboxModel = inboxData
                         vc.modalPresentationStyle = .overCurrentContext
-                        //vc.modalTransitionStyle = .crossDissolve
+                        vc.onDismiss = { [weak self] in
+                            self?.fetchAllnotifications()
+                        }
                         let sheetVC = WalletHomeBottomSheetViewController(contentViewController: vc)
                         if let topVC = UIApplicationUtils.shared.getTopVC() {
                             topVC.present(sheetVC, animated: true, completion: nil)
@@ -217,7 +223,9 @@ extension NotificationListViewController : UITableViewDelegate, UITableViewDataS
                         vc.viewModel.inboxId = inboxData?.id
                         let sheetVC = WalletHomeBottomSheetViewController(contentViewController: vc)
                         vc.modalPresentationStyle = .overCurrentContext
-                        
+                        sheetVC.onDismiss = { [weak self] in
+                            self?.fetchAllnotifications()
+                        }
                         if let topVC = UIApplicationUtils.shared.getTopVC() {
                             topVC.present(sheetVC, animated: false, completion: nil)
                         }
@@ -248,7 +256,9 @@ extension NotificationListViewController : UITableViewDelegate, UITableViewDataS
                         vc.viewModel.inboxId = inboxData?.id
                         let sheetVC = WalletHomeBottomSheetViewController(contentViewController: vc)
                         sheetVC.modalPresentationStyle = .overCurrentContext
-                        
+                        sheetVC.onDismiss = { [weak self] in
+                            self?.fetchAllnotifications()
+                        }
                         if let topVC = UIApplicationUtils.shared.getTopVC() {
                             topVC.present(sheetVC, animated: false, completion: nil)
                         }
@@ -282,10 +292,10 @@ extension NotificationListViewController : UITableViewDelegate, UITableViewDataS
                         controller.viewModel?.inboxModel = inboxData
                         controller.viewMode = .BottomSheet
                         controller.inboxCertState = inboxData?.tags?.state
-                        //controller.modalTransitionStyle = .crossDissolve
                         let sheetVC = WalletHomeBottomSheetViewController(contentViewController: controller)
-                        sheetVC.modalPresentationStyle = .overCurrentContext
-                        
+                        sheetVC.onDismiss = { [weak self] in
+                            self?.fetchAllnotifications()
+                        }
                         if let topVC = UIApplicationUtils.shared.getTopVC() {
                             topVC.present(sheetVC, animated: false, completion: nil)
                         }

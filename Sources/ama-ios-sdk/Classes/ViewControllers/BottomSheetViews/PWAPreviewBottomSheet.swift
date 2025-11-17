@@ -51,6 +51,7 @@ class PWAPreviewBottomSheet: UIViewController {
     var viewModel: PWAPreviewViewModel?
     var showValues = false
     private var didAccept = false
+    var onDismiss: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,6 +129,7 @@ class PWAPreviewBottomSheet: UIViewController {
                     await NotificationService().sendNoticationStatus(endPoint: viewModel?.certModel?.value?.notificationEndPont, event: NotificationStatus.credentialDeleted.rawValue, notificationID: viewModel?.certModel?.value?.notificationID, accessToken: viewModel?.certModel?.value?.accessToken ?? "", refreshToken: viewModel?.certModel?.value?.refreshToken ?? "", tokenEndPoint: viewModel?.certModel?.value?.tokenEndPoint ?? "")
                 }
             }
+            onDismiss?()
         }
     }
     
