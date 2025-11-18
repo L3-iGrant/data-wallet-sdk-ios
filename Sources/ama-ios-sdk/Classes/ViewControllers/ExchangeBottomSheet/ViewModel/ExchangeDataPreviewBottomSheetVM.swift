@@ -376,7 +376,7 @@ extension ExchangeDataPreviewViewModel {
             var base64StringWithoutPadding = cborString.replacingOccurrences(of: "=", with: "")
             base64StringWithoutPadding = base64StringWithoutPadding.replacingOccurrences(of: "+", with: "-")
             base64StringWithoutPadding = base64StringWithoutPadding.replacingOccurrences(of: "/", with: "_")
-            let newItem = SearchItems_CustomWalletRecordCertModel(type: model?.type, id: model?.id, value:MDOCParser.shared.getMDOCCredentialWalletRecord(connectionModel: EBSIWallet.shared.connectionModel, credential_cbor: base64StringWithoutPadding, format: "mso_mdoc", credentialType: model?.value?.searchableText))
+        let newItem = SearchItems_CustomWalletRecordCertModel(type: model?.type, id: model?.id, value:MDOCParser.shared.getMDOCCredentialWalletRecord(connectionModel: EBSIWallet.shared.connectionModel, credential_cbor: base64StringWithoutPadding, format: "mso_mdoc", credentialType: model?.value?.searchableText, addedDate: model?.value?.addedDate ?? ""))
             return newItem
     }
     
@@ -462,11 +462,7 @@ extension ExchangeDataPreviewViewModel {
         
         let keyHandler = SecureEnclaveHandler(keyID: EBSIWallet.shared.keyIDforWUA)
         let updatedJwt = eudiWalletOidcIos.SDJWTService.shared.processDisclosures(credential: model?.value?.EBSI_v2?.credentialJWT, query: queryData, format: credentialFormat, keyHandler: keyHandler)
-        
-        
-       // eudiWalletOidcIos.SDJWTService.shared.processDisclosuresWithPresentationDefinition(credential: model?.value?.EBSI_v2?.credentialJWT, inputDescriptor: inputDescriptor, format: credentialFormat, keyHandler: keyHandler)
-            
-            let newItem = SearchItems_CustomWalletRecordCertModel(type: model?.type, id: model?.id, value:EBSIWallet.shared.updateCredentialWithJWT(jwt:updatedJwt ?? "", searchableText: displayText ?? ""))
+            let newItem = SearchItems_CustomWalletRecordCertModel(type: model?.type, id: model?.id, value:EBSIWallet.shared.updateCredentialWithJWT(jwt:updatedJwt ?? "", searchableText: displayText ?? "", addedDate: model?.value?.addedDate ?? ""))
             return newItem
     }
     

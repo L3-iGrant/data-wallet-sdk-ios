@@ -2340,7 +2340,7 @@ extension EBSIWallet {
         }
     }
     
-    func updateCredentialWithJWT(jwt:String, searchableText: String = "") -> CustomWalletRecordCertModel {
+    func updateCredentialWithJWT(jwt:String, searchableText: String = "", addedDate: String = "") -> CustomWalletRecordCertModel {
         let credential_jwt_parts = jwt.split(separator: ".")
         let credential_jwt_payload = "\(credential_jwt_parts[safe: 1] ?? "")"
 //        let credential = credential_jwt_payload.decodeBase64() ?? ""
@@ -2373,7 +2373,7 @@ extension EBSIWallet {
                         }
                     }
                 }
-                customWalletModel = createFallbackCredentialWithResponse(subjectDict, credentialModel, customWalletModel, connectionModel, credential_jwt: jwt, searchableText: searchableText) ?? customWalletModel
+                customWalletModel = createFallbackCredentialWithResponse(subjectDict, credentialModel, customWalletModel, connectionModel, credential_jwt: jwt, searchableText: searchableText, addedDate: addedDate) ?? customWalletModel
         } else if let credentialModel = EBSI_Credential.decode(withDictionary: dict as [String : Any]) as? EBSI_Credential {
             var subjectDict = [String: Any]()
             if let vc = dict["vc"] as? [String: Any],
@@ -2386,12 +2386,12 @@ extension EBSIWallet {
             }
             let vc2 = Vc(context: credentialModel.vc?.context, id: credentialModel.vc?.id, type: credentialModel.vc?.type, issuer: credentialModel.vc?.issued, issuanceDate: credentialModel.vc?.issuanceDate, validFrom: credentialModel.vc?.validFrom, issued: credentialModel.vc?.issued, credentialSubject: nil)
             let credentialModelObj = EBSI_V2_VerifiableID(jti: credentialModel.jti, sub: credentialModel.sub, iss: credentialModel.iss, vct: credentialModel.vct, vc: vc2, accounts: credentialModel.accounts, account_holder_id: credentialModel.account_holder_id, fundingSource: credentialModel.fundingSource)
-            customWalletModel = createFallbackCredentialWithResponse(subjectDict, credentialModelObj, customWalletModel, connectionModel, credential_jwt: jwt, searchableText: searchableText) ?? customWalletModel
+            customWalletModel = createFallbackCredentialWithResponse(subjectDict, credentialModelObj, customWalletModel, connectionModel, credential_jwt: jwt, searchableText: searchableText, addedDate: addedDate) ?? customWalletModel
         }
         return customWalletModel
     }
     
-    func createFallbackCredentialWithResponse(_ credentialDict: Any , _ credentialModel: EBSI_V2_VerifiableID, _ customWalletModel: CustomWalletRecordCertModel, _ connectionModel: CloudAgentConnectionWalletModel, credential_jwt: String, searchableText: String) -> CustomWalletRecordCertModel?{
+    func createFallbackCredentialWithResponse(_ credentialDict: Any , _ credentialModel: EBSI_V2_VerifiableID, _ customWalletModel: CustomWalletRecordCertModel, _ connectionModel: CloudAgentConnectionWalletModel, credential_jwt: String, searchableText: String, addedDate: String = "") -> CustomWalletRecordCertModel?{
         
         if credentialModel.vct == "VerifiablePortableDocumentA1" ||
             ((credentialModel.vc?.type?.contains("VerifiablePortableDocumentA1")) == true) ||
@@ -2405,25 +2405,28 @@ extension EBSIWallet {
             let section5 = credentialDict["section5"] != nil ? decodePDA1SectionFromDict(credentialDict["section5"] as Any, as: Section5.self) : nil
             let section6 = credentialDict["section6"] != nil ? decodePDA1SectionFromDict(credentialDict["section6"] as Any, as: Section6.self) : nil
             let model = OpenIdPDA1Parser.shared.createPDAWithResponse(section1, section2, section3, section4, section5, section6, customWalletModel, connectionModel , credentialModel: credentialModel, credential_jwt, searchableText: searchableText)
+            model.addedDate = addedDate
             return model
         } else if credentialModel.vct == "eu.europa.ec.eudi.photoid.1" {
             guard let credentialDict = credentialDict as? [String: Any] else { return nil}
             let iso23220 = credentialDict["iso23220"] != nil ? decodePDA1SectionFromDict(credentialDict["iso23220"] as Any, as: Iso23220.self) : nil
             let photoID = credentialDict["photoid"] != nil ? decodePDA1SectionFromDict(credentialDict["photoid"] as Any, as: Photoid.self) : nil
             let model = PhotoIDParser.shared.createPhotoIDWithResponse(dict: [:], customWalletModel: customWalletModel, credential_jwt: credential_jwt, credentialModel: credentialModel, format: "", connectionModel: connectionModel, photoID: photoID, iso: iso23220)
+            model?.addedDate = addedDate
             return model
         } else if credentialModel.vct == "PaymentWalletAttestation" {
             let model = OpenIdPWACredentialParser.shared.createPWACredentialWithResponse(customWalletModel, connectionModel , credentialModel, credential_jwt, searchableText: searchableText, credentialDict: credentialDict)
             return model
         } else {
             let walletModel = customWalletModel
-            var attributes = convertToOutputFormat(data : credentialDict)
+            let attributes = convertToOutputFormat(data : credentialDict)
             
             walletModel.referent = nil
             walletModel.schemaID = nil
             walletModel.certInfo = nil
             walletModel.connectionInfo = connectionModel
             walletModel.type = CertType.EBSI.rawValue
+            walletModel.addedDate = addedDate
             
             var credentialType  = EBSIWallet.shared.credentialOffer?.credentials?.first?.types?.last ?? ""
             if credentialModel.vc?.type?.count ?? 0 > 0 {
@@ -2712,6 +2715,7 @@ extension EBSIWallet {
                                                                 vc.filteredCredentials = processedCredentials
                                                                 let sheetVC = WalletHomeBottomSheetViewController(contentViewController: vc)
                                                                 if let topVC = UIApplicationUtils.shared.getTopVC() {
+                                                                    UIApplicationUtils.hideLoader()
                                                                     topVC.present(sheetVC, animated: false, completion: nil)
                                                                 }
                                                                 
@@ -2753,6 +2757,7 @@ extension EBSIWallet {
                                                         vc.filteredCredentials = processedCredentials
                                                         let sheetVC = WalletHomeBottomSheetViewController(contentViewController: vc)
                                                         if let topVC = UIApplicationUtils.shared.getTopVC() {
+                                                            UIApplicationUtils.hideLoader()
                                                             topVC.present(sheetVC, animated: false, completion: nil)
                                                         }
                                                     }
@@ -2782,6 +2787,7 @@ extension EBSIWallet {
                                                 vc.filteredCredentials = processedCredentials
                                                 let sheetVC = WalletHomeBottomSheetViewController(contentViewController: vc)
                                                 if let topVC = UIApplicationUtils.shared.getTopVC() {
+                                                    UIApplicationUtils.hideLoader()
                                                     topVC.present(sheetVC, animated: false, completion: nil)
                                                 }
                                             }

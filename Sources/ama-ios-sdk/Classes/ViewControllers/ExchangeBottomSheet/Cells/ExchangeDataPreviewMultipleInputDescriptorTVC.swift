@@ -32,6 +32,8 @@ class ExchangeDataPreviewMultipleInputDescriptorTVC: UITableViewCell {
     
     @IBOutlet weak var multipleCardsStackViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var issuanceTimeLabel: UILabel!
+    
     
     weak var delegate: ExchangeDataPreviewMultipleInputDescriptorTVCDelegate?
     var showValues: Bool = false
@@ -91,12 +93,24 @@ class ExchangeDataPreviewMultipleInputDescriptorTVC: UITableViewCell {
         } else {
             multipleCardsView.isHidden = false
         }
+        updateIssuedDate(date: credentailModel?[selectedCredentialIndex].value?.addedDate ?? "")
         collectionView.reloadData()
         
         if credentailModel?.count == 1 {
             delegate?.didSelectCredential(for: credentailModel?.first?.value?.EBSI_v2?.credentialJWT ?? "", forSection: sectionIndex)
         }
 
+    }
+    
+    func updateIssuedDate(date: String?) {
+        if let unixTimestamp = TimeInterval(date ?? "") {
+            let dateFormat = DateFormatter.init()
+            let date = Date(timeIntervalSince1970: unixTimestamp)
+            dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let dateString = dateFormat.string(from: date)
+            let formattedDate = dateFormat.date(from: dateString)
+            issuanceTimeLabel.text = "welcome_issued_at".localizedForSDK() + (formattedDate?.timeAgoDisplay() ?? "")
+        }
     }
     
     func updateBlurState(showValues: Bool) {
@@ -149,6 +163,7 @@ extension ExchangeDataPreviewMultipleInputDescriptorTVC: UICollectionViewDelegat
         }
         delegate?.didSelectCredential(for: selectedData, forSection: sectionIndex)
         delegate?.didScrolledSection(credentialIndex: sectionIndex, pagerIndex: page)
+        updateIssuedDate(date: credentailModel?[selectedCredentialIndex].value?.addedDate ?? "")
         pageControll.currentPage = page
     }
     

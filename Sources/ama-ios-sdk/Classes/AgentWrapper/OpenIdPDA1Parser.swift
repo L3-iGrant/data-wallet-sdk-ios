@@ -173,7 +173,7 @@ class OpenIdPDA1Parser {
         customWalletModel.EBSI_v2 = EBSI_V2_WalletModel.init(id: "", attributes: attributes, issuer: credentialModel?.iss, credentialJWT: credential_jwt)
     }
     
-    func createPDAWithResponse(_ section1: Section1?, _ section2: Section2?, _ section3: Section3?, _ section4: Section4?, _ section5: Section5?, _ section6: Section6?, _ customWalletModel: CustomWalletRecordCertModel, _ connectionModel: CloudAgentConnectionWalletModel, credentialModel: EBSI_V2_VerifiableID? = nil, _ credential_jwt: String, searchableText: String = "") -> CustomWalletRecordCertModel{
+    func createPDAWithResponse(_ section1: Section1?, _ section2: Section2?, _ section3: Section3?, _ section4: Section4?, _ section5: Section5?, _ section6: Section6?, _ customWalletModel: CustomWalletRecordCertModel, _ connectionModel: CloudAgentConnectionWalletModel, credentialModel: EBSI_V2_VerifiableID? = nil, _ credential_jwt: String, searchableText: String = "", addedDate: String? = "") -> CustomWalletRecordCertModel{
         
         var walletModel = customWalletModel
         let nationalitiesString = section1?.nationalities?.joined(separator: ", ") ?? ""
@@ -457,7 +457,7 @@ class OpenIdPDA1Parser {
             default:break
             }
         }
-        
+        walletModel.addedDate = addedDate
         walletModel.attributes = attributeStructure
         walletModel.sectionStruct = sectionStruct
         walletModel.referent = nil
