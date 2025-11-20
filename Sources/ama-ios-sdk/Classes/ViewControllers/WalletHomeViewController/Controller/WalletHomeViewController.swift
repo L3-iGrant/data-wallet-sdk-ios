@@ -82,7 +82,7 @@ final class WalletHomeViewController: AriesBaseViewController, NavigationHandler
         walletContainer.addAnchor(top: topView.bottomAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
         floatingBtn.addAnchor(bottom: view.bottomAnchor, paddingBottom: 25, width: 190, height: 60, centerX: view.centerXAnchor)
         errorView.addAnchorFull(walletContainer)
-        floatingBtn.shareBtn.setTitle("Share Data".localizedForSDK(), for: .normal)
+        floatingBtn.shareBtn.setTitle("Scan".localizedForSDK(), for: .normal)
     }
     
     override func viewDidLoad() {
@@ -222,7 +222,7 @@ final class WalletHomeViewController: AriesBaseViewController, NavigationHandler
         topView.lbl.text = "Data Wallet".localizedForSDK()
         topView.searchField.placeholder = "Search".localizedForSDK()
         topView.collectionView.reloadData()
-        floatingBtn.shareBtn.setTitle("Share Data".localizedForSDK(), for: .normal)
+        floatingBtn.shareBtn.setTitle("Scan".localizedForSDK(), for: .normal)
     }
     
     @objc func checkNewNotif() {
