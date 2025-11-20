@@ -110,7 +110,7 @@ class PhotoIDParser {
 
     }
     
-    func createPhotoIDWithResponse(dict: [String: Any], customWalletModel: CustomWalletRecordCertModel, credential_jwt: String, credentialModel: EBSI_V2_VerifiableID? = nil, format: String, searchableText: String = "", connectionModel: CloudAgentConnectionWalletModel, photoID: Photoid?, iso: Iso23220?) -> CustomWalletRecordCertModel? {
+    func createPhotoIDWithResponse(dict: [String: Any], customWalletModel: CustomWalletRecordCertModel, credential_jwt: String, credentialModel: EBSI_V2_VerifiableID? = nil, format: String, searchableText: String = "", connectionModel: CloudAgentConnectionWalletModel, photoID: Photoid?, iso: Iso23220?, addedDate: String? = "") -> CustomWalletRecordCertModel? {
         let photoIDCredential = PhotoIDCredential(iso23220: iso, id: nil, exp: nil, photoid: photoID, vct: nil)
             var attributes: [IDCardAttributes] = []
             var sectionStruct: [DWSection] = []
@@ -254,6 +254,7 @@ class PhotoIDParser {
             
             let credentialType = EBSIWallet.shared.fetchCredentialType(list: credentialModel?.vc?.type)
             customWalletModel.attributes = attributeStructure
+            customWalletModel.addedDate = addedDate
             customWalletModel.sectionStruct = sectionStruct
             customWalletModel.referent = nil
             customWalletModel.schemaID = nil

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mxe-z8-C0u">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="252.66666666666666"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="236.66666666666666"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" constant="150" id="TW8-6C-T1l"/>
@@ -29,6 +30,12 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V02-c1-458">
+                        <rect key="frame" x="196.66666666666666" y="244.66666666666666" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" systemColor="systemGrayColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJx-s3-FBH">
                         <rect key="frame" x="62" y="252.66666666666666" width="269" height="41.333333333333343"/>
                         <subviews>
@@ -63,17 +70,20 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="FJx-s3-FBH" secondAttribute="bottom" id="Cbh-I6-TY0"/>
-                    <constraint firstItem="FJx-s3-FBH" firstAttribute="top" secondItem="mxe-z8-C0u" secondAttribute="bottom" id="Gm9-e0-wSy"/>
                     <constraint firstItem="FJx-s3-FBH" firstAttribute="centerX" secondItem="jL4-WM-GjQ" secondAttribute="centerX" id="HJ2-26-bHY"/>
+                    <constraint firstItem="V02-c1-458" firstAttribute="centerX" secondItem="jL4-WM-GjQ" secondAttribute="centerX" id="OTr-4b-tGy"/>
                     <constraint firstItem="mxe-z8-C0u" firstAttribute="leading" secondItem="jL4-WM-GjQ" secondAttribute="leading" id="igZ-xA-sq4"/>
                     <constraint firstItem="mxe-z8-C0u" firstAttribute="top" secondItem="jL4-WM-GjQ" secondAttribute="top" id="ocH-Ub-xJX"/>
                     <constraint firstAttribute="trailing" secondItem="mxe-z8-C0u" secondAttribute="trailing" id="rFZ-sq-2FD"/>
+                    <constraint firstItem="V02-c1-458" firstAttribute="bottom" secondItem="FJx-s3-FBH" secondAttribute="top" constant="-8" id="t8E-o1-j3n"/>
+                    <constraint firstItem="V02-c1-458" firstAttribute="top" secondItem="mxe-z8-C0u" secondAttribute="bottom" constant="8" id="wG6-vk-2Vz"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="collectionView" destination="mxe-z8-C0u" id="fQ6-pQ-5KH"/>
                 <outlet property="collectionViewHeightConstraint" destination="TW8-6C-T1l" id="eze-Ki-Db9"/>
+                <outlet property="issuanceTimeLabel" destination="V02-c1-458" id="pLN-PS-q5a"/>
                 <outlet property="multipleCardsStackViewHeight" destination="dKO-mg-bo3" id="Nl6-DI-suY"/>
                 <outlet property="multipleCardsView" destination="FJx-s3-FBH" id="YRE-1u-13h"/>
                 <outlet property="pageControll" destination="JfE-fq-dqf" id="tTV-wp-lLR"/>
@@ -81,4 +91,9 @@
             <point key="canvasLocation" x="20.610687022900763" y="142.95774647887325"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemGrayColor">
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

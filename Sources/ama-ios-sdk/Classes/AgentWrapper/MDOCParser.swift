@@ -351,7 +351,7 @@ class MDOCParser {
         }
     }
     
-    func getMDOCCredentialWalletRecord(connectionModel: CloudAgentConnectionWalletModel, credential_cbor: String, format: String, credentialType: String? = "")  -> CustomWalletRecordCertModel{
+    func getMDOCCredentialWalletRecord(connectionModel: CloudAgentConnectionWalletModel, credential_cbor: String, format: String, credentialType: String? = "", addedDate: String? = "")  -> CustomWalletRecordCertModel{
         var customWalletModel = CustomWalletRecordCertModel.init()
         let sectionStruct = createSectionStruct(credential: credential_cbor)
         var docType = String()
@@ -365,11 +365,11 @@ class MDOCParser {
             let section4 = extractPDA1SectionsFromCbor(credential: credential_cbor).3
             let section5 = extractPDA1SectionsFromCbor(credential: credential_cbor).4
             let section6 = extractPDA1SectionsFromCbor(credential: credential_cbor).5
-            return OpenIdPDA1Parser.shared.createPDAWithResponse(section1, section2, section3, section4, section5, section6, customWalletModel, connectionModel, credential_cbor, searchableText: credentialType ?? "")
+            return OpenIdPDA1Parser.shared.createPDAWithResponse(section1, section2, section3, section4, section5, section6, customWalletModel, connectionModel, credential_cbor, searchableText: credentialType ?? "", addedDate: addedDate)
         }  else if let title = sectionStruct.first?.title, title.contains("photoid") || docType.contains("photoid") {
             let isoSection = extractPhotoIDSectionFromCbor(credential: credential_cbor).0
             let photoIDSection = extractPhotoIDSectionFromCbor(credential: credential_cbor).1
-            return PhotoIDParser.shared.createPhotoIDWithResponse(dict: [:], customWalletModel: customWalletModel, credential_jwt: credential_cbor, format: format, connectionModel: connectionModel, photoID: photoIDSection, iso: isoSection) ?? CustomWalletRecordCertModel()
+            return PhotoIDParser.shared.createPhotoIDWithResponse(dict: [:], customWalletModel: customWalletModel, credential_jwt: credential_cbor, format: format, connectionModel: connectionModel, photoID: photoIDSection, iso: isoSection, addedDate: addedDate) ?? CustomWalletRecordCertModel()
         }
         else {
             let attributes = EBSIWallet.shared.convertToOutputFormat(data : extractValues(credential: credential_cbor).0)
@@ -385,6 +385,7 @@ class MDOCParser {
                     break
                 }
             }
+            customWalletModel.addedDate = addedDate
             customWalletModel.attributes = attributeStructure
             customWalletModel.sectionStruct = sectionStruct
             customWalletModel.referent = nil

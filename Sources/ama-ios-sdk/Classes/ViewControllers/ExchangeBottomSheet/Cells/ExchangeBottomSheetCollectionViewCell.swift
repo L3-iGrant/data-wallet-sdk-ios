@@ -60,7 +60,7 @@ final class ExchangeBottomSheetCollectionViewCell: UICollectionViewCell,UITableV
         case .general:
             tableView.register(cellType: CovidValuesRowTableViewCell.self)
             tableView.register(cellType: ValuesRowImageTableViewCell.self)
-            
+            tableView.register(cellType: IssuanceTimeTableViewCell.self)
         case .multipleInputDescriptor:
             tableView.register(cellType: CovidValuesRowTableViewCell.self)
             tableView.register(cellType: ValuesRowImageTableViewCell.self)
@@ -88,17 +88,29 @@ final class ExchangeBottomSheetCollectionViewCell: UICollectionViewCell,UITableV
         if let vc = self.superCollectionView?.delegate as? ExchangeDataPreviewBottomSheetVC {
             vc.updateCollectionViewHeight(cell: self)
         }
-//        else if let vc = self.superCollectionView?.delegate as? ExchangeSample {
-//            vc.updateCollectionViewHeight(cell: self)
-//        }
     }
-//
-//    override func layoutIfNeeded() {
-//        super.layoutIfNeeded()
-//        self.contentView.layoutIfNeeded()
-//        self.contentView.updateConstraintsIfNeeded()
-//    }
-//
+    
+    func getCertDetail(recordId: String,completion: @escaping(SearchItems_CustomWalletRecordCertModel?) -> Void) {
+        let walletHandler = WalletViewModel.openedWalletHandler ?? 0
+        AriesAgentFunctions.shared.openWalletSearch_type(walletHandler: walletHandler, type: AriesAgentFunctions.walletCertificates,searchType: .searchWithId, searchValue: recordId) {[weak self] (success, searchHandler, error) in
+            guard let strongSelf = self else { return}
+            AriesAgentFunctions.shared.fetchWalletSearchNextRecords(walletHandler: walletHandler, searchWalletHandler: searchHandler) { [weak self](fetched, response, error) in
+                guard let strongSelf = self else { return}
+                let responseDict = UIApplicationUtils.shared.convertToDictionary(text: response)
+                let certSearchModel = Search_CustomWalletRecordCertModel.decode(withDictionary: responseDict as NSDictionary? ?? NSDictionary()) as? Search_CustomWalletRecordCertModel
+                if certSearchModel?.totalCount == 0 {
+                    WalletRecord.shared.fetchAllCert { recordsModel in
+                        let selectedCert = recordsModel?.records?.first(where: { cert in
+                            cert.id == recordId
+                        })
+                        completion(selectedCert)
+                    }
+                } else {
+                    completion(certSearchModel?.records?.first)
+                }
+            }
+        }
+    }
     
 }
 
@@ -146,6 +158,11 @@ extension ExchangeBottomSheetCollectionViewCell {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch mode {
         case .general:
+            let totalSections = tableView.numberOfSections
+            let lastSectionIndex = totalSections - 1
+            if section == lastSectionIndex {
+                return 1
+            }
             if let EBSI_model = viewModel?.EBSI_credentials {
                 if EBSI_model.first?[index].value?.subType ==  EBSI_CredentialType.PDA1.rawValue {
                     return genericAttributeStructureViewNumberOfRowsInSection(section: section, model: EBSI_model.first?[index].value?.attributes, headerKey: EBSI_model.first?[index].value?.sectionStruct?[section].key ?? "")
@@ -224,6 +241,10 @@ extension ExchangeBottomSheetCollectionViewCell {
         //FIXME: add header here, take the title from input desprictor or card title
         switch mode {
             case .general:
+            let lastSection = tableView.numberOfSections - 1
+            if section == lastSection {
+                return nil
+            }
             if let model = viewModel?.EBSI_credentials?.first?[index].value, model.subType ==  EBSI_CredentialType.PDA1.rawValue {
                 headerName = model.sectionStruct?[safe: section]?.title?.uppercased() ?? ""
                 return genericAttributeStructureViewForHeaderInSection(section: section, model: model.sectionStruct?[section])
@@ -279,12 +300,12 @@ extension ExchangeBottomSheetCollectionViewCell {
                 case EBSI_CredentialType.Diploma.rawValue:
                     return 3
                 case EBSI_CredentialType.PDA1.rawValue:
-                    return genericAttributeStructureViewNumberOfSections(mode: .exchange, headers: EBSI_model.first?[index].value?.sectionStruct ?? [])
+                    return genericAttributeStructureViewNumberOfSections(mode: .exchange, headers: EBSI_model.first?[index].value?.sectionStruct ?? []) + 1
                 default:
-                    return 1
+                    return 2
                 }
             } else {
-                return 1
+                return 2
             }
         case .multipleInputDescriptor:
             if let records = viewModel?.EBSI_credentials?.first {
@@ -311,6 +332,36 @@ extension ExchangeBottomSheetCollectionViewCell {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch mode {
             case .general:
+            let totalSections = tableView.numberOfSections
+            let lastSectionIndex = totalSections - 1
+            if indexPath.section == lastSectionIndex {
+                let cell = tableView.dequeueReusableCell(with: IssuanceTimeTableViewCell.self, for: indexPath)
+                cell.selectionStyle = .none
+                cell.timeLabel.font = UIFont.systemFont(ofSize: 10)
+                let dateFormat = DateFormatter.init()
+                if let unixTimestamp = TimeInterval(viewModel?.EBSI_credentials?.first?[index].value?.addedDate ?? "") {
+                    let date = Date(timeIntervalSince1970: unixTimestamp)
+                    dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    let dateString = dateFormat.string(from: date)
+                    let formattedDate = dateFormat.date(from: dateString)
+                   
+                    cell.setData(text: formattedDate?.timeAgoDisplay() ?? "", isFromExpired: false)
+                } else {
+                    if let id = viewModel?.allItemsIncludedGroups[index].id, !id.isEmpty {
+                        self.getCertDetail(recordId: id, completion: { cert in
+                            if let addedDate = cert?.value?.addedDate,   let unixTimestamp = TimeInterval(addedDate) {
+                                let date = Date(timeIntervalSince1970: unixTimestamp)
+                                dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                                let dateString = dateFormat.string(from: date)
+                                let formattedDate = dateFormat.date(from: dateString)
+                               
+                                cell.setData(text: formattedDate?.timeAgoDisplay() ?? "", isFromExpired: false)
+                            }
+                        })
+                    }
+                }
+                return cell
+            }
             if viewModel?.EBSI_credentials?.first?[index].value?.subType == EBSI_CredentialType.PDA1.rawValue {
                 let cell = genericAttributeStructureTableView(tableView, cellForRowAt: indexPath, model: viewModel?.EBSI_credentials?.first?[index].value?.attributes ?? [:], blurStatus: showValues, headerKey: viewModel?.EBSI_credentials?.first?[index].value?.sectionStruct?[indexPath.section].key ?? "")
                 cell.layoutIfNeeded()
