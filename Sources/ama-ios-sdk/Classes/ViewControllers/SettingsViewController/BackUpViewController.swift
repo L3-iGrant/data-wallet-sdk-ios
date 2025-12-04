@@ -215,7 +215,7 @@ class BackUpViewController: UIViewController, UITextFieldDelegate, NavigationHan
                 formattedDate = formatter.string(from: date)
             }
             DispatchQueue.main.async {
-                strongSelf.lastBackUpText.text = "backup_and_restore_last_backup".localize + ": " + (formattedDate ?? "")
+                strongSelf.lastBackUpText.text = "backup_and_restore_last_backup".localizedForSDK() + ": " + (dateString ?? "")
             }
         }
     }
