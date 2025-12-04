@@ -120,7 +120,7 @@ extension CertificateViewController {
                 view.tapAction = { [weak self] in
                     self?.deleteAction()
                 }
-                view.value = "data_remove_data_card".localized()
+                view.value = "data_remove_data_card".localizedForSDK()
                 if let color = viewModel.photoID?.display?.textColor {
                     view.layerColor = UIColor(hex: color)
                 }
@@ -134,7 +134,7 @@ extension CertificateViewController {
                 view.tapAction = { [weak self] in
                     self?.deleteAction()
                 }
-                view.value = "data_remove_data_card".localized()
+                view.value = "data_remove_data_card".localizedForSDK()
                 return view
             } else {
                 return nil
@@ -184,7 +184,7 @@ extension CertificateViewController {
         switch section {
         case 1, 5:
             let view = GeneralTitleView.init()
-            view.value = section == 1 ? "cards_photo_id_detail".localized().uppercased() : "issued_by".localized().uppercased()
+            view.value = section == 1 ? "cards_photo_id_detail".localizedForSDK().uppercased() : "issued_by".localizedForSDK().uppercased()
             if let color = viewModel.photoID?.display?.textColor {
                 view.lbl.textColor = UIColor(hex: color)
             }

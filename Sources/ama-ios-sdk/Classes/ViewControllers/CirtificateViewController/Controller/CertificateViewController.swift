@@ -143,24 +143,29 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
         switch pageType {
         case .passport(isScan: let isScan):
             let passportModel = self.viewModel.passport.passportModel
-            self.title = "cards_passport_detail".localized()
+            self.title = "cards_passport_detail".localizedForSDK()
             self.viewModel.passport.pageDelegate = self
             if let passportModel = passportModel {
                 self.viewModel.passport.loadData(model: passportModel)
             }
-            if isScan {
-                addRightBarButtonWithSkip()
+            if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
+                self.bottomSheetHeaderView.bottomSheetDelegate = self
+                self.bottomSheetHeaderView.hideOrgDetailsView()
+            } else {
+                if isScan {
+                    addRightBarButtonWithSkip()
+                }
             }
         case .aadhar:
             self.viewModel.aadhar?.pageDelegate = self
-            self.title = "cards_aadhar_details".localized()
-            scanHeader.titleLbl.text = "cards_unique_identification_authority_of_india".localized()
-            scanHeader.subLbl.text = "certificate_government_of_india".localized()
+            self.title = "cards_aadhar_details".localizedForSDK()
+            scanHeader.titleLbl.text = "cards_unique_identification_authority_of_india".localizedForSDK()
+            scanHeader.subLbl.text = "certificate_government_of_india".localizedForSDK()
             scanHeader.btnImage = self.viewModel.aadhar?.QRCodeImage
         case .pkPass:
             self.viewModel.pkPass?.pageDelegate = self
             self.viewModel.pkPass?.getIDCardAttributesArray()
-            self.title = self.viewModel.pkPass?.getPKPassType() ?? "PKPASS".localized()
+            self.title = self.viewModel.pkPass?.getPKPassType() ?? "PKPASS".localizedForSDK()
             
             if PKPassLibrary.isPassLibraryAvailable() {
                 let wallet = PKPassLibrary()
@@ -202,10 +207,15 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
             }
         case .photoId(isScan: let isScan):
             let photoIDModel = self.viewModel.photoID?.photoIDCredential
-            self.title = "cards_photo_id_detail".localized()
+            self.title = "cards_photo_id_detail".localizedForSDK()
             self.viewModel.photoID?.pageDelegate = self
-            if isScan {
-                addRightBarButtonWithSkip()
+            if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
+                self.bottomSheetHeaderView.bottomSheetDelegate = self
+                self.bottomSheetHeaderView.hideOrgDetailsView()
+            } else {
+                if isScan {
+                    addRightBarButtonWithSkip()
+                }
             }
             if let photoIDModel = photoIDModel {
                 self.viewModel.photoID?.loadData(model: photoIDModel)
@@ -281,15 +291,31 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
     
     private func renderUIForPassport(isScan: Bool) {
         if isScan {
-            view.tupleViews(views: tableView, nextButton)
-            nextButton.addAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 25, width: 190, height: 60, centerX: view.centerXAnchor)
-            nextButton.delegate = self
-            nextButton.title(lbl: "read_next".localized())
+            if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
+                view.tupleViews(views: bottomSheetHeaderView, tableView, nextButton)
+                bottomSheetHeaderView.addAnchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
+                tableView.addAnchor(top: bottomSheetHeaderView.bottomAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
+                nextButton.addAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 25, width: 190, height: 60, centerX: view.centerXAnchor)
+                nextButton.delegate = self
+                nextButton.title(lbl: "read_next".localizedForSDK())
+            } else {
+                view.tupleViews(views: tableView, nextButton)
+                nextButton.addAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 25, width: 190, height: 60, centerX: view.centerXAnchor)
+                nextButton.delegate = self
+                nextButton.title(lbl: "read_next".localizedForSDK())
+                tableView.addAnchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
+            }
         } else {
-            view.addSubview(tableView)
+            if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
+                view.tupleViews(views: bottomSheetHeaderView, tableView)
+                bottomSheetHeaderView.addAnchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
+                tableView.addAnchor(top: bottomSheetHeaderView.bottomAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
+            } else {
+                view.addSubview(tableView)
+                tableView.addAnchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
+            }
         }
         updateCustomNavigationBar()
-        tableView.addAnchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
         tableView.register(cellType: CovidValuesRowTableViewCell.self)
         tableView.register(cellType: SignImageTableViewCell.self)
         tableView.register(cellType: IssuanceTimeTableViewCell.self)
@@ -297,15 +323,31 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
     
     private func renderUIForPhotoID(isScan: Bool) {
         if isScan {
-            view.tupleViews(views: tableView, nextButton)
-            nextButton.addAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 25, width: 190, height: 60, centerX: view.centerXAnchor)
-            nextButton.delegate = self
-            nextButton.title(lbl: "read_next".localized())
+            if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
+                view.tupleViews(views: bottomSheetHeaderView, tableView, nextButton)
+                bottomSheetHeaderView.addAnchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
+                tableView.addAnchor(top: bottomSheetHeaderView.bottomAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
+                nextButton.addAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 25, width: 190, height: 60, centerX: view.centerXAnchor)
+                nextButton.delegate = self
+                nextButton.title(lbl: "read_next".localizedForSDK())
+            } else {
+                view.tupleViews(views: tableView, nextButton)
+                nextButton.addAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 25, width: 190, height: 60, centerX: view.centerXAnchor)
+                nextButton.delegate = self
+                nextButton.title(lbl: "read_next".localizedForSDK())
+                tableView.addAnchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
+            }
         } else {
-            view.addSubview(tableView)
+            if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
+                view.tupleViews(views: bottomSheetHeaderView, tableView)
+                bottomSheetHeaderView.addAnchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
+                tableView.addAnchor(top: bottomSheetHeaderView.bottomAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
+            } else {
+                view.addSubview(tableView)
+                tableView.addAnchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
+            }
         }
         updateCustomNavigationBar()
-        tableView.addAnchor(top: view.safeAreaLayoutGuide.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
         tableView.register(cellType: CovidValuesRowTableViewCell.self)
         tableView.register(cellType: SignImageTableViewCell.self)
         tableView.register(cellType: IssuanceTimeTableViewCell.self)
@@ -319,7 +361,7 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
             scanHeader.addAnchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: 70)
             tableView.addAnchor(top: scanHeader.bottomAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
             nextButton.addAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 25, width: 190, height: 60, centerX: view.centerXAnchor)
-            nextButton.title(lbl: "read_next".localized())
+            nextButton.title(lbl: "read_next".localizedForSDK())
             nextButton.delegate = self
             scanHeader.delegate = self
         } else {
@@ -340,7 +382,7 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
             tableView.addAnchor(top: pkPassHeaderView.bottomAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
             nextButton.addAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 25, width: 190, height: 60, centerX: view.centerXAnchor)
             nextButton.delegate = self
-            nextButton.title(lbl: "read_next".localized())
+            nextButton.title(lbl: "read_next".localizedForSDK())
         } else {
             view.tupleViews(views: pkPassHeaderView, tableView)
             pkPassHeaderView.addAnchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: 150)
@@ -361,14 +403,14 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
                 tableView.addAnchor(top: bottomSheetHeaderView.bottomAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
                 nextButton.addAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 25, width: 190, height: 60, centerX: view.centerXAnchor)
                 nextButton.delegate = self
-                nextButton.title(lbl: "read_next".localized())
+                nextButton.title(lbl: "read_next".localizedForSDK())
             } else {
                 view.tupleViews(views: connectionHeaderView, tableView, nextButton)
                 connectionHeaderView.addAnchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
                 tableView.addAnchor(top: connectionHeaderView.bottomAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
                 nextButton.addAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 25, width: 190, height: 60, centerX: view.centerXAnchor)
                 nextButton.delegate = self
-                nextButton.title(lbl: "read_next".localized())
+                nextButton.title(lbl: "read_next".localizedForSDK())
             }
         } else {
             if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
@@ -408,7 +450,7 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
         // Floating button on bottom
         nextButton.addAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 25, width: 190, height: 60, centerX: view.centerXAnchor)
         nextButton.delegate = self
-        nextButton.title(lbl: "general_confirm".localized())
+        nextButton.title(lbl: "general_confirm".localizedForSDK())
     }
     
     func footerView() -> UIView {
@@ -418,7 +460,7 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
         dataAgreementButton.frame = CGRect.init(x: 15, y: 20, width: width - 30, height: 45)
         dataAgreementButton.backgroundColor = .white
         dataAgreementButton.layer.cornerRadius = 10
-        dataAgreementButton.setTitle("certificate_data_agreement_policy".localized(), for: .normal)
+        dataAgreementButton.setTitle("certificate_data_agreement_policy".localizedForSDK(), for: .normal)
         dataAgreementButton.setTitleColor(.darkGray, for: .normal)
         dataAgreementButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         dataAgreementButton.contentHorizontalAlignment = .left
@@ -462,7 +504,7 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
             tableView.addAnchor(top: connectionHeaderView.bottomAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
             nextButton.addAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 25, width: 190, height: 60, centerX: view.centerXAnchor)
             nextButton.delegate = self
-            nextButton.title(lbl: "general_accept".localized())
+            nextButton.title(lbl: "general_accept".localizedForSDK())
         } else {
             view.tupleViews(views: connectionHeaderView, tableView)
            // connectionHeaderView.setCoverImageHeight()
@@ -559,7 +601,7 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
             addCustomBackTabIcon()
             addCustomEyeTabIcon()
         case .multipleTypeCards:
-            self.navHandler.vc.title = "Data Agreemennt".localized()
+            self.navHandler.vc.title = "general_data_agreement".localizedForSDK()
         case .passport(isScan: true), .photoId(isScan: true):
             addCustomBackTabIcon()
             addRightBarButtonWithSkip()
@@ -639,7 +681,7 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
     }
     
     func deleteAction() {
-        if viewMode == .BottomSheet {
+        if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
             AlertHelper.shared.askConfirmationFromBottomSheet(on: self, message: "connect_are_you_sure_you_want_to_delete_this_item".localizedForSDK(), btn_title: ["general_yes".localizedForSDK(), "general_no".localizedForSDK()], completion: { [weak self] row in
                 switch row {
                 case 0:
@@ -685,7 +727,7 @@ final class CertificateViewController: AriesBaseViewController, CustomNavigation
         if let bgColor = self.viewModel.pkPass?.bgColor {
             self.view.backgroundColor = bgColor
         }
-        self.title = self.viewModel.pkPass?.getPKPassType() ?? "PKPASS".localized()
+        self.title = self.viewModel.pkPass?.getPKPassType() ?? "PKPASS".localizedForSDK()
         if let model = self.viewModel.pkPass {
             pkPassHeaderView.setData(model: model)
         }
@@ -758,11 +800,11 @@ extension CertificateViewController: PaymentCardCollectionViewCellDelegate {
         if let expiredDate = pwaCertificates?.records?[selectedPWAIndex].value?.expiredTime, viewModel.pwaCert?.isFromExpired == true {
             pwaIssuedDateView.expiredOrRevokedLabel.isHidden = false
             let formattedDate = dateFormat.date(from:  expiredDate) ?? dateFormat2.date(from:  expiredDate)
-            pwaIssuedDateView.expiredOrRevokedLabel.text = "expired_at".localized() + "\(formattedDate?.timeAgoDisplay() ?? "")"
+            pwaIssuedDateView.expiredOrRevokedLabel.text = "expired_at".localizedForSDK() + "\(formattedDate?.timeAgoDisplay() ?? "")"
         } else if let revokedDate = pwaCertificates?.records?[selectedPWAIndex].value?.revokedTime, viewModel.pwaCert?.isFromExpired == true{
             pwaIssuedDateView.expiredOrRevokedLabel.isHidden = false
             let formattedDate = dateFormat.date(from:  revokedDate) ?? dateFormat.date(from:  revokedDate)
-            pwaIssuedDateView.expiredOrRevokedLabel.text = "revoked_at".localized() +  "\(formattedDate?.timeAgoDisplay() ?? "")"
+            pwaIssuedDateView.expiredOrRevokedLabel.text = "revoked_at".localizedForSDK() +  "\(formattedDate?.timeAgoDisplay() ?? "")"
         }
         if let unixTimestamp = TimeInterval(pwaCertificates?.records?[selectedPWAIndex].value?.addedDate ?? "" ) {
             let date = Date(timeIntervalSince1970: unixTimestamp)

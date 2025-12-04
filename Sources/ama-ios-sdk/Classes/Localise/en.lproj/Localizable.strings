@@ -353,5 +353,24 @@
 "Allow <org name> to connect with you" = "Allow <org name> to connect with you";
 "pwa_payment_confirmed" = "PAYMENT CONFIRMED";
 "payment_being_made_to" = "PAYMENT BEING MADE TO";
-
-
+"payment_additional_data_requests" = "ADDITIONAL DATA REQUESTS:";
+"cards_photo_id_detail" = "Photo ID";
+"pwa_payment_cards" = "Payment Cards";
+"connection_unexpected_error_please_try_again" = "Unexpected error. Please try again.";
+"error_jwt_token_expired" = "JWT token expired";
+"error_jwt_signature_invalid" = "JWT signature is invalid";
+"error_jwt_signature_invalid_with_type" = "JWT signature <type> is invalid or cannot be validated";
+"did_shared_successfully" = "DID has been shared successfully";
+"pwa_bank_account" = "BANK ACCOUNT";
+"ebsi_pin_required_desc" = "EBSI need to authorize the request before issuing the certificate. Please enter the PIN to continue and receive the credential";
+"revoked_at" = "Revoked: ";
+"expired_at" = "Expired: ";
+"general_copy" = "Copy";
+"general_share" = "Share";
+"general_done" = "Done";
+"ebsi_multiple_cards_requested" = "Multiple data cards requested.";
+"cards_passport_detail" = "Passport Detail";
+"read_next" = "Next";
+"welcome_data_source" = "Data Source";
+"welcome_data_using_service" = "Data Using Service";
+"cards_aadhar_details" = "Aadhar Details";

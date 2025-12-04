@@ -161,6 +161,7 @@ final class CovidValuesRowTableViewCell: UITableViewCell {
         } else {
             blurView.text = "NA"
         }
+        disableCheckBox()
         blurView.blurStatus = blurStatus
     }
     

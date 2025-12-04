@@ -28,7 +28,7 @@ final class PaymentVerificationTableViewCell: UITableViewCell {
     
     
     func configureCell(model: PaymentDataConfirmationMySharedDataViewModel?) {
-        paidToLabel.text =  "pwa_paid_to".localized().uppercased()
+        paidToLabel.text =  "pwa_paid_to".localizedForSDK().uppercased()
         if model?.history?.value?.history?.connectionModel?.value?.orgDetails?.name != model?.history?.value?.history?.transactionData?.paymentData?.payee {
             payeeName.text = model?.history?.value?.history?.transactionData?.paymentData?.payee
             payeeLocation.text = "via \(model?.history?.value?.history?.connectionModel?.value?.orgDetails?.name ?? "")"

@@ -314,6 +314,24 @@
 "verification_additional_data_requested_confirm_to_proceed" = "Lisätietoja on pyydetty. Jatka napsauttamalla Vahvista.";
 "pwa_payment_confirmed" = "PAYMENT CONFIRMED";
 "payment_being_made_to" = "PAYMENT BEING MADE TO";
-
-
-
+"payment_additional_data_requests" = "LISÄTIETOJEN PYYNTÖ:";
+"cards_photo_id_detail" = "Photo ID";
+"pwa_payment_cards" = "Maksukortit";
+"connection_unexpected_error_please_try_again" = "Odottamaton virhe. Yritä uudelleen";
+"error_jwt_token_expired" = "JWT-tunnus on vanhentunut";
+"error_jwt_signature_invalid" = "JWT-allekirjoitus on virheellinen";
+"error_jwt_signature_invalid_with_type" = "JWT-allekirjoitus <tyyppi> on virheellinen tai sitä ei voida vahvistaa.";
+"did_shared_successfully" = "DID on jaettu onnistuneesti";
+"pwa_bank_account" = "PANKITILI";
+"ebsi_pin_required_desc" = "EBSI:n on hyväksyttävä pyyntö ennen varmenteen myöntämistä. Anna PIN-koodi jatkaaksesi ja saadaksesi todistuksen.";
+"revoked_at" = "Peruutettu: ";
+"expired_at" = "Vanhentunut: ";
+"general_copy" = "Kopioi";
+"general_share" = "Jaa";
+"general_done" = "Done";
+"ebsi_multiple_cards_requested" = "Pyydetty useita datakortteja.";
+"cards_passport_detail" = "Passin tiedot";
+"read_next" = "Seuraava";
+"welcome_data_source" = "Tietolähde";
+"welcome_data_using_service" = "Tietoja käyttävä palvelu";
+"cards_aadhar_details" = "Aadhar Details";

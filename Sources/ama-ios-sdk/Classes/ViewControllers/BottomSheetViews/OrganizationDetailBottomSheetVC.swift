@@ -382,7 +382,7 @@ extension OrganizationDetailBottomSheetVC: UITableViewDelegate, UITableViewDataS
                     return nil
                 }
                 view.setLeftPadding(padding: 20)
-                view.value = name?.localized().localizedUppercase ?? ""
+                view.value = name?.localizedForSDK().localizedUppercase ?? ""
                 return view
             case tableView.numberOfSections - 1: return nil
             default:
@@ -467,7 +467,7 @@ extension OrganizationDetailBottomSheetVC: UITableViewDelegate, UITableViewDataS
                     return view
                 }
                 view.setLeftPadding(padding: 20)
-                view.value = name?.localized().localizedUppercase ?? ""
+                view.value = name?.localizedForSDK().localizedUppercase ?? ""
                 // Setting text color based on credential branding
                 if let textColor = viewModel?.history?.value?.history?.display?.textColor {
                     view.lbl.textColor = UIColor(hex: textColor)

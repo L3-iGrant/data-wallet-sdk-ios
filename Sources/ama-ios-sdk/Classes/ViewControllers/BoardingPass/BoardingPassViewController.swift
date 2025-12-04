@@ -57,7 +57,7 @@ final class BoardingPassViewController: UIViewController, CustomNavigationBarIco
             buttonView.isHidden = true
             buttonViewHeight.constant = 0
         }
-        self.title = "Boarding Pass".localized()
+        self.title = "Boarding Pass".localizedForSDK()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -515,7 +515,7 @@ extension BoardingPassViewController : UITableViewDelegate, UITableViewDataSourc
             if let color = viewModel.certModel?.value?.textColor {
                 view.layerColor = UIColor(hex: color)
             }
-            view.value = "data_remove_data_card".localized()
+            view.value = "data_remove_data_card".localizedForSDK()
             return view
         } else {
             return nil

@@ -86,7 +86,14 @@ extension WalletHomeViewController: WalletHomeViewControllerDelegate, WalletHome
                 let vc = CertificateViewController(pageType: .passport(isScan: false))
                 vc.viewModel.passport.passportModel = cert.value?.passport
                 vc.viewModel.passport.recordId = cert.id ?? ""
-                self.push(vc: vc)
+                if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
+                    let sheetVC = WalletHomeBottomSheetViewController(contentViewController: vc)
+                    if let topVC = UIApplicationUtils.shared.getTopVC() {
+                        present(sheetVC, animated: true, completion: nil)
+                    }
+                } else {
+                    self.push(vc: vc)
+                }
                 
             case SelfAttestedCertTypes.pkPass.rawValue:
                 if let pkPassData = cert.value?.pkPass?.pkPass {
@@ -234,7 +241,14 @@ extension WalletHomeViewController: WalletHomeViewControllerDelegate, WalletHome
                         vc.viewModel.photoID?.display = Display(mName: "", mLocation: "", mLocale: "", mDescription: "", mCover: DisplayCover(mUrl: "", mAltText: ""), mLogo:  DisplayCover(mUrl: "", mAltText: ""), mBackgroundColor: cert.value?.backgroundColor, mTextColor: cert.value?.textColor)
                         vc.viewModel.photoID?.orgInfo = cert.value?.connectionInfo?.value?.orgDetails
                         vc.viewModel.photoID?.recordId = cert.id ?? ""
-                        self.push(vc: vc)
+                        if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
+                            let sheetVC = WalletHomeBottomSheetViewController(contentViewController: vc)
+                            if let topVC = UIApplicationUtils.shared.getTopVC() {
+                                present(sheetVC, animated: true, completion: nil)
+                            }
+                        } else {
+                            self.push(vc: vc)
+                        }
                     }
                 
             } else {

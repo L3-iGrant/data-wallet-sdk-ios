@@ -87,7 +87,7 @@ final class PaymentAdditionalDetailsCVC: UICollectionViewCell {
         let button = UIButton(type: .custom)
         button.backgroundColor = .white
         button.layer.cornerRadius = 10
-        button.setTitle("certificate_data_agreement_policy".localized(), for: .normal)
+        button.setTitle("certificate_data_agreement_policy".localizedForSDK(), for: .normal)
         button.setTitleColor(.darkGray, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.contentHorizontalAlignment = .left
