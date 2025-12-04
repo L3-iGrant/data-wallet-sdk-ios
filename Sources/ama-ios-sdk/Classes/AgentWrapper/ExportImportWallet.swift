@@ -50,7 +50,7 @@ class ExportImportWallet: NSObject {
     }
     
     func exportWallet(type: ExportWalletType, completion: @escaping((Bool) -> ())){
-        UIApplicationUtils.showLoader(message: "Exporting...".localized())
+        UIApplicationUtils.showLoader(message: "Exporting...".localizedForSDK())
         
         let walletHandler = WalletViewModel.openedWalletHandler ?? IndyHandle()
         let fileManager = FileManager.default
@@ -171,31 +171,32 @@ class ExportImportWallet: NSObject {
         debugPrint("Show loader started")
         let url = getDownloadedFileFor(URL.init(fileURLWithPath: path))
         let tempDocURL = FileManager.default.temporaryDirectory
-        let tempBackUpFile = tempDocURL.appendingPathComponent("\(Int(Date().timeIntervalSince1970))")
+        let tempBackUpFile = tempDocURL.appendingPathComponent("\(AgentWrapper.shared.getCurrentDateTime(format: "dd-MM-yyyy,hhmmss"))")
         do {
             try FileManager.default.copyItem(at: url, to: tempBackUpFile)
             let auth = AuthIdModel()
             let config = auth.config
             let credentials = auth.cred
             let configJson = ["path": tempBackUpFile.path, "key": "datawallet"]
-            AgentWrapper.shared.importWallet(withConfig: config, credentials: credentials, importConfigJson: configJson.toString() ?? "") { error in
-                UIApplicationUtils.hideLoader()
-                defer{
-                    url.stopAccessingSecurityScopedResource()
+            AriesMobileAgent.shared.deleteWallet(completion: { success in
+                if success ?? false {
+                    DataPodsUtils.shared.clearData()
+                    AgentWrapper.shared.importWallet(withConfig: config, credentials: credentials, importConfigJson: configJson.toString() ?? "") { error in
+                        UIApplicationUtils.hideLoader()
+                        defer{
+                            url.stopAccessingSecurityScopedResource()
+                        }
+                        if error?._code != 0 {
+                            debugPrint("failed")
+                            completion(false)
+                            return
+                        }else{
+                            debugPrint("success")
+                            completion(true)
+                        }
+                    }
                 }
-                if error?._code != 0 {
-                    debugPrint("failed")
-                    //                        UIApplicationUtils.showErrorSnackbar(message: "Importing failed")
-                    completion(false)
-                    return
-                }else{
-                    debugPrint("success")
-                    completion(true)
-                    //                if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
-                    //                    appDelegate.resetWallet()
-                    //                }
-                }
-            }
+            })
         }catch{
             UIApplicationUtils.hideLoader()
             debugPrint(error.localizedDescription)
