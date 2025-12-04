@@ -284,14 +284,14 @@ final class CertificatePreviewBottomSheet: UIViewController, NavigationHandlerPr
                 verifiedImageView.image = "gpp_good".getImage()
                 verifiedImageView.tintColor = UIColor(hex: "1EAA61")
                 trustedServiceLabel.textColor = UIColor(hex: "1EAA61")
-                trustedServiceLabel.text = "Trusted Service Provider".localized()
+                trustedServiceLabel.text = "general_trusted_service_provider".localizedForSDK()
             } else {
                 trustedIssuerStackView.isHidden = false
                 companyLocation.isHidden = true
                 verifiedImageView.image = "gpp_bad".getImage()
                 verifiedImageView.tintColor = .systemRed
                 trustedServiceLabel.textColor = .systemRed
-                trustedServiceLabel.text = "Untrusted Service Provider".localized()
+                trustedServiceLabel.text = "general_untrusted_service_provider".localizedForSDK()
             }
         } else {
             if viewModel?.certDetail != nil {

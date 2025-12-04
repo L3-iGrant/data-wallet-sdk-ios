@@ -51,7 +51,7 @@ extension EBSIWallet {
             let did = await WalletUnitAttestationService().createDIDforWUA(keyHandler: keyHandler)
             let result = await verificationHandler?.processOrSendAuthorizationResponse(did: did, presentationRequest: presentationRequest, credentialsList: [], wua: "", pop: "")
             if result?.error == nil {
-                UIApplicationUtils.showSuccessSnackbar(message: "did_shared_successfully".localized())
+                UIApplicationUtils.showSuccessSnackbar(message: "did_shared_successfully".localizedForSDK())
             }
         } else {
             DispatchQueue.main.async {

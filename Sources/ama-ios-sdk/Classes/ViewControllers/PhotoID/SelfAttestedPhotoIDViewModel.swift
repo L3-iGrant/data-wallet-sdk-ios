@@ -37,7 +37,7 @@ final class SelfAttestedPhotoIDViewModel {
                         UIApplicationUtils.showErrorSnackbar(message: "Not able to save ID card".localized())
                     } else {
                         //self?.pageDelegate?.idCardSaved()
-                        UIApplicationUtils.showSuccessSnackbar(message: "read_card_successfully_added_to_your_data_wallet".localized())
+                        UIApplicationUtils.showSuccessSnackbar(message: "read_card_successfully_added_to_your_data_wallet".localizedForSDK())
                         NotificationCenter.default.post(name: Constants.reloadWallet, object: nil)
                     }
                     completion(success)

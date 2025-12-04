@@ -117,7 +117,7 @@ class ConnectionDetailHeaderView: UIView {
         logoBgBtn.layer.cornerRadius =  logoBgBtn.frame.size.height/2
         
         let organisation = model.orgInfo?.name ?? (model.certModel?[0].value?.connectionInfo?.value?.theirLabel ?? "")
-        let locationAndDesc = NSMutableAttributedString().normal( "ebsi_multiple_cards_requested".localized() + " " + "connect_by_choosing_confirm_you_agree_to_the_requested_data_to_org_name".localized()).bold(" " + organisation + "\n")
+        let locationAndDesc = NSMutableAttributedString().normal( "ebsi_multiple_cards_requested".localizedForSDK() + " " + "connect_by_choosing_confirm_you_agree_to_the_requested_data_to_org_name".localizedForSDK()).bold(" " + organisation + "\n")
         self.locationLbl.numberOfLines = 0
         self.locationLbl.attributedText = locationAndDesc
         

@@ -36,6 +36,19 @@ class BottomSheetHeaderView: UIView {
     
     @IBOutlet weak var eyeButton: UIButton!
     
+    @IBOutlet weak var imageParentView: UIView!
+    
+    @IBOutlet weak var stackView: UIStackView!
+    
+    @IBOutlet weak var cerNameViewBottomSpace: NSLayoutConstraint!
+    
+    @IBOutlet weak var certNameViewTopSpace: NSLayoutConstraint!
+    
+    @IBOutlet weak var imageParentViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
+    
+    
     weak var delegate: OrganizationHeaderDelegate?
     weak var bottomSheetDelegate: BottomSheetHeaderViewDelegate?
     var modelData: Any?
@@ -72,6 +85,14 @@ class BottomSheetHeaderView: UIView {
         }
     }
     
+    func hideOrgDetailsView() {
+        imageParentView.isHidden = true
+        stackView.isHidden = true
+        cerNameViewBottomSpace.constant = 0
+        certNameViewTopSpace.constant = 0
+        imageParentViewHeight.constant = 0
+        imageViewHeight.constant = 0
+    }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
         bottomSheetDelegate?.closeAction()

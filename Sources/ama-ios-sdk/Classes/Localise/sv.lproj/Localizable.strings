@@ -365,4 +365,24 @@
 
 "pwa_payment_confirmed" = "PAYMENT CONFIRMED";
 "payment_being_made_to" = "PAYMENT BEING MADE TO";
-
+"payment_additional_data_requests" = "Ytterligare begäran om data:";
+"cards_photo_id_detail" = "Foto-ID";
+"pwa_payment_cards" = "Betalkort";
+"connection_unexpected_error_please_try_again" = "Oväntat fel. Vänligen försök igen.";
+"error_jwt_token_expired" = "JWT token utgånget";
+"error_jwt_signature_invalid" = "JWT signatur ej giltig";
+"error_jwt_signature_invalid_with_type" = "JWT signatur <type> är ogiltig eller kan ej valideras.";
+"did_shared_successfully" = "DID har delats framgångsrikt";
+"pwa_bank_account" = "Bankkonto";
+"ebsi_pin_required_desc" = "EBSI måste godkänna begäran innan certifikatet utfärdas. Ange PIN-koden för att fortsätta och få certifikatet";
+"revoked_at" = "Återkallade: ";
+"expired_at" = "Utgångna: ";
+"general_copy" = "Kopiera";
+"general_share" = "Dela";
+"general_done" = "Klart";
+"ebsi_multiple_cards_requested" = "Flera datakort begärda.";
+"cards_passport_detail" = "Passinformation";
+"read_next" = "Nästa";
+"welcome_data_source" = "Datakälla";
+"welcome_data_using_service" = "Dataanvändare";
+"cards_aadhar_details" = "Aadhar Details";

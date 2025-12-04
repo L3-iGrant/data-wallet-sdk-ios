@@ -291,7 +291,7 @@ extension DataAgreementBottomSheetVC: UITableViewDelegate, UITableViewDataSource
             cell.didLabel.text = viewModel?.dataAgreement?.message?.body?.proofChain?[index].verificationMethod ?? ""
             let signature = viewModel?.dataAgreement?.message?.body?.proofChain?[index].proofValue ?? ""
             let attributedStringColor = [NSAttributedString.Key.foregroundColor : UIColor.lightGray];
-            let attributedString = NSMutableAttributedString.init(attributedString: NSAttributedString.init(string: "read_signature".localized() + ": "))
+            let attributedString = NSMutableAttributedString.init(attributedString: NSAttributedString.init(string: "read_signature".localizedForSDK() + ": "))
             attributedString.append(NSAttributedString(string: signature, attributes: attributedStringColor))
             cell.signatureLabel.attributedText = attributedString
         }
