@@ -443,7 +443,7 @@ public struct AriesMobileAgent {
         }
     }
     
-    public func initiateRestore(completion: @escaping (Bool) -> Void) {
+    public func initiateRestore(viewMode: ViewMode, completion: @escaping (Bool) -> Void) {
        
         let dataPodVC = RestoreDataPodViewController()
         dataPodVC.onRestoreCompleted = { [self] success in
@@ -451,7 +451,18 @@ public struct AriesMobileAgent {
                 completion(success)
             }
         }
-        navigateTo(dataPodVC)
+        UserDefaults.standard.set(viewMode.rawValue, forKey: "viewModeValue")
+        if getViewMode() == .BottomSheet {
+            let navContent = UINavigationController(rootViewController: dataPodVC)
+            let sheetVC = WalletHomeBottomSheetViewController(contentViewController: navContent)
+            navContent.setNavigationBarHidden(true, animated: false)
+            sheetVC.modalPresentationStyle = .overFullScreen
+            if let topVC = UIApplicationUtils.shared.getTopVC() {
+                topVC.present(sheetVC, animated: false, completion: nil)
+            }
+        } else {
+            navigateTo(dataPodVC)
+        }
     }
     
     public func showDataWalletConnectionsViewController(){

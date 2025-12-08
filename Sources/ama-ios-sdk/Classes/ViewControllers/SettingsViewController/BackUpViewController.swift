@@ -271,7 +271,7 @@ class BackUpViewController: UIViewController, UITextFieldDelegate, NavigationHan
             UIApplicationUtils.showErrorSnackbar(message: "Please enter username".localized())
             return
         }
-        DataPodsUtils.shared.userProvidedURL = dataPodUrlLabel.text ?? ""
+        DataPodsUtils.shared.userProvidedURL = dataPodUrlLabel.text?.lowercased() ?? ""
         
         ExportImportWallet.shared.exportWallet(type: .dataPods) {[weak self] success in
             guard let strongSelf = self else {return}

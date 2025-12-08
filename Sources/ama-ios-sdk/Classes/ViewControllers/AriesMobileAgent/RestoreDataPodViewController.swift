@@ -32,6 +32,17 @@ class RestoreDataPodViewController: UIViewController, UITextFieldDelegate, Navig
         nextButton.maskedCornerRadius = 23
         return nextButton
     }()
+
+    private let closeButton: UIButton = {
+        let config = UIImage.SymbolConfiguration(scale: .small)
+        let button = UIButton(type: .system)
+        let image = UIImage(systemName: "xmark", withConfiguration: config)
+        button.setImage(image, for: .normal)
+        button.layer.cornerRadius = 12.5
+        button.backgroundColor = UIColor(hex: "d1d2d9")
+        button.tintColor = .black
+        return button
+    }()
     
     override func loadView() {
         super.loadView()
@@ -41,7 +52,11 @@ class RestoreDataPodViewController: UIViewController, UITextFieldDelegate, Navig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateLeftBarButtonForSDK()
+        if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
+            setupBottomSheetHeader()
+        } else {
+            updateLeftBarButtonForSDK()
+        }
         view.backgroundColor = UIColor.appColor(.walletBg)
         self.navigationController?.navigationBar.isHidden = false
         setupKeyboardToolbar()
@@ -50,7 +65,11 @@ class RestoreDataPodViewController: UIViewController, UITextFieldDelegate, Navig
         title.textColor = .black
         title.font = UIFont.systemFont(ofSize: 25,weight: .bold)
         view.addSubview(title)
-        title.addAnchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor,paddingTop: topFullArea + 50, paddingLeft: 25, paddingRight: 25)
+        if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
+            title.addAnchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor,paddingTop: topFullArea, paddingLeft: 25, paddingRight: 25)
+        } else {
+            title.addAnchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor,paddingTop: topFullArea + 50, paddingLeft: 25, paddingRight: 25)
+        }
         
         //Subtitle
         let subTitle = UILabel()
@@ -91,9 +110,28 @@ class RestoreDataPodViewController: UIViewController, UITextFieldDelegate, Navig
     
     @objc func RestoreToDatapods() {
         if let podName = urlPreviewLabel.text, !podName.isEmpty {
-            DataPodsUtils.shared.userProvidedURL = podName
+            DataPodsUtils.shared.userProvidedURL = podName.lowercased()
             ImportPathFromDataPods()
         }
+    }
+    
+    private func setupBottomSheetHeader() {
+        view.addSubview(closeButton)
+        
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            closeButton.widthAnchor.constraint(equalToConstant: 25),
+            closeButton.heightAnchor.constraint(equalToConstant: 25)
+        ])
+        
+        closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
+    }
+    
+    @objc private func closeTapped() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     private func setupKeyboardToolbar() {
