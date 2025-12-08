@@ -700,7 +700,7 @@ extension EBSIWallet {
                                         if accessTokenResponse?.error != nil{
                                             DispatchQueue.main.async {
                                                 UIApplicationUtils.hideLoader()
-                                                UIApplicationUtils.showErrorSnackbar(message: accessTokenResponse?.error?.message ?? "connection_unexpected_error_please_try_again".localized())
+                                                UIApplicationUtils.showErrorSnackbar(message: accessTokenResponse?.error?.message ?? "connection_unexpected_error_please_try_again".localizedForSDK())
                                             }
                                         } else if accessTokenResponse?.accessToken == nil {
                                             UIApplicationUtils.hideLoader()
@@ -759,7 +759,7 @@ extension EBSIWallet {
 //                                                }
                                             } else {
                                                 UIApplicationUtils.hideLoader()
-                                                UIApplicationUtils.showErrorSnackbar(message: "connection_unexpected_error_please_try_again".localized())
+                                                UIApplicationUtils.showErrorSnackbar(message: "connection_unexpected_error_please_try_again".localizedForSDK())
                                                 return
                                             }
                                         } else {
@@ -770,7 +770,7 @@ extension EBSIWallet {
                                                       let url = URL(string: urlString),
                                                       UIApplication.shared.canOpenURL(url) else {
                                                     UIApplicationUtils.hideLoader()
-                                                    UIApplicationUtils.showErrorSnackbar(message: "connection_unexpected_error_please_try_again".localized())
+                                                    UIApplicationUtils.showErrorSnackbar(message: "connection_unexpected_error_please_try_again".localizedForSDK())
                                                     return
                                                 }
 //                                                if let authURL = URL(string: authorisationRespone?.data ?? "") {
@@ -789,7 +789,7 @@ extension EBSIWallet {
                                                           let url = URL(string: urlString),
                                                           UIApplication.shared.canOpenURL(url) else {
                                                         UIApplicationUtils.hideLoader()
-                                                        UIApplicationUtils.showErrorSnackbar(message: "connection_unexpected_error_please_try_again".localized())
+                                                        UIApplicationUtils.showErrorSnackbar(message: "connection_unexpected_error_please_try_again".localizedForSDK())
                                                         return
                                                     }
                                                     startWebAuthentication(url: url, redirectURI: webRedirectURI, authorisationResponeData: authorisationRespone?.data, authorisationResponeError: authorisationRespone?.error, codeVerifier: codeVerifier, tokenEndpoint: tokenEndpoint, authServerUrl: authServerUrl, jwkUri: authConfig.jwksURI, privateKey: privateKey, credentialOffer: credentialOffer, issuerConfig: issuerConfig)
@@ -837,7 +837,7 @@ extension EBSIWallet {
                     print("Authentication failed with error: \(error.localizedDescription)")
                     UIApplicationUtils.hideLoader()
                     UIApplicationUtils.showErrorSnackbar(
-                        message: "connection_unexpected_error_please_try_again".localized()
+                        message: "connection_unexpected_error_please_try_again".localizedForSDK()
                     )
                     return
                 }
@@ -924,13 +924,13 @@ extension EBSIWallet {
                                 )
                             }
                             catch ValidationError.JWTExpired {
-                                UIApplicationUtils.showErrorSnackbar(message: "error_jwt_token_expired".localized())
+                                UIApplicationUtils.showErrorSnackbar(message: "error_jwt_token_expired".localizedForSDK())
                                 UIApplicationUtils.hideLoader()
                             } catch ValidationError.signatureExpired {
-                                UIApplicationUtils.showErrorSnackbar(message: "error_jwt_signature_invalid".localized())
+                                UIApplicationUtils.showErrorSnackbar(message: "error_jwt_signature_invalid".localizedForSDK())
                                 UIApplicationUtils.hideLoader()
                             } catch ValidationError.invalidKID {
-                                let message = "error_jwt_signature_invalid_with_type".localized()
+                                let message = "error_jwt_signature_invalid_with_type".localizedForSDK()
                                 UIApplicationUtils.showErrorSnackbar(message: message.replacingOccurrences(of: "<type>", with: "x5c"))
                                 UIApplicationUtils.hideLoader()
                             }
@@ -974,7 +974,7 @@ extension EBSIWallet {
                 let messageText = generateCredentialMessage(credentialNames: credentialNames, isPWA: isPWA)
                 UIApplicationUtils.hideLoader()
                 DispatchQueue.main.async {
-                    UIApplicationUtils.showSuccessSnackbar(message: messageText.localized())
+                    UIApplicationUtils.showSuccessSnackbar(message: messageText.localizedForSDK())
                 }
             } else {
                 showAlertForDefferedType()
@@ -987,7 +987,7 @@ extension EBSIWallet {
     func showAlertForDefferedType() {
         UIApplicationUtils.hideLoader()
         DispatchQueue.main.async {
-            UIApplicationUtils.showSuccessSnackbar(message: "A request has been sent to the issuer. You will be notified once your request is processed.".localized())
+            UIApplicationUtils.showSuccessSnackbar(message: "A request has been sent to the issuer. You will be notified once your request is processed.".localizedForSDK())
         }
     }
     
@@ -1015,11 +1015,11 @@ extension EBSIWallet {
                             pollingHelper.removeDeferredCredentialRequestCacheList(acceptanceToken: defferedToken)
                         }
                         catch ValidationError.JWTExpired{
-                            UIApplicationUtils.showErrorSnackbar(message: "error_jwt_token_expired".localized())
+                            UIApplicationUtils.showErrorSnackbar(message: "error_jwt_token_expired".localizedForSDK())
                         } catch ValidationError.signatureExpired {
-                            UIApplicationUtils.showErrorSnackbar(message: "error_jwt_signature_invalid".localized())
+                            UIApplicationUtils.showErrorSnackbar(message: "error_jwt_signature_invalid".localizedForSDK())
                         } catch ValidationError.invalidKID {
-                            let message = "error_jwt_signature_invalid_with_type".localized()
+                            let message = "error_jwt_signature_invalid_with_type".localizedForSDK()
                             UIApplicationUtils.showErrorSnackbar(message: message.replacingOccurrences(of: "<type>", with: "x5c"))
                             UIApplicationUtils.hideLoader()
                         }
@@ -1080,7 +1080,7 @@ extension EBSIWallet {
             if let error = components?.queryItems?.first(where: { $0.name == "error" })?.value {
                 guard let errorDescription = components?.queryItems?.first(where: { $0.name == "error_description" })?.value else {
                     DispatchQueue.main.async {
-                        UIApplicationUtils.showErrorSnackbar(message: "connection_unexpected_error_please_try_again".localized())
+                        UIApplicationUtils.showErrorSnackbar(message: "connection_unexpected_error_please_try_again".localizedForSDK())
                         UIApplicationUtils.hideLoader()
                     }
                     return
@@ -1151,7 +1151,7 @@ extension EBSIWallet {
                         if accessTokenResponse?.error != nil{
                             DispatchQueue.main.async {
                                 UIApplicationUtils.hideLoader()
-                                UIApplicationUtils.showErrorSnackbar(message: accessTokenResponse?.error?.message ?? "connection_unexpected_error_please_try_again".localized())
+                                UIApplicationUtils.showErrorSnackbar(message: accessTokenResponse?.error?.message ?? "connection_unexpected_error_please_try_again".localizedForSDK())
                             }
                         } else {
                             let nonce = await NonceServiceUtil().fetchNonce(accessTokenResponse: accessTokenResponse, nonceEndPoint: issuerConfig?.nonceEndPoint)
@@ -1163,7 +1163,7 @@ extension EBSIWallet {
             }
         } else if authorisationResponeData?.isEmpty == true {
             UIApplicationUtils.hideLoader()
-            UIApplicationUtils.showErrorSnackbar(message: authorisationResponeError?.message ?? "Authentication failed".localized())
+            UIApplicationUtils.showErrorSnackbar(message: authorisationResponeError?.message ?? "Authentication failed".localizedForSDK())
         } else if authorisationResponeError != nil {
             UIApplicationUtils.hideLoader()
             UIApplicationUtils.showErrorSnackbar(message: authorisationResponeError?.message ?? "")
@@ -2659,7 +2659,7 @@ extension EBSIWallet {
                                     debugPrint("### CredentialsJWT dict count:\(credentialsDict.count)")
                                     
                                     if credentialsDict.isEmpty {
-                                        UIApplicationUtils.showErrorSnackbar(message: "No data available".localized())
+                                        UIApplicationUtils.showErrorSnackbar(message: "No data available".localizedForSDK())
                                         UIApplicationUtils.hideLoader()
                                     } else {
                                         
@@ -2994,7 +2994,7 @@ extension EBSIWallet {
             if accessTokenResponse?.error != nil{
                 DispatchQueue.main.async {
                     UIApplicationUtils.hideLoader()
-                    UIApplicationUtils.showErrorSnackbar(message: accessTokenResponse?.error?.message ?? "Unexpected error. Please try again.".localized())
+                    UIApplicationUtils.showErrorSnackbar(message: accessTokenResponse?.error?.message ?? "Unexpected error. Please try again.".localizedForSDK())
                 }
             } else {
                 await requestCredentialUsingEbsiV3(didKeyIdentifier: did, c_nonce: accessTokenResponse?.cNonce ?? "", accessToken: accessTokenResponse?.accessToken ?? "", privateKey: privateKey, ebsiV3Exchange: true, refreshToken: accessTokenResponse?.refreshToken ?? "")

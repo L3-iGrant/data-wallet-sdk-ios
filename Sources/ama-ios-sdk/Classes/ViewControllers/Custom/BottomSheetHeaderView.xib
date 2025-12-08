@@ -13,13 +13,19 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BottomSheetHeaderView" customModule="ama_ios_sdk">
             <connections>
+                <outlet property="cerNameViewBottomSpace" destination="Ufu-Qa-Xtk" id="A3L-LW-EO5"/>
                 <outlet property="certNameLabel" destination="rR2-iD-Od0" id="fyx-ob-iX9"/>
+                <outlet property="certNameViewTopSpace" destination="5dD-yZ-Lqp" id="awN-wQ-fnM"/>
                 <outlet property="certificatenameView" destination="fGO-8l-clq" id="MRt-9F-aFE"/>
                 <outlet property="closeButton" destination="edr-Z6-jTc" id="e7A-kH-9Cr"/>
                 <outlet property="eyeButton" destination="nyF-V8-F5U" id="Zz5-vB-LfY"/>
+                <outlet property="imageParentView" destination="9B1-FO-oc5" id="EI1-Ik-YSd"/>
+                <outlet property="imageParentViewHeight" destination="ayY-hL-GrF" id="zMF-i7-TQs"/>
+                <outlet property="imageViewHeight" destination="Awo-qQ-4b5" id="Aoy-LY-dMI"/>
                 <outlet property="locationLabel" destination="n17-tI-WoI" id="qiy-Xz-YQN"/>
                 <outlet property="orgImageView" destination="I8M-Eo-tou" id="IaI-bv-sbt"/>
                 <outlet property="orgNameLabel" destination="Haa-52-5St" id="8Fp-Hm-1s3"/>
+                <outlet property="stackView" destination="8Xg-sm-k40" id="Pwr-RH-DIY"/>
                 <outlet property="trustServiceProviderStackView" destination="VCO-pZ-Gbo" id="QcL-gH-3qM"/>
                 <outlet property="trustedServiceLabel" destination="0y5-Bd-rZo" id="Kkb-T3-K5u"/>
                 <outlet property="verifiedImageView" destination="no2-Y7-O4G" id="ivz-dE-AgL"/>
@@ -209,7 +215,7 @@
             <color red="0.81960784313725488" green="0.82352941176470584" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

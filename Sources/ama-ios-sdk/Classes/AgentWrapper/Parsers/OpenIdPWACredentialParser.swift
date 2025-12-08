@@ -36,14 +36,14 @@ class OpenIdPWACredentialParser {
             for (index, ibanValue) in ibanValues.enumerated(){
                 attributes.append(IDCardAttributes(type: .account, name: "", value: ibanValue, schemeID: "bankAccount\(index)"))
             }
-            sectionStruct.append(DWSection(title: "pwa_bank_account".localized().capitalized, key: "accountDetails"))
+            sectionStruct.append(DWSection(title: "pwa_bank_account".localizedForSDK().capitalized, key: "accountDetails"))
         }
         
         if !cardValues.isEmpty {
             for (index, cardValue) in cardValues.enumerated(){
                 attributes.append(IDCardAttributes(type: .card, name: "", value: cardValue, schemeID: "cardDetails\(index)"))
             }
-            sectionStruct.append(DWSection(title: "pwa_payment_cards".localized(), key: "cardDetails"))
+            sectionStruct.append(DWSection(title: "pwa_payment_cards".localizedForSDK(), key: "cardDetails"))
         }
         
         var attributeStructure: OrderedDictionary<String, DWAttributesModel> = [:]
@@ -108,14 +108,14 @@ class OpenIdPWACredentialParser {
             for (index, ibanValue) in ibanValues.enumerated(){
                // attributes.append(IDCardAttributes(type: .account, name: "", value: ibanValue, schemeID: "bankAccount\(index)"))
             }
-            sectionStruct.append(DWSection(title: "pwa_bank_account".localized().capitalized, key: "accountDetails"))
+            sectionStruct.append(DWSection(title: "pwa_bank_account".localizedForSDK().capitalized, key: "accountDetails"))
         }
         
         if !cardValues.isEmpty {
             for (index, cardValue) in cardValues.enumerated(){
                // attributes.append(IDCardAttributes(type: .card, name: "", value: cardValue, schemeID: "cardDetails\(index)"))
             }
-            sectionStruct.append(DWSection(title: "pwa_payment_cards".localized(), key: "cardDetails"))
+            sectionStruct.append(DWSection(title: "pwa_payment_cards".localizedForSDK(), key: "cardDetails"))
         }
         
         var attributeStructure: OrderedDictionary<String, DWAttributesModel> = [:]

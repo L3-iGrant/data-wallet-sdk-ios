@@ -54,8 +54,8 @@ class OTPViewController : AriesBaseViewController, AEOTPTextFieldDelegate {
         }
         if codeReceivedForDeveloperOption != "" {
             imageViewLogo.contentMode = .scaleAspectFit
-            self.navigationItem.title = "developer_options".localized()
-            lblDescription.text = "developer_options_pin_desc".localized()
+            self.navigationItem.title = "developer_options".localizedForSDK()
+            lblDescription.text = "developer_options_pin_desc".localizedForSDK()
             imageViewLogo.image = UIImage(named: "iGrant_1920_1080_Black_R")
         } else {
             
@@ -74,9 +74,9 @@ class OTPViewController : AriesBaseViewController, AEOTPTextFieldDelegate {
                 lblDescription.text = desc
             } else if let label = display?.name {
                 
-                lblDescription.text = label + "need to authorize the request before issuing the certificate. Please enter the PIN to continue and receive the credential".localized()
+                lblDescription.text = label + "need to authorize the request before issuing the certificate. Please enter the PIN to continue and receive the credential".localizedForSDK()
             } else {
-                lblDescription.text = "ebsi_pin_required_desc".localized()
+                lblDescription.text = "ebsi_pin_required_desc".localizedForSDK()
             }
             
             self.navigationItem.title = "Pre-Authorized Request".localizedForSDK()
@@ -105,7 +105,7 @@ class OTPViewController : AriesBaseViewController, AEOTPTextFieldDelegate {
 //                    }
 //                }
             } else {
-                UIApplicationUtils.showErrorSnackbar(message: "developer_options_invalid_pin".localized())
+                UIApplicationUtils.showErrorSnackbar(message: "developer_options_invalid_pin".localizedForSDK())
             }
         } else {
             EBSIWallet.shared.otpVal = code
@@ -120,7 +120,7 @@ class OTPViewController : AriesBaseViewController, AEOTPTextFieldDelegate {
                             self.navigationController?.popViewController(animated: true)
                         }
                     } else {
-                        UIApplicationUtils.showErrorSnackbar(message: "Invalid pin.".localized())
+                        UIApplicationUtils.showErrorSnackbar(message: "Invalid pin.".localizedForSDK())
                     }
                 }
             } else {

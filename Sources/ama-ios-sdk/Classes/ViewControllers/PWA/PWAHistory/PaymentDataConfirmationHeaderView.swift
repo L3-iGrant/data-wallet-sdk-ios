@@ -341,7 +341,7 @@ extension PaymentDataConfirmationHeaderView: UITableViewDelegate, UITableViewDat
             label.font = UIFont.systemFont(ofSize: 16)
             label.textColor = .darkGray
             headerView.addSubview(label)
-            label.text = "payment_additional_data_requests".localized()
+            label.text = "payment_additional_data_requests".localizedForSDK()
             NSLayoutConstraint.activate([
                 label.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 0),
                 label.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -16),

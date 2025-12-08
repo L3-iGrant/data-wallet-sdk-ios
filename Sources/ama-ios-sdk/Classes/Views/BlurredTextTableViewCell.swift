@@ -51,10 +51,10 @@ class BlurredTextTableViewCell: UITableViewCell {
         gestureView.becomeFirstResponder()
         menuController.menuItems = [
             UIMenuItem(
-                title: "general_copy".localized(),
+                title: "general_copy".localizedForSDK(),
                 action: #selector(handleCopyAction(_:))
             ),UIMenuItem(
-                title: "general_share".localized(),
+                title: "general_share".localizedForSDK(),
                 action: #selector(handleShareAction(_:))
             )
         ]

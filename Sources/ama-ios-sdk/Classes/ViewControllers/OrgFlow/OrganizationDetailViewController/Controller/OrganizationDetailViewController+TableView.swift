@@ -122,12 +122,12 @@ extension OrganizationDetailViewController: UITableViewDelegate, UITableViewData
             case 0: return nil
             case tableView.numberOfSections - 2:
                 if viewModel?.history?.value?.history?.pullDataNotification != nil && tableView.numberOfSections - 2 == section{
-                    name = "welcome_data_using_service".localize
+                    name = "welcome_data_using_service".localizedForSDK()
                 } else {
                     return nil
                 }
                 view.setLeftPadding(padding: 20)
-                view.value = name?.localized().localizedUppercase ?? ""
+                view.value = name?.localizedForSDK().localizedUppercase ?? ""
                 return view
             case tableView.numberOfSections - 1: return nil
             default:
@@ -212,7 +212,7 @@ extension OrganizationDetailViewController: UITableViewDelegate, UITableViewData
                     return view
                 }
                 view.setLeftPadding(padding: 20)
-                view.value = name?.localized().localizedUppercase ?? ""
+                view.value = name?.localizedForSDK().localizedUppercase ?? ""
                 // Setting text color based on credential branding
                 if let textColor = viewModel?.history?.value?.history?.display?.textColor {
                     view.lbl.textColor = UIColor(hex: textColor)

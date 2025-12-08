@@ -84,9 +84,9 @@ final class PhotoIDIssuerDetailsCell: UITableViewCell {
         TrustMechanismManager().trustProviderInfo(credential: credential, format: "", jwksURI: orgInfo?.jwksURL) { data in
             if let data = data {
                 DispatchQueue.main.async {
-                    let vc = TrustServiceProviersBottomSheetVC(nibName: "TrustServiceProviersBottomSheetVC", bundle: nil)
+                    let vc = TrustServiceProviersBottomSheetVC(nibName: "TrustServiceProviersBottomSheetVC", bundle: Bundle.module)
+                    vc.clearAlpha = true
                     vc.modalPresentationStyle = .overFullScreen
-                    vc.modalTransitionStyle = .crossDissolve
                     vc.viewModel.data = data
                     vc.viewModel.credential = credential
                     if let navVC = UIApplicationUtils.shared.getTopVC() as? UINavigationController {
