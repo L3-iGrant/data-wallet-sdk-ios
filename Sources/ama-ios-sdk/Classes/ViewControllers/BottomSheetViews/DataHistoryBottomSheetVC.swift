@@ -11,7 +11,6 @@ import CoreML
 class DataHistoryBottomSheetVC: UIViewController {
 
     var viewModel = DataHistoryViewModel()
-    var navHandler: NavigationHandler!
 
     @IBOutlet public weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -47,10 +46,21 @@ class DataHistoryBottomSheetVC: UIViewController {
         searchBar.removeBg()
         self.searchBar.placeholder = "Search".localizedForSDK()
         descriptionLabel.text = "Here, you  can view the history of all data agreement signed.".localizedForSDK()
-        setNav()
         bottomSheetViewHeader.isHidden = viewMode == .FullScreen
         closeButton.applyBottomSheetCloseStyle()
         setupTableView()
+        setupSearchBar()
+    }
+    
+    func setupSearchBar() {
+        searchBar.searchBarStyle = .minimal
+        searchBar.backgroundImage = UIImage()
+        if let searchTextField = searchBar.searchTextField as? UITextField {
+            searchTextField.backgroundColor = .white
+            searchTextField.layer.cornerRadius = 10
+            searchTextField.clipsToBounds = true
+            searchTextField.borderStyle = .none
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,13 +95,10 @@ class DataHistoryBottomSheetVC: UIViewController {
         let sheet = ViewControllerPannable(renderFor: .history(sections: self.viewModel.filters))
         sheet.connectionsActionSheet.pageDelegate = self
         sheet.connectionsActionSheet.selectedIndex = self.viewModel.filterIndex
-        self.present(vc: sheet, transStyle: .crossDissolve, presentationStyle: .overFullScreen)
-    }
-    
-    private func setNav() {
-        navHandler = NavigationHandler(parent: self, delegate: self)
-        navHandler.setNavigationComponents(title: "My Shared Data".localize,
-                                           right: [.connectionSettings])
+        sheet.modalTransitionStyle = .crossDissolve
+        sheet.modalPresentationStyle = .overFullScreen
+        present(sheet, animated: true)
+        //self.present(vc: sheet, transStyle: .crossDissolve, presentationStyle: .overFullScreen)
     }
     
     @IBAction func searchBarCancelButtonAction(_ sender: Any) {
@@ -274,19 +281,6 @@ extension DataHistoryBottomSheetVC: DataHistoryViewModelDelegate {
     
     func cellTapped(_ index: Int) {
         
-    }
-}
-
-extension DataHistoryBottomSheetVC: NavigationHandlerProtocol {
-    func rightTapped(tag: Int) {
-        switch tag {
-        case 0:
-            let sheet = ViewControllerPannable(renderFor: .history(sections: self.viewModel.filters))
-            sheet.connectionsActionSheet.pageDelegate = self
-            sheet.connectionsActionSheet.selectedIndex = self.viewModel.filterIndex
-            self.present(vc: sheet, transStyle: .crossDissolve, presentationStyle: .overCurrentContext)
-        default: break
-        }
     }
 }
 

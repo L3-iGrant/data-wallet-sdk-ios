@@ -60,6 +60,10 @@ class BottomSheetHeaderView: UIView {
         registerView()
         addView(subview: view)
         updateEyeButtonImage()
+        closeButton.applyBottomSheetCloseStyle()
+        eyeButton.applyBottomSheetCloseStyle()
+        eyeButton.setImage(UIImage(systemName: "eye", withConfiguration: UIImage.SymbolConfiguration(pointSize: 12, weight: .bold)), for: .normal)
+        
         trustServiceProviderStackView.isHidden = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(trustServicetapped))
         self.trustServiceProviderStackView.addGestureRecognizer(tapGesture)
@@ -107,8 +111,8 @@ class BottomSheetHeaderView: UIView {
     private func updateEyeButtonImage() {
         let config = UIImage.SymbolConfiguration(scale: .small)
         let imageName = showValues ? "eye.slash" : "eye"
-        let image = UIImage(systemName: imageName, withConfiguration: config)
-        eyeButton.setImage(image, for: .normal)
+        eyeButton.applyBottomSheetCloseStyle()
+        eyeButton?.setImage(UIImage(systemName: imageName, withConfiguration: UIImage.SymbolConfiguration(pointSize: 12, weight: .bold)), for: .normal)
     }
     
     func setData(model: PWACertViewModel) {

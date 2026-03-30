@@ -25,6 +25,8 @@ class TrustServiceProviersBottomSheetVC: UIViewController {
     
     @IBOutlet weak var dimmedView: UIView!
     
+    @IBOutlet weak var closeButton: UIButton!
+    
     var trustListItem: TrustServiceProvider?
     let viewModel = TrustServiceProviersViewModel()
     var clearAlpha: Bool = false
@@ -32,6 +34,7 @@ class TrustServiceProviersBottomSheetVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        closeButton.applyBottomSheetCloseStyle()
         titleLabel.text = "general_trusted_service_provider".localizedForSDK()
         if let data = viewModel.data {
             companyName.text = data.tspName
