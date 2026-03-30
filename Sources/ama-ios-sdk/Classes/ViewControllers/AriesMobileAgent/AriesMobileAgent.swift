@@ -406,20 +406,6 @@ public struct AriesMobileAgent {
                 navigateTo(controller)
             }
         }
-        
-        
-//        if let walletVC = UIStoryboard(name:"ama-ios-sdk", bundle:Bundle.module).instantiateViewController( withIdentifier: "DataHistoryViewController") as? DataHistoryViewController {
-//            let navContent = UINavigationController(rootViewController: walletVC)
-//            navContent.navigationBar.isHidden = true
-//            walletVC.viewMode = .BottomSheet
-//            let sheetVC = WalletHomeBottomSheetViewController(contentViewController: navContent)
-//            sheetVC.modalPresentationStyle = .overFullScreen
-//            sheetVC.modalTransitionStyle = .crossDissolve
-//            
-//            if let topVC = UIApplicationUtils.shared.getTopVC() {
-//                topVC.present(sheetVC, animated: false, completion: nil)
-//            }
-//        }
     }
     
     public func initiateBackup(){

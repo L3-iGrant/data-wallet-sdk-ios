@@ -49,19 +49,7 @@ class DataHistoryBottomSheetVC: UIViewController {
         descriptionLabel.text = "Here, you  can view the history of all data agreement signed.".localizedForSDK()
         setNav()
         bottomSheetViewHeader.isHidden = viewMode == .FullScreen
-//        if clearAlpha {
-//            dimmedView.backgroundColor = .clear
-//        } else {
-//            dimmedView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-//        }
-//        if clearAlpha {
-//            dimmedView.backgroundColor = .clear
-//        } else {
-//            dimmedView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-//        }
-//        
-//        // Start with dimmed view invisible
-//        dimmedView.alpha = 0
+        closeButton.applyBottomSheetCloseStyle()
         setupTableView()
     }
     
