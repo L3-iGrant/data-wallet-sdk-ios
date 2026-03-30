@@ -41,7 +41,7 @@ let package = Package(
         .package(url: "https://github.com/CocoaLumberjack/CocoaLumberjack.git", .upToNextMajor(from: "3.8.0")),
         .package(url: "https://github.com/filom/ASN1Decoder.git", from: "1.10.0"),
         .package(url: "https://github.com/weichsel/ZIPFoundation.git", .upToNextMajor(from: "0.9.0")),
-        .package(url: "https://github.com/L3-iGrant/qr-code-scanner-ios", .upToNextMajor(from: "2024.9.1"))
+        .package(url: "https://github.com/L3-iGrant/qr-code-scanner-ios", .upToNextMajor(from: "2026.3.1"))
     ],
     targets: [
         .target(

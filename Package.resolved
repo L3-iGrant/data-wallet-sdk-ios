@@ -329,8 +329,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/L3-iGrant/qr-code-scanner-ios",
       "state" : {
-        "revision" : "e1d5c4977537744890a983e74cd23a137b9e118b",
-        "version" : "2024.9.1"
+        "revision" : "c6c76369bddd13ac1b77998b0e3f1a8f619a3402",
+        "version" : "2026.3.1"
       }
     },
     {
