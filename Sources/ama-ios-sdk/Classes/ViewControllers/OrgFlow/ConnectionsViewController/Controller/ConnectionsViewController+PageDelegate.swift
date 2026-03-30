@@ -34,7 +34,9 @@ extension ConnectionsViewController: WalletHomeTitleDelegate, OrganisationListDe
         let sheet = ViewControllerPannable(renderFor: .connectionActionSheet)
         sheet.connectionsActionSheet.pageDelegate = self
         sheet.connectionsActionSheet.selectedIndex = self.viewModel?.connectionType?.rawValue ?? 0
-        self.present(vc: sheet, transStyle: .crossDissolve, presentationStyle: .overFullScreen)
+        sheet.modalTransitionStyle = .crossDissolve
+        sheet.modalPresentationStyle = .overFullScreen
+        present(sheet, animated: true)
     }
     
     func reloadData() {

@@ -81,7 +81,7 @@
                         <constraint firstAttribute="width" constant="32" id="Bfi-7F-9EM"/>
                         <constraint firstAttribute="height" constant="32" id="c4I-nH-09E"/>
                     </constraints>
-                    <color key="tintColor" name="171717"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain"/>
@@ -101,6 +101,7 @@
                         <constraint firstAttribute="width" constant="15" id="LWc-0F-uI9"/>
                         <constraint firstAttribute="height" constant="15" id="T6K-1k-Pih"/>
                     </constraints>
+                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                 </imageView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="3xH-IC-vCq">
                     <rect key="frame" x="0.0" y="65.5" width="543" height="75"/>
