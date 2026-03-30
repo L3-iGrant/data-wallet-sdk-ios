@@ -59,10 +59,10 @@ class BackUpViewController: UIViewController, UITextFieldDelegate, NavigationHan
     private let closeButton: UIButton = {
         let config = UIImage.SymbolConfiguration(scale: .small)
         let button = UIButton(type: .system)
-        let image = UIImage(systemName: "xmark", withConfiguration: config)
+        let image = UIImage(systemName: "xmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 12, weight: .bold))
         button.setImage(image, for: .normal)
-        button.layer.cornerRadius = 12.5
-        button.backgroundColor = UIColor(hex: "d1d2d9")
+        button.layer.cornerRadius = 16
+        button.backgroundColor = UIColor.black.withAlphaComponent(0.08)
         button.tintColor = .black
         return button
     }()
@@ -153,8 +153,8 @@ class BackUpViewController: UIViewController, UITextFieldDelegate, NavigationHan
         NSLayoutConstraint.activate([
             closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            closeButton.widthAnchor.constraint(equalToConstant: 25),
-            closeButton.heightAnchor.constraint(equalToConstant: 25),
+            closeButton.widthAnchor.constraint(equalToConstant: 32),
+            closeButton.heightAnchor.constraint(equalToConstant: 32),
             
             titleLabel.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)

@@ -43,6 +43,9 @@ final class CertificatePreviewBottomSheet: UIViewController, NavigationHandlerPr
     
     @IBOutlet weak var parentViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var closeButton: UIButton!
+    
+    @IBOutlet weak var deleteButton: UIButton!
     
     var showValues = false
     let dataAgreementHeaderHeight: CGFloat = 50
@@ -61,6 +64,10 @@ final class CertificatePreviewBottomSheet: UIViewController, NavigationHandlerPr
         tableView.delegate = self
         tableView.dataSource = self
         viewModel?.delegate = self
+        closeButton.applyBottomSheetCloseStyle()
+        deleteButton.applyBottomSheetCloseStyle(imageName: "trash")
+        showButton?.applyBottomSheetCloseStyle()
+        showButton?.setImage(UIImage(systemName: "eye", withConfiguration: UIImage.SymbolConfiguration(pointSize: 12, weight: .bold)), for: .normal)
         self.certificateNameBaseView.isHidden = true
         self.tableView.estimatedRowHeight(40)
         setUpColor()
@@ -174,7 +181,8 @@ final class CertificatePreviewBottomSheet: UIViewController, NavigationHandlerPr
         let config = UIImage.SymbolConfiguration(scale: .small)
         let imageName = showValues ? "eye.slash" : "eye"
         let image = UIImage(systemName: imageName, withConfiguration: config)
-        showButton.setImage(image, for: .normal)
+        showButton.applyBottomSheetCloseStyle()
+        showButton?.setImage(UIImage(systemName: imageName, withConfiguration: UIImage.SymbolConfiguration(pointSize: 12, weight: .bold)), for: .normal)
     }
     
     

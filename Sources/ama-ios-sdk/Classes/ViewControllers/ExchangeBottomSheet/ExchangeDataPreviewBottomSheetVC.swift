@@ -47,6 +47,8 @@ class ExchangeDataPreviewBottomSheetVC: UIViewController {
     
     @IBOutlet weak var dimmedView: UIView!
     
+    @IBOutlet weak var closeButton: UIButton!
+    
     var completion: ((Bool) -> Void)?
     var showValues = false
     var viewModel: ExchangeDataPreviewViewModel?
@@ -78,13 +80,9 @@ class ExchangeDataPreviewBottomSheetVC: UIViewController {
         super.viewDidLoad()
         self.view.bringSubviewToFront(parentView)
         navigationController?.navigationBar.isHidden = true
-        //dimmedView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-       // parentView.transform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.height)
-//        if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
-//            dimmedView.backgroundColor = .clear
-//        } else {
-//            dimmedView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-//        }
+        closeButton?.applyBottomSheetCloseStyle()
+        eyeButton?.applyBottomSheetCloseStyle()
+        eyeButton?.setImage(UIImage(systemName: "eye", withConfiguration: UIImage.SymbolConfiguration(pointSize: 12, weight: .bold)), for: .normal)
         additionalDataText.isHidden = true
         self.credentialSetBackButton.isHidden = true
         trustedServiceProviderStackView.isHidden = true
@@ -500,9 +498,7 @@ class ExchangeDataPreviewBottomSheetVC: UIViewController {
         
         let config = UIImage.SymbolConfiguration(scale: .small)
         let imageName = showValues ? "eye.slash" : "eye"
-        let img = UIImage(systemName: imageName, withConfiguration: config)
-//        eyeButton.imageView?.contentMode = .scaleAspectFit
-        eyeButton.setImage(img, for: .normal)
+        eyeButton.applyBottomSheetCloseStyle(imageName: imageName)
         self.collectionView.reloadInMain()
         //self.tableView.reloadData()
         updateBlurStateForVisibleCells()

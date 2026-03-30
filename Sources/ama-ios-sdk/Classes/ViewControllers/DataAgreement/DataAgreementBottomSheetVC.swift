@@ -18,6 +18,9 @@ class DataAgreementBottomSheetVC: UIViewController {
     
     var viewModel: DataAgreementViewModel? = nil
     
+    @IBOutlet weak var closeButton: UIButton!
+    
+    
     @IBAction func closeButtonTapped(_ sender: Any) {
         dismiss(animated: true)
     }
@@ -34,6 +37,7 @@ class DataAgreementBottomSheetVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        closeButton.applyBottomSheetCloseStyle()
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.register(cellType: CovidValuesRowTableViewCell.self)
         tableView.register(cellType: VerifiedDataAgreementTableViewCell.self)

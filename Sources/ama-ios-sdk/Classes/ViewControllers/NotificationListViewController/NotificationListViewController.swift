@@ -12,6 +12,7 @@ class NotificationListViewController: AriesBaseViewController {
     @IBOutlet public weak var tableView: UITableView!
     @IBOutlet weak var bottomSheetHeaderView: UIView!
     
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var bottomSheetHeaderHeight: NSLayoutConstraint!
     
     var viewModel : NotificationsListViewModel?
@@ -22,6 +23,7 @@ class NotificationListViewController: AriesBaseViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        closeButton.applyBottomSheetCloseStyle()
         viewModel = NotificationsListViewModel.init(walletHandle: WalletViewModel.openedWalletHandler)
         fetchAllnotifications()
         NotificationCenter.default.addObserver(self, selector: #selector(fetchAllnotifications), name: Constants.didRecieveCertOffer, object: nil)

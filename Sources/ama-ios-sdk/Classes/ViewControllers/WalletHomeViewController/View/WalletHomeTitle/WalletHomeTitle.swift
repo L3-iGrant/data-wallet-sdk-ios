@@ -92,6 +92,7 @@ final class WalletHomeTitle: UIView, UITextFieldDelegate {
     public func renderView(type: WalletViewType = .home) {
         if AriesMobileAgent.shared.getViewMode() == .BottomSheet {
             lbl.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+            closeButton.applyBottomSheetCloseStyle()
         }
         closeButton.isHidden = AriesMobileAgent.shared.getViewMode() != .BottomSheet
         if AriesMobileAgent.shared.getViewMode() == .BottomSheet && type == .connection {
